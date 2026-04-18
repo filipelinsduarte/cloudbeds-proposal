@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floqer SEO/AEO Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<style>
+  :root {
+    --accent: #FF4F12;
+    --accent-bg: #FFEFE2;
+    --accent-bd: #FECBB5;
+    --accent-dark: #D93D0A;
+    --accent2: #7C3AED;
+    --accent2-bg: #F5F3FF;
+    --accent2-bd: #DDD6FE;
+    --accent2-dark: #6D28D9;
+    --ink: #171C33;
+    --ink2: #3D4461;
+    --ink3: #717185;
+    --ink4: #A1A1B5;
+    --paper: #fff;
+    --paper2: #F9FAFB;
+    --paper3: #F3F4F6;
+    --rule: #E5E7EB;
+    --ok: #16a34a;
+    --ok-bg: #f0fdf4;
+    --ok-bd: #bbf7d0;
+    --warn: #ea580c;
+    --warn-bg: #fff7ed;
+    --warn-bd: #fed7aa;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --red-bd: #fecaca;
+  }
+  *{box-sizing:border-box;font-family:"DM Sans",sans-serif}
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#fff}
+  .reveal-viewport,.reveal{width:100%!important;height:100%!important;background:#fff!important}
+  .reveal .slides section{width:100vw!important;height:100vh!important;padding:0!important;background:#fff!important;display:flex!important;flex-direction:column!important;text-align:left!important}
+  .s{width:100vw;height:100vh;padding:3vh 4.5vw 2.5vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .stripe{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent-dark)}
+  .hdr{display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:.6vh}
+  .hdr-right{display:flex;flex-direction:column;align-items:flex-end}
+  .snum{font-family:"DM Mono",monospace;font-size:clamp(10px,1.2vh,12px);color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:2px 8px;letter-spacing:.06em}
+  .tag{font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)}
+  .powered{display:flex;align-items:center;gap:5px;text-decoration:none;margin-top:3px}
+  .powered span{font-size:clamp(8px,1vh,10px);color:var(--ink4)}
+  .powered img{height:clamp(10px,1.4vh,14px);width:auto;opacity:.7}
+  .divider{height:1px;background:var(--rule);flex-shrink:0;margin-bottom:clamp(10px,1.5vh,18px)}
+  h2{font-size:clamp(22px,3.8vh,42px);font-weight:700;color:var(--ink);margin:0 0 clamp(8px,1.2vh,14px);line-height:1.15;flex-shrink:0}
+  .col-head{font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)}
+  .outcomes{display:grid;gap:clamp(8px,1.2vw,14px);margin-bottom:clamp(16px,2.5vh,28px)}
+  .obox{background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px)}
+  .rg2{display:grid;grid-template-columns:1fr 1fr}
+  .rg3{display:grid;grid-template-columns:1fr 1fr 1fr}
+  .rf2{display:flex}
+  .rf3{display:flex}
+  @media(max-width:1024px){.s{height:100svh!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important}}
+  @media(max-width:900px){.rg3{grid-template-columns:1fr 1fr!important}.rf3{flex-wrap:wrap!important}.rf3>*{flex:1 1 calc(50% - 20px)!important;min-width:calc(50% - 20px)!important}}
+  @media(max-width:768px){[style*="min-height:0"]{min-height:auto!important}[style*="max-width:74%"],[style*="max-width:72%"],[style*="max-width:75%"]{max-width:100%!important}[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}[style*="grid-template-columns:1.5fr 0.5fr"]{grid-template-columns:1fr!important}[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}[style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important}}
+  @media(max-width:640px){.rg2,.rg3{grid-template-columns:1fr!important}.rf2,.rf3{flex-direction:column!important}.mob-scroll{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}.mob-scroll>*{min-width:480px!important}}
+  .src{font-size:clamp(9px,1.1vh,11px);color:var(--ink4);margin-top:8px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 01: Cover -->
+<section><div class="s" style="justify-content:center;gap:clamp(16px,2.5vh,32px)">
+<div class="stripe"></div>
+<div style="display:flex;align-items:center;gap:12px">
+  <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:12px;width:clamp(36px,5vh,54px);height:clamp(36px,5vh,54px);object-fit:contain">
+  <span class="tag">SEO / AEO Proposal</span>
+</div>
+<div>
+  <h2 style="font-size:clamp(28px,5.5vh,62px);margin-bottom:clamp(10px,1.5vh,18px)">100+ GTM Teams use Floqer. The world deserves to know that.</h2>
+  <p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0;font-weight:400;max-width:75ch">You have the right product. The gap is visibility. Every GTM team asking AI about CRM enrichment gets sent to ZoomInfo, Clearbit, or Clay. Here is how to change that.</p>
+</div>
+<div style="display:flex;align-items:center;gap:clamp(16px,2vw,28px);margin-top:clamp(8px,1.5vh,20px)">
+  <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+    <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">Powered by</span>
+    <img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" style="height:clamp(12px,1.8vh,20px);width:auto;opacity:.6">
+  </a>
+  <span style="color:var(--rule)">|</span>
+  <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">Prepared for Floqer &middot; April 2026</span>
+</div>
+</div></section>
+
+<!-- SLIDE 02: Why SEO & AEO -->
+<section><div class="s">
+<div class="stripe"></div>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+    <span class="tag">SEO / AEO Proposal</span>
+  </div>
+  <div class="hdr-right">
+    <div class="snum">02 / 11</div>
+    <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+  </div>
+</div>
+<div class="divider"></div>
+<h2 style="margin-top:1vh">Why Floqer Should <span style="color:var(--accent)">Invest in SEO and AEO</span></h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(22px,3.2vh,36px);font-weight:500">Your buyers are searching for data enrichment solutions right now. The question is whether Floqer shows up, or a competitor does.</p>
+<div class="rg3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.5vw,18px);flex:1;min-height:0;align-content:start">
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,18px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:18px;height:18px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Buyers research before they talk to sales</div>
+    </div>
+    <p style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.55;margin:0">More than 70% of B2B buyers complete most of their research before ever speaking to a vendor. Being visible in search results and AI answers is how Floqer gets into the consideration set before the first conversation happens.</p>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);margin-top:auto;padding-top:clamp(6px,0.8vh,9px);border-top:1px solid var(--rule)">Source: <a href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank" rel="noopener" style="color:var(--accent-dark);text-decoration:underline;text-decoration-color:var(--accent-bd);text-underline-offset:2px">Gartner, "The B2B Buying Journey" (2023)</a></div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,18px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:18px;height:18px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">AI is now part of every buyer journey</div>
+    </div>
+    <p style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.55;margin:0">ChatGPT, Gemini, and Perplexity recommend CRM enrichment and data tools in response to buyer questions every day. Floqer's competitors are already being cited on most of the queries your RevOps buyers are asking.</p>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);margin-top:auto;padding-top:clamp(6px,0.8vh,9px);border-top:1px solid var(--rule)">Source: <a href="https://www.brightedge.com/resources/research-reports/channel-report-ai-seo" target="_blank" rel="noopener" style="color:var(--accent-dark);text-decoration:underline;text-decoration-color:var(--accent-bd);text-underline-offset:2px">BrightEdge Research, "Generative AI and SEO" (2024)</a>; <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" style="color:var(--accent-dark);text-decoration:underline;text-decoration-color:var(--accent-bd);text-underline-offset:2px">AI Peekaboo data (April 2026)</a></div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,18px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg style="width:18px;height:18px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Organic compounds. Paid ads stop.</div>
+    </div>
+    <p style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.55;margin:0">Every optimised page, well-structured article, and AI citation builds on itself month after month. Unlike paid acquisition that stops the moment the budget runs out, SEO and AEO investment keeps delivering long after the engagement ends.</p>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);margin-top:auto;padding-top:clamp(6px,0.8vh,9px);border-top:1px solid var(--rule)">Source: <a href="https://ahrefs.com/blog/roi-of-seo/" target="_blank" rel="noopener" style="color:var(--accent-dark);text-decoration:underline;text-decoration-color:var(--accent-bd);text-underline-offset:2px">Ahrefs, "The ROI of SEO" (2024)</a>; <a href="https://www.hubspot.com/state-of-marketing" target="_blank" rel="noopener" style="color:var(--accent-dark);text-decoration:underline;text-decoration-color:var(--accent-bd);text-underline-offset:2px">HubSpot State of Marketing (2024)</a></div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 03: Gaps -->
+<section><div class="s">
+<div class="stripe"></div>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+    <span class="tag">SEO / AEO Proposal</span>
+  </div>
+  <div class="hdr-right">
+    <div class="snum">03 / 11</div>
+    <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+  </div>
+</div>
+<div class="divider"></div>
+<h2 style="margin-top:1vh">The Key Problems <span style="color:var(--accent)">Floqer Needs to Solve</span></h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(14px,2vh,22px);font-weight:500">Four root causes that explain why high-intent buyers land on ZoomInfo, Clearbit, and Clay, never finding Floqer.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,16px);flex:1;min-height:0">
+
+  <div style="background:var(--red-bg);border:1px solid var(--red-bd);border-radius:10px;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);border-bottom:1px solid var(--red-bd)">
+      <div style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.5vh">Problem 01: Critical</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);line-height:1.2">Not Enough Web Pages: No Pages, No Traffic</div>
+    </div>
+    <div style="padding:clamp(10px,1.3vh,15px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px)">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">Floqer simply does not have enough pages for Google to rank. The sitemap lists only <strong style="color:var(--red)">3 URLs</strong>: homepage, /terms, and /privacy, meaning Google has almost nothing to index</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">At least <strong style="color:var(--red)">9 existing pages</strong>, including case studies with real client results, are invisible to Google because they are not in the sitemap. You cannot get traffic from pages Google doesn&rsquo;t know exist</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);border-bottom:1px solid var(--rule)">
+      <div style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:.5vh">Problem 02</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);line-height:1.2">No Content Targeting What Buyers Actually Search For</div>
+    </div>
+    <div style="padding:clamp(10px,1.3vh,15px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px)">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">The content that moves the needle in SaaS: competitor alternatives, comparison reviews, and integration landing pages. This does not exist on floqer.com. Zero &ldquo;Floqer vs Clay&rdquo;, zero &ldquo;ZoomInfo alternative&rdquo;, zero HubSpot or Salesforce enrichment pages</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">RevOps buyers searching &ldquo;HubSpot CRM enrichment&rdquo; or &ldquo;best Clay alternative for startups&rdquo; are Floqer&rsquo;s highest-intent prospects. Today every one of them lands on a competitor page</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);border-bottom:1px solid var(--rule)">
+      <div style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2-dark);margin-bottom:.5vh">Problem 03</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);line-height:1.2">Competitors Own Every AI Answer and Every Alternative Search</div>
+    </div>
+    <div style="padding:clamp(10px,1.3vh,15px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px)">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent2-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">ZoomInfo, Clearbit, and Clay are significantly more visible across AI and search than Floqer. They are the first brands recommended across every data enrichment query where Floqer should appear</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent2-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">Buyers who find a competitor comparison page convert at <strong style="color:var(--accent2-dark)">3x the rate</strong> of cold traffic. These are the highest-intent searches in the category and Floqer is absent from all of them</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);border-bottom:1px solid var(--rule)">
+      <div style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:.5vh">Problem 04</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);line-height:1.2">No Schema Markup: Google and AI Cannot Understand the Site</div>
+    </div>
+    <div style="padding:clamp(10px,1.3vh,15px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px)">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">Floqer has zero structured data across the entire site: no FAQPage, SoftwareApplication, or Organization schema. Without it, Google cannot extract reliable signals about what Floqer does or who it serves, making rich results impossible</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg style="width:15px;height:15px;flex-shrink:0;margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);line-height:1.45">AI models heavily rely on structured data to build answers and citations. Without schema, Floqer is at a compounding disadvantage, invisible to Google rich results and significantly harder for AI to cite with confidence</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 04: SEO Today -->
+<section><div class="s">
+<div class="stripe"></div>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+    <span class="tag">SEO / AEO Proposal</span>
+  </div>
+  <div class="hdr-right">
+    <div class="snum">04 / 11</div>
+    <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+  </div>
+</div>
+<div class="divider"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:1vh;margin-bottom:clamp(4px,0.6vh,8px);flex-shrink:0">
+  <h2 style="margin:0">Where Floqer Stands Today <span style="color:var(--accent)">(SEO)</span></h2>
+  <div style="display:flex;align-items:center;gap:5px;background:var(--paper2);border:1px solid var(--rule);border-radius:4px;padding:2px 7px;flex-shrink:0">
+    <img src="https://www.google.com/s2/favicons?domain=ahrefs.com&sz=32" style="width:18px;height:18px;border-radius:2px;flex-shrink:0">
+    <span style="font-size:clamp(11px,1.45vh,14px);font-weight:600;color:var(--ink4);white-space:nowrap">Data: Ahrefs (est.)</span>
+  </div>
+</div>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(10px,1.5vh,16px);flex-shrink:0">Domain authority, organic keyword reach, and estimated monthly traffic vs. direct competitors.</div>
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px)">
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);padding:0 clamp(10px,1.3vw,14px)">
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)">Company</div>
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);text-align:right">Domain Rating</div>
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);text-align:right">Organic Keywords</div>
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);text-align:right">Monthly Traffic</div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(10px,1.3vw,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:10px"><img src="https://www.google.com/s2/favicons?domain=zoominfo.com&sz=64" style="width:20px;height:20px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(14px,2vh,18px);font-weight:600;color:var(--ink)">ZoomInfo</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">86</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">120K+</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">620K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(10px,1.3vw,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:10px"><img src="https://www.google.com/s2/favicons?domain=clearbit.com&sz=64" style="width:20px;height:20px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(14px,2vh,18px);font-weight:600;color:var(--ink)">Clearbit</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">74</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">28K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">148K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(10px,1.3vw,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:10px"><img src="https://www.google.com/s2/favicons?domain=clay.com&sz=64" style="width:20px;height:20px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(14px,2vh,18px);font-weight:600;color:var(--ink)">Clay</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">62</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">14K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">72K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(10px,1.3vw,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:10px"><img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" style="width:20px;height:20px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(14px,2vh,18px);font-weight:600;color:var(--ink)">Apollo.io</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">78</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">54K</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--ink2);text-align:right">310K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(8px,1.2vw,14px);background:var(--accent-bg);border:2px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(10px,1.3vw,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=64" style="width:20px;height:20px;border-radius:4px;flex-shrink:0">
+      <span style="font-size:clamp(14px,2vh,18px);font-weight:700;color:var(--accent-dark)">Floqer</span>
+      <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px">You</span>
+    </div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--accent-dark);font-weight:700;text-align:right">~5</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--accent-dark);font-weight:700;text-align:right">&lt;50</div>
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);color:var(--accent-dark);font-weight:700;text-align:right">~200</div>
+  </div>
+  <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,20px)">
+    <p style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);margin:0;line-height:1.55">Starting from a clean slate is an advantage, not a deficit. Clay went from zero to 14K keywords in under two years. The difference is a deliberate content program. Every keyword Floqer targets now is ground won outright.</p>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 05: AI Today -->
+<section><div class="s">
+<div class="stripe"></div>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+    <span class="tag">SEO / AEO Proposal</span>
+  </div>
+  <div class="hdr-right">
+    <div class="snum">05 / 11</div>
+    <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+  </div>
+</div>
+<div class="divider"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:1vh;margin-bottom:clamp(4px,0.6vh,8px);flex-shrink:0">
+  <h2 style="margin:0">Where Floqer Stands Today <span style="color:var(--accent)">(AI Search)</span></h2>
+  <div style="display:flex;align-items:center;gap:5px;background:var(--paper2);border:1px solid var(--rule);border-radius:4px;padding:2px 7px;flex-shrink:0">
+    <img src="https://www.aipeekaboo.com/icon.jpg" style="width:18px;height:18px;border-radius:2px;flex-shrink:0;object-fit:cover">
+    <span style="font-size:clamp(11px,1.45vh,14px);font-weight:600;color:var(--ink4);white-space:nowrap">Data: AI Peekaboo</span>
+  </div>
+</div>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(8px,1.2vh,14px);flex-shrink:0">Citation rate across ChatGPT, Perplexity, Google AI Mode, Google AIO, and Gemini.</div>
+<div style="display:flex;align-items:center;gap:clamp(14px,2vw,22px);background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,20px);flex-shrink:0;margin-bottom:clamp(8px,1.2vh,14px)">
+  <div style="text-align:center;flex-shrink:0">
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(36px,6vh,64px);font-weight:500;color:var(--ink);letter-spacing:-.04em;line-height:1">0</div>
+    <div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4);font-weight:700;letter-spacing:.08em;text-transform:uppercase">AI Score</div>
+  </div>
+  <div style="flex:1">
+    <div style="font-size:clamp(14px,2vh,18px);font-weight:700;color:var(--ink);margin-bottom:4px">Not visible in AI at all</div>
+    <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);line-height:1.5">0 citations across 76 conversations analyzed on ChatGPT, Perplexity, Google AI Mode, Google AIO, and Gemini. Every buying prompt sends prospects to a competitor.</div>
+  </div>
+</div>
+<div class="rg2" style="gap:clamp(10px,1.5vw,18px);flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:clamp(3px,0.5vh,5px);min-height:0;overflow:hidden">
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:2px;flex-shrink:0">Prompts Floqer Should Be Winning</div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Best CRM data enrichment tool for B2B sales teams</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Best Clay.com alternative for RevOps teams</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">How to automatically enrich HubSpot contacts with AI</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Best ZoomInfo alternative for startups and growing sales teams</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">AI agents for CRM enrichment and contact data accuracy</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">How to keep Salesforce data clean and enriched automatically</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Best tool for automated lead enrichment for outbound sales</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Top data enrichment tools for GTM and revenue teams in 2026</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">Best Clearbit alternative for SaaS companies</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px)">
+        <span style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">How to reduce CRM data decay for B2B sales teams</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,12px);min-height:0">
+    <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)">Who AI Cites Instead</div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(4px,0.6vh,7px);overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px;background:var(--warn-bg);border:1px solid var(--warn-bd);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=zoominfo.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">pipeline.zoominfo.com</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--warn);font-weight:700">39 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">reddit.com</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">39 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=monday.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">monday.com</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">32 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=syncgtm.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">syncgtm.com</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">31 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">apollo.io</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">14 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=cognism.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">cognism.com</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">16 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px)">
+        <img src="https://www.google.com/s2/favicons?domain=prospeo.io&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--ink);flex:1">prospeo.io</span>
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">21 mentions</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:var(--red-bg);border:2px solid var(--red-bd);border-radius:6px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px);margin-top:2px">
+        <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=64" style="width:18px;height:18px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--red);flex:1">floqer.com</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.45vh,14px);color:var(--red);font-weight:600;white-space:nowrap">0 mentions</span>
+        <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 6px;white-space:nowrap">Not cited</span>
+      </div>
+    </div>
+    <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(14px,1.8vw,20px);flex-shrink:0">
+      <p style="font-size:clamp(13px,1.8vh,18px);color:var(--ink2);margin:0;line-height:1.55">Floqer has 0 AI citations today. Reddit alone gets 39 mentions, meaning unbranded community discussions are more visible in AI than Floqer&rsquo;s own site. Every citation earned from this baseline is net new market presence.</p>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 06: Content Strategy -->
+<section><div class="s">
+<div class="stripe"></div>
+<div class="hdr">
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+    <span class="tag">SEO / AEO Proposal</span>
+  </div>
+  <div class="hdr-right">
+    <div class="snum">06 / 11</div>
+    <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+  </div>
+</div>
+<div class="divider"></div>
+<h2 style="margin-top:1vh">Proposed <span style="color:var(--accent)">Content Strategy</span></h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(22px,3.5vh,42px);font-weight:500">We map Floqer&rsquo;s use cases to the exact problems GTM and RevOps teams are searching for.<br><span style="color:var(--ink3);font-weight:400">Then we create content around that, so Floqer gets found at the moment someone is evaluating a CRM enrichment tool.</span></p>
+<div class="rf3" style="display:flex;align-items:stretch;gap:clamp(6px,1vw,12px);margin-top:0">
+  <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+    <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:clamp(14px,1.8vh,20px)">Floqer Integrations &amp; Platforms</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,14px)">
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">HubSpot CRM</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Salesforce</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=outreach.io&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Outreach</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=salesloft.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Salesloft</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=pipedrive.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Pipedrive</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=clay.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">GTM Stacks (Clay, Apollo)</span></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:clamp(28px,3.5vw,44px)">
+    <span style="font-size:clamp(22px,3.5vh,36px);font-weight:700;color:var(--accent);line-height:1">+</span>
+  </div>
+  <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+    <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:clamp(14px,1.8vh,20px)">Pain Points GTM Teams Search For</div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent2-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Stale and incomplete contact data killing outbound conversion rates</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Manual CRM enrichment eating RevOps bandwidth every quarter</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent2-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">ZoomInfo too expensive and over-built for the team size</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Clay.com is powerful but too complex: needs a data engineer to run it</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent2-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">No single tool that enriches, cleans, and keeps CRM data fresh automatically</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Poor email and phone data accuracy causing high bounce rates in sequences</span></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:clamp(28px,3.5vw,44px)">
+    <span style="font-size:clamp(22px,3.5vh,36px);font-weight:700;color:var(--accent);line-height:1">=</span>
+  </div>
+  <div style="flex:1;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+    <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);padding-bottom:8px;border-bottom:1px solid var(--accent-bd);margin-bottom:clamp(14px,1.8vh,20px)">What Content You Should Be Creating</div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Best CRM Data Enrichment Tools for B2B Sales Teams in 2026</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">How to Auto-Enrich HubSpot Contacts Without Manual CSV Imports</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Salesforce CRM Enrichment: A RevOps Guide to Keeping Data Fresh</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=clay.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Clay.com vs AI Enrichment Agents: Which Approach Scales for RevOps?</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=outreach.io&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">How to Fix Bad Email Bounce Rates by Enriching Outreach Sequences</span></div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0"><img src="https://www.google.com/s2/favicons?domain=salesforce.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">The Complete 2026 GTM Data Enrichment Guide for Revenue Teams</span></div>
+    </div>
+  </div>
+</div>
+<div class="rf3" style="display:flex;align-items:stretch;gap:clamp(6px,1vw,12px);margin-top:clamp(20px,3vh,30px)">
+  <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">The CRMs and sales tools Floqer customers already use, making integration content immediately relevant to their searches.</span></div>
+  <div style="flex-shrink:0;width:clamp(28px,3.5vw,44px)"></div>
+  <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">These are the exact queries RevOps leads and GTM engineers ask Google and AI. They are already looking. They just have not found Floqer.</span></div>
+  <div style="flex-shrink:0;width:clamp(28px,3.5vw,44px)"></div>
+  <div style="flex:1;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">Use-case content gets Floqer cited at the exact moment a team is choosing their enrichment tool.</span></div>
+</div>
+</div></section>
+
+  <!-- SLIDE 07: Capturing Competitor Search Traffic -->
+  <section><div class="s">
+  <div class="stripe"></div>
+  <div class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+      <span class="tag">SEO / AEO Proposal</span>
+    </div>
+    <div class="hdr-right">
+      <div class="snum">07 / 11</div>
+      <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 style="margin-top:1vh">Capturing <span style="color:var(--accent)">Competitor Search Traffic</span></h2>
+  <p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(22px,3.5vh,42px);font-weight:500">RevOps leads and GTM engineers actively search for alternatives to tools they already use.<br><span style="color:var(--ink3);font-weight:400">We create content that positions Floqer as the answer every time someone asks AI or Google for a better option.</span></p>
+  <div class="rf3" style="display:flex;align-items:stretch;gap:clamp(6px,1vw,12px);margin-top:0">
+    <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+      <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:clamp(14px,1.8vh,20px)">Floqer Competitors</div>
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,14px)">
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=zoominfo.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">ZoomInfo</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=clearbit.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Clearbit</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=clay.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Clay.com</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Apollo.io</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=lusha.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Lusha</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="https://www.google.com/s2/favicons?domain=cognism.com&sz=64" style="width:22px;height:22px;border-radius:4px;flex-shrink:0"><span style="font-size:clamp(15px,2.1vh,21px);font-weight:600;color:var(--ink)">Cognism</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:clamp(28px,3.5vw,44px)">
+      <span style="font-size:clamp(22px,3.5vh,36px);font-weight:700;color:var(--accent);line-height:1">+</span>
+    </div>
+    <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+      <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:clamp(14px,1.8vh,20px)">What Makes Floqer Unique</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">AI agents that auto-enrich CRM data across 75+ data points, no engineer required</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Native HubSpot and Salesforce sync: enriches contacts in the CRM you already use</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Real-time enrichment that keeps data fresh, not stale exports from legacy databases</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Simpler pricing than ZoomInfo and Clearbit: no seat minimums or annual lock-ins</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--rule)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">Easier to use than Clay: no Claytable logic, just connect, configure, and run</span></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(9px,1.3vh,13px) 0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.3">High accuracy phone + email data, lower bounce rates in cold outreach sequences</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;width:clamp(28px,3.5vw,44px)">
+      <span style="font-size:clamp(22px,3.5vh,36px);font-weight:700;color:var(--accent);line-height:1">=</span>
+    </div>
+    <div style="flex:1;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(12px,1.4vw,18px)">
+      <div style="font-size:clamp(14px,2vh,18px);font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);padding-bottom:8px;border-bottom:1px solid var(--accent-bd);margin-bottom:clamp(14px,1.8vh,20px)">Content to Create First</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=zoominfo.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Best ZoomInfo Alternatives for B2B Teams That Don&rsquo;t Want Enterprise Pricing</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=clearbit.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Clearbit vs Floqer: Which Actually Keeps Your CRM Data Fresh in 2026?</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=clay.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Clay.com Alternatives That Don&rsquo;t Require a Data Engineer to Run</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=apollo.io&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Apollo.io vs Floqer: CRM Enrichment vs Prospecting Database: Which Do You Need?</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0;border-bottom:1px solid var(--accent-bd)"><img src="https://www.google.com/s2/favicons?domain=lusha.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Lusha Alternatives for RevOps Teams That Want AI-Powered Enrichment</span></div>
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:clamp(9px,1.3vh,13px) 0"><img src="https://www.google.com/s2/favicons?domain=cognism.com&sz=64" style="width:16px;height:16px;border-radius:3px;flex-shrink:0;margin-top:2px"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink);font-weight:500;line-height:1.3">Cognism vs Floqer: GDPR-Compliant Enrichment That Fits Inside Your CRM</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="rf3" style="display:flex;align-items:stretch;gap:clamp(6px,1vw,12px);margin-top:clamp(20px,3vh,30px)">
+    <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">These are the tools RevOps leads and GTM engineers already use. When they search for better options, Floqer needs to be the answer.</span></div>
+    <div style="flex-shrink:0;width:clamp(28px,3.5vw,44px)"></div>
+    <div style="flex:1;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">These differentiators make Floqer the right answer, surfaced clearly against each competitor in every comparison article.</span></div>
+    <div style="flex-shrink:0;width:clamp(28px,3.5vw,44px)"></div>
+    <div style="flex:1;background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,16px)"><span style="font-size:clamp(14px,2vh,18px);color:var(--ink2);line-height:1.55">Alternatives content reaches buyers at decision time, the highest-intent traffic in the category, on Google and AI.</span></div>
+  </div>
+</div></section>
+
+  <!-- SLIDE 08: Deliverables -->
+  <section><div class="s">
+  <div class="stripe"></div>
+  <div class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+      <span class="tag">SEO / AEO Proposal</span>
+    </div>
+    <div class="hdr-right">
+      <div class="snum">08 / 11</div>
+      <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 style="margin-top:1vh">What We <span style="color:var(--accent)">Deliver Every Month</span></h2>
+  <p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(20px,2.8vh,30px);font-weight:500">A full managed service covering everything Floqer needs to grow in search and AI, executed and delivered every single month.</p>
+  <div class="rg2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,16px);flex:1;min-height:0;align-content:start">
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">8 High-Quality Content Pieces</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">Per month</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Keyword-targeted articles and landing pages built to rank on Google and get cited by AI. Written to answer the exact questions RevOps leads and GTM engineers ask when evaluating enrichment tools.</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Schema Markup Implementation</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">Site-wide</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Product, FAQ, HowTo, and Organization schema across the Floqer site so AI models can understand and cite it correctly.</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Content Updates and Pruning</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">Ongoing</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Existing pages refreshed with updated keyword targeting. Stale content consolidated or removed as the site grows.</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">On-Page SEO Optimization</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">Ongoing</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Meta titles, headings, and internal linking across all pages, with every page treated as an entry point for a high-intent RevOps lead.</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" style="width:17px;height:17px;border-radius:3px;flex-shrink:0;margin-top:3px">
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Reddit Presence</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">1 post per week</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Reddit is <strong style="color:var(--ink)">the #2 most cited source</strong> in AI answers for CRM enrichment queries (39 mentions). Weekly posts in r/sales, r/salesforce, r/hubspot, and r/revops build the brand signals AI uses to recommend tools.</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px">
+      <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+          <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Monthly Reporting</div>
+          <span style="font-size:clamp(9px,1.1vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0">Monthly</span>
+        </div>
+        <div style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.5">Rankings, traffic, and AI citation data delivered monthly. You always know what moved and what comes next.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+  <!-- SLIDE 09: How We Can Help You -->
+  <section><div class="s">
+  <div class="stripe"></div>
+  <div class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+      <span class="tag">SEO / AEO Proposal</span>
+    </div>
+    <div class="hdr-right">
+      <div class="snum">09 / 11</div>
+      <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 style="margin-top:1vh">How We Can <span style="color:var(--accent)">Help You</span></h2>
+  <div class="rg3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.2vw,16px);margin-bottom:1.2vh;flex-shrink:0">
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px)">
+      <div style="font-size:clamp(11px,1.5vh,15px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:6px">Trusted by</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:8px">Hundreds of brands worldwide</div>
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+        <img src="https://www.google.com/s2/favicons?domain=forbespt.com&sz=32" style="width:18px;height:18px;border-radius:3px">
+        <img src="https://www.google.com/s2/favicons?domain=clearer.io&sz=32" style="width:18px;height:18px;border-radius:3px">
+        <img src="https://www.google.com/s2/favicons?domain=reviews.io&sz=32" style="width:18px;height:18px;border-radius:3px">
+        <img src="https://www.google.com/s2/favicons?domain=boostcommerce.net&sz=32" style="width:18px;height:18px;border-radius:3px">
+        <img src="https://www.google.com/s2/favicons?domain=intellibright.com&sz=32" style="width:18px;height:18px;border-radius:3px">
+        <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">+ hundreds more</span>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px)">
+      <div style="font-size:clamp(11px,1.5vh,15px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:6px">Dedicated Support</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:6px">Monthly calls and a direct line to us</div>
+      <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);line-height:1.5">Monthly strategy call and a dedicated Slack channel.</div>
+    </div>
+    <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px)">
+      <div style="font-size:clamp(11px,1.5vh,15px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Managed Service</div>
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:6px">Done-for-you SEO &amp; AEO</div>
+      <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);line-height:1.5">Content, on-page SEO, and citation building, all done for you.</div>
+    </div>
+  </div>
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;margin-bottom:1.2vh">
+    <div style="background:var(--ok-bg);border:1px solid var(--ok-bd);border-radius:8px;padding:clamp(8px,1.2vh,14px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:clamp(8px,1.2vh,14px)">
+        <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ok)">Client success story</div>
+        <div style="font-size:clamp(10px,1.2vh,12px);color:var(--ok);background:#dcfce7;border:1px solid var(--ok-bd);border-radius:4px;padding:2px 10px;font-weight:600">Financial services &nbsp;&middot;&nbsp; United States &nbsp;&middot;&nbsp; 3-month engagement</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(6px,1vw,12px)">
+        <div style="background:#fff;border:1px solid var(--ok-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px)"><div style="font-family:'DM Mono',monospace;font-size:clamp(18px,3vh,28px);font-weight:500;color:var(--ok);letter-spacing:-0.03em;line-height:1">+74%</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3);margin-top:4px;line-height:1.4">Increase in clicks on commercial keywords</div></div>
+        <div style="background:#fff;border:1px solid var(--ok-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px)"><div style="font-family:'DM Mono',monospace;font-size:clamp(18px,3vh,28px);font-weight:500;color:var(--ok);letter-spacing:-0.03em;line-height:1">+63%</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3);margin-top:4px;line-height:1.4">Increase in impressions across AI platforms</div></div>
+        <div style="background:#fff;border:1px solid var(--ok-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px)"><div style="font-family:'DM Mono',monospace;font-size:clamp(18px,3vh,28px);font-weight:500;color:var(--ok);letter-spacing:-0.03em;line-height:1">+93%</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3);margin-top:4px;line-height:1.4">Increase in referrals from ChatGPT</div></div>
+        <div style="background:#fff;border:1px solid var(--ok-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px)"><div style="font-family:'DM Mono',monospace;font-size:clamp(14px,2vh,18px);font-weight:500;color:var(--ok);letter-spacing:-0.02em;line-height:1.2">Record day</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3);margin-top:4px;line-height:1.4">Most clicks in a single day in 16 months</div></div>
+        <div style="background:#fff;border:1px solid var(--ok-bd);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px)"><div style="font-family:'DM Mono',monospace;font-size:clamp(18px,3vh,28px);font-weight:500;color:var(--ok);letter-spacing:-0.03em;line-height:1">$13K+</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3);margin-top:4px;line-height:1.4">In actual sales from organic traffic</div></div>
+      </div>
+      <div style="margin-top:clamp(4px,0.6vh,8px);flex:1;min-height:0;display:flex;align-items:stretch;gap:clamp(10px,1.5vw,18px)">
+        <img src="eze-credit-growth.jpg" alt="Eze Credit Services growth chart" style="flex:1;min-width:0;object-fit:contain;object-position:left center;display:block;border-radius:6px">
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(4px,0.7vh,8px)">
+          <div style="font-size:clamp(12px,1.65vh,16px);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ok);margin-bottom:3px">What we did</div>
+          <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.5"><strong style="color:var(--ink)">Content overhaul.</strong> Keyword-optimised copy on every page.</div>
+          <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.5"><strong style="color:var(--ink)">BoFu content.</strong> &ldquo;Best alternatives&rdquo; articles for active buyers.</div>
+          <div style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.5"><strong style="color:var(--ink)">FAQs &amp; interlinking.</strong> Internal links and FAQs from scratch.</div>
+          <div style="font-size:clamp(11px,1.5vh,15px);color:var(--ink3);line-height:1.5;margin-top:clamp(4px,0.6vh,8px);padding-top:clamp(4px,0.6vh,8px);border-top:1px solid var(--ok-bd)">A US-based client in the financial industry, 3-month engagement. After 90 days of AI search optimisation with Peekaboo, here is where they stand.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.2vw,16px);margin-top:1.2vh;flex-shrink:0">
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column;gap:8px">
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.55;flex:1">Peekaboo gives us clear visibility into where our brand appears across LLMs and how we compare to competitors.</p>
+      <div style="display:flex;align-items:center;gap:10px;padding-top:8px;border-top:1px solid var(--rule);flex-shrink:0">
+        <img src="https://www.aipeekaboo.com/LisaBorg.png" alt="Lisa Borg" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--rule)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-bd);display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0">LB</div>
+        <div style="flex:1"><div style="font-size:clamp(12px,1.65vh,16px);font-weight:700;color:var(--ink)">Lisa Borg</div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">SVP of Marketing</div></div>
+        <img src="https://www.google.com/s2/favicons?domain=akumin.com&sz=32" style="width:18px;height:18px;border-radius:3px;flex-shrink:0;opacity:0.8">
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column;gap:8px">
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.55;flex:1">We had no visibility into where we appeared in LLMs. Peekaboo gave us clear insight into our mentions, gaps, and opportunities.</p>
+      <div style="display:flex;align-items:center;gap:10px;padding-top:8px;border-top:1px solid var(--rule);flex-shrink:0">
+        <img src="https://www.aipeekaboo.com/images/landing-v2/swanand.jpeg" alt="Swanand Pisat" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--rule)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-bd);display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0">SP</div>
+        <div style="flex:1"><div style="font-size:clamp(12px,1.65vh,16px);font-weight:700;color:var(--ink)">Swanand Pisat</div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">Digital Marketing Manager</div></div>
+        <img src="https://www.google.com/s2/favicons?domain=shaadi.com&sz=32" style="width:18px;height:18px;border-radius:3px;flex-shrink:0;opacity:0.8">
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.5vh,18px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column;gap:8px">
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink2);line-height:1.55;flex:1">The Peekaboo team are genuine partners. Quick to help, open to feedback, and invested in our success.</p>
+      <div style="display:flex;align-items:center;gap:10px;padding-top:8px;border-top:1px solid var(--rule);flex-shrink:0">
+        <img src="https://www.aipeekaboo.com/images/landing-v2/darryl-coombes.jpeg" alt="Darryl Coombes" style="width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--rule)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:34px;height:34px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-bd);display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0">DC</div>
+        <div style="flex:1"><div style="font-size:clamp(12px,1.65vh,16px);font-weight:700;color:var(--ink)">Darryl Coombes</div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">Managing Director</div></div>
+        <img src="https://www.google.com/s2/favicons?domain=websem.io&sz=32" style="width:18px;height:18px;border-radius:3px;flex-shrink:0;opacity:0.8">
+      </div>
+    </div>
+  </div>
+</div></section>
+
+  <!-- SLIDE 10: Measuring Success -->
+  <section><div class="s">
+  <div class="stripe"></div>
+  <div class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+      <span class="tag">SEO / AEO Proposal</span>
+    </div>
+    <div class="hdr-right">
+      <div class="snum">10 / 11</div>
+      <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 style="margin-top:1vh">How We <span style="color:var(--accent)">Measure Success</span></h2>
+  <p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(8px,1.2vh,14px);font-weight:500">We track progress across both traditional search and AI platforms every month, so you always know exactly where Floqer is gaining ground.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(10px,1.5vw,18px);align-items:stretch">
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column">
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-search-console-icon.png" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block;object-fit:contain">
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Google Search Console</div>
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);margin-bottom:clamp(10px,1.4vh,16px);line-height:1.55">Tracks every query Floqer appears for in Google, with impressions, clicks, and rankings over time.</p>
+      <div style="display:flex;flex-direction:column;gap:clamp(5px,0.75vh,8px)">
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Which queries are driving impressions</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Position tracking for target keywords</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Which pages drive the most clicks</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column">
+      <img src="https://images.icon-icons.com/2699/PNG/512/google_analytics_image_logo_icon_168152.png" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block;object-fit:contain">
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Google Analytics 4</div>
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);margin-bottom:clamp(10px,1.4vh,16px);line-height:1.55">Tracks who visits Floqer, where they come from, and whether they convert to free trial signups.</p>
+      <div style="display:flex;flex-direction:column;gap:clamp(5px,0.75vh,8px)">
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Organic traffic share vs paid and direct</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Which pages generate the most engagement</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px;line-height:1.4"><svg style="width:13px;height:13px;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>Demo signups and trial starts by traffic source</div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,16px);display:flex;flex-direction:column">
+      <img src="https://www.aipeekaboo.com/icon.jpg" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block;object-fit:cover">
+      <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">AI Peekaboo</div>
+      <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);margin-bottom:clamp(10px,1.4vh,16px);line-height:1.55">Tracks whether Floqer appears in AI answers when RevOps leads and GTM engineers research enrichment tools.</p>
+      <div style="display:flex;flex-direction:column;gap:clamp(5px,0.75vh,8px)">
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=32" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Google AI Overviews</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=32" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Google AI Mode</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">ChatGPT</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Perplexity</div>
+        <div style="font-size:clamp(12px,1.65vh,16px);padding:clamp(6px,0.9vh,10px) clamp(10px,1.2vw,14px);border-radius:6px;background:var(--paper3);border:1px solid var(--rule);color:var(--ink2);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Gemini</div>
+      </div>
+    </div>
+  </div>
+  <div style="flex-shrink:0;margin-top:clamp(8px,1.2vh,14px);padding:clamp(8px,1.1vh,12px) clamp(14px,1.8vw,20px);background:var(--paper2);border:1px solid var(--rule);border-radius:6px">
+    <p style="font-size:clamp(12px,1.65vh,16px);color:var(--ink3);margin:0;line-height:1.5"><strong style="color:var(--ink)">Monthly report:</strong> GSC rankings, GA4 organic traffic growth, and AI Peekaboo citation tracking, delivered together so we always know whether Floqer is gaining ground in both traditional and AI search.</p>
+  </div>
+</div></section>
+
+  <!-- SLIDE 12: Next Steps -->
+  <section><div class="s">
+  <div class="stripe"></div>
+  <div class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="https://www.google.com/s2/favicons?domain=floqer.com&sz=128" style="border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain">
+      <span class="tag">SEO / AEO Proposal</span>
+    </div>
+    <div class="hdr-right">
+      <div class="snum">11 / 11</div>
+      <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" class="powered"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo"></a>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h2 style="margin-top:1vh">Next Steps to Getting Floqer <span style="color:var(--accent)">Visible in AI</span></h2>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.5vh,18px);min-height:0">
+  <div class="outcomes" style="margin-bottom:0;flex-shrink:0;grid-template-columns:1fr">
+    <a href="https://calendly.com/founderpeekaboo/30min" target="_blank" rel="noopener noreferrer" class="obox" style="text-decoration:none;border:2px solid var(--accent);background:var(--accent-bg);cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;padding:clamp(16px,2.5vh,28px) clamp(16px,2vw,24px)"><div style="font-size:clamp(18px,2.8vh,28px);font-weight:700;color:var(--accent)">Book a Meeting</div></a>
+  </div>
+  <div style="flex-shrink:0">
+    <p style="font-size:clamp(14px,2vh,18px);color:var(--ink3);line-height:1.6">You have seen where Floqer stands, who is getting cited instead, and exactly what we would build to change that. Every day without content is another day buyers find ZoomInfo or Clay instead of Floqer. Book a meeting to align on priorities and agree on the best place to start.</p>
+  </div>
+  <div style="flex-shrink:0;margin-top:clamp(12px,2vh,24px)">
+  <div class="col-head" style="margin-bottom:clamp(6px,1vh,10px)">The Founders: About Us</div>
+  <div class="rg2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,24px);align-items:end">
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column">
+      <div style="display:flex;align-items:flex-start;gap:clamp(10px,1.2vw,16px);margin-bottom:clamp(6px,1vh,10px)">
+        <img src="filipe.jpeg" alt="Filipe Lins Duarte" style="width:clamp(48px,6.5vh,68px);height:clamp(48px,6.5vh,68px);border-radius:50%;object-fit:cover;border:2px solid var(--rule);flex-shrink:0">
+        <div style="flex:1">
+          <div style="font-size:clamp(17px,2.4vh,24px);font-weight:700;color:var(--ink);margin-bottom:clamp(4px,0.6vh,7px)">Filipe Lins Duarte</div>
+          <div style="font-size:clamp(13px,1.8vh,18px);color:var(--accent);font-weight:600">Co-Founder &amp; CEO</div>
+          <a href="https://www.linkedin.com/in/filipelinsduarte" target="_blank" rel="noopener noreferrer" style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4);text-decoration:underline;margin-top:2px;display:inline-block">LinkedIn</a>
+          <p style="font-size:clamp(11px,1.5vh,15px);color:var(--ink3);line-height:1.55;margin-top:clamp(6px,0.8vh,10px)">Sales and growth leader turned founder. Built revenue teams across SaaS in Europe and the US, now helping brands get found in AI.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px);flex:1">
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=aipeekaboo.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">AI Peekaboo</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">Co-Founder &amp; CEO</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Aug 2025 - Present</div></div>
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=uber.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">Uber for Business</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">Mid-Market AE &middot; 146% of quota</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Sep 2024 - Aug 2025</div></div>
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=meistertask.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">Meister</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">#1 AE in 2023 &middot; 100%+ ARR growth</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Aug 2022 - Jul 2024</div></div>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.5vw,18px);display:flex;flex-direction:column">
+      <div style="display:flex;align-items:flex-start;gap:clamp(10px,1.2vw,16px);margin-bottom:clamp(6px,1vh,10px)">
+        <img src="john.jpeg" alt="John Rice" style="width:clamp(48px,6.5vh,68px);height:clamp(48px,6.5vh,68px);border-radius:50%;object-fit:cover;border:2px solid var(--rule);flex-shrink:0">
+        <div style="flex:1">
+          <div style="font-size:clamp(17px,2.4vh,24px);font-weight:700;color:var(--ink);margin-bottom:clamp(4px,0.6vh,7px)">John Rice</div>
+          <div style="font-size:clamp(13px,1.8vh,18px);color:var(--accent);font-weight:600">Co-Founder &amp; CTO</div>
+          <a href="https://www.linkedin.com/in/johnwilliamrice/" target="_blank" rel="noopener noreferrer" style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4);text-decoration:underline;margin-top:2px;display:inline-block">LinkedIn</a>
+          <p style="font-size:clamp(11px,1.5vh,15px);color:var(--ink3);line-height:1.55;margin-top:clamp(6px,0.8vh,10px)">Full-stack engineer and serial builder. Designed AI Peekaboo&rsquo;s platform from scratch. Previously senior engineer at MagicLinks.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px);flex:1">
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=aipeekaboo.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">AI Peekaboo</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">Co-Founder &amp; CTO</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Apr 2025 - Present</div></div>
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=subredditsignals.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">Subreddit Signals</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">Founder</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Nov 2024 - Present</div></div>
+        <div style="display:grid;grid-template-columns:clamp(22px,3vh,28px) 1fr auto;gap:clamp(8px,1vw,12px);align-items:center;padding:clamp(6px,0.9vh,10px) clamp(8px,1vw,12px);background:#fff;border:1px solid var(--rule);border-radius:6px"><img src="https://www.google.com/s2/favicons?domain=magiclinks.com&sz=64" style="width:100%;border-radius:4px"><div><div style="font-size:clamp(13px,1.8vh,18px);font-weight:700;color:var(--ink)">MagicLinks</div><div style="font-size:clamp(10px,1.2vh,12px);color:var(--ink3)">Senior Software Engineer</div></div><div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4);white-space:nowrap">Jul 2021 - Apr 2024</div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div></section>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  controls: true,
+  progress: true,
+  slideNumber: false,
+  transition: 'none',
+  disableLayout: true,
+  width: 1920,
+  height: 1080,
+});
+document.querySelectorAll('.s').forEach(function(el){
+  el.addEventListener('touchstart', function(e){ e.stopPropagation(); }, {passive:true});
+  el.addEventListener('touchmove', function(e){ e.stopPropagation(); }, {passive:true});
+});
+</script>
+</body>
+</html>
