@@ -52,9 +52,9 @@
   .src{font-size:clamp(9px,1.1vh,11px);color:var(--ink4);margin-top:6px;font-style:italic}
   .num{font-family:"DM Mono",monospace;font-weight:700;color:var(--accent);line-height:1}
   /* spreadsheet table */
-  .tbl{width:100%;border-collapse:collapse;font-size:clamp(11px,1.45vh,14px)}
-  .tbl th{font-family:"DM Mono",monospace;font-size:clamp(9px,1.1vh,11px);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);padding:clamp(5px,.7vh,8px) clamp(6px,.8vw,10px);border-bottom:2px solid var(--rule);text-align:left;white-space:nowrap}
-  .tbl td{padding:clamp(6px,.85vh,10px) clamp(6px,.8vw,10px);border-bottom:1px solid var(--rule);color:var(--ink2);vertical-align:middle;white-space:nowrap}
+  .tbl{width:100%;border-collapse:collapse;font-size:clamp(13px,1.7vh,16px)}
+  .tbl th{font-family:"DM Mono",monospace;font-size:clamp(10px,1.25vh,13px);font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);padding:clamp(6px,.85vh,9px) clamp(8px,1vw,12px);border-bottom:2px solid var(--rule);text-align:left;white-space:nowrap}
+  .tbl td{padding:clamp(7px,1vh,11px) clamp(8px,1vw,12px);border-bottom:1px solid var(--rule);color:var(--ink2);vertical-align:middle;white-space:nowrap}
   .tbl tr:last-child td{border-bottom:none}
   .tbl tr.hl{background:var(--accent-bg)}
   .tbl tr.hl td{color:var(--ink)}
@@ -329,8 +329,78 @@
           <td style="text-align:center" class="dash">·</td>
           <td style="text-align:right" class="mono">1</td>
         </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">@perth.local</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">166K</td>
+          <td><span class="badge badge-macro">Macro</span></td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:right" class="mono">4</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">@discovermelbourne</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">98K</td>
+          <td><span class="badge badge-macro">Macro</span></td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:right" class="mono">3</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">The Bali Bible</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">87K</td>
+          <td><span class="badge" style="background:#6D28D9;color:#fff">Mid</span></td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:right" class="mono">4</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">@balibible</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">74K</td>
+          <td><span class="badge" style="background:#6D28D9;color:#fff">Mid</span></td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:right" class="mono">2</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">Eat Drink Melbourne</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">43K</td>
+          <td><span class="badge badge-micro">Micro</span></td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:right" class="mono">2</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">@igersbali</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">28K</td>
+          <td><span class="badge badge-micro">Micro</span></td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:right" class="mono">1</td>
+        </tr>
+        <tr>
+          <td><div style="display:flex;align-items:center;gap:7px"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=32" style="width:14px;height:14px;border-radius:2px;opacity:.8"><span class="mono">@melbfood</span></div></td>
+          <td><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=32" style="width:14px;height:14px;border-radius:2px;vertical-align:middle"></td>
+          <td style="text-align:right" class="mono">14K</td>
+          <td><span class="badge badge-micro">Micro</span></td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:center" class="check">✓</td>
+          <td style="text-align:center" class="dash">·</td>
+          <td style="text-align:right" class="mono">1</td>
+        </tr>
         <tr style="background:var(--paper2)">
-          <td colspan="3" style="color:var(--ink4);font-style:italic">+ 74 more handles tracked</td>
+          <td colspan="3" style="color:var(--ink4);font-style:italic">+ 67 more handles tracked</td>
           <td><span class="badge badge-micro">Micro/Nano</span></td>
           <td colspan="3" style="text-align:center;color:var(--ink4)">mixed</td>
           <td style="text-align:right;color:var(--ink4)" class="mono">1-4</td>
