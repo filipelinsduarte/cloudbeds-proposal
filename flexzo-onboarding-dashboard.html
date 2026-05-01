@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexzo Onboarding Dashboard</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV8FCLN403"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YV8FCLN403');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #0075FF;
+  --accent-bg: #EFF7FF;
+  --accent-bd: #BAD9FF;
+  --accent-dark: #0060D0;
+  --ink: #0a2540;
+  --ink2: #1e3a5f;
+  --ink3: #617899;
+  --ink4: #9EB3CC;
+  --paper: #fff;
+  --paper2: #F7FAFD;
+  --paper3: #EEF4FA;
+  --rule: #D9E7F5;
+  --ok: #16a34a;
+  --ok-bg: #f0fdf4;
+  --ok-bd: #bbf7d0;
+  --warn: #ea580c;
+  --warn-bg: #fff7ed;
+  --warn-bd: #fed7aa;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-bd: #fecaca;
+  --sidebar: 252px;
+  --topbar: 56px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--paper2);color:var(--ink);min-height:100vh}
+
+/* ── TOP BAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar);background:var(--paper);border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:12px;padding:0 20px;z-index:100}
+.topbar-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.topbar-logo img{width:28px;height:28px;border-radius:6px;object-fit:contain}
+.topbar-title{font-size:14px;font-weight:700;color:var(--ink)}
+.topbar-sub{font-size:12px;color:var(--ink4);font-weight:400}
+.topbar-divider{width:1px;height:20px;background:var(--rule)}
+.topbar-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.topbar-progress-wrap{display:flex;align-items:center;gap:8px}
+.topbar-progress-label{font-size:11px;color:var(--ink4);font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.topbar-progress-bar{width:120px;height:6px;background:var(--paper3);border-radius:99px;overflow:hidden;border:1px solid var(--rule)}
+.topbar-progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .3s ease}
+.topbar-progress-pct{font-family:"DM Mono",monospace;font-size:11px;font-weight:700;color:var(--accent-dark);min-width:28px}
+.powered-link{display:flex;align-items:center;gap:5px;text-decoration:none;opacity:.7}
+.powered-link span{font-size:10px;color:var(--ink4)}
+.powered-link img{height:13px;width:auto}
+
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;top:var(--topbar);left:0;bottom:0;width:var(--sidebar);background:var(--paper);border-right:1px solid var(--rule);overflow-y:auto;padding:20px 0 40px}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
+
+.sb-section{padding:0 16px;margin-bottom:6px}
+.sb-section-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);padding:10px 6px 6px;display:block}
+.sb-link{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;text-decoration:none;transition:background .15s}
+.sb-link:hover{background:var(--paper2)}
+.sb-link.active{background:var(--accent-bg);border:1px solid var(--accent-bd)}
+.sb-link-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sb-link-text{font-size:13px;font-weight:500;color:var(--ink2);line-height:1.3;flex:1}
+.sb-link.active .sb-link-text{color:var(--accent-dark);font-weight:600}
+.sb-link-count{font-family:"DM Mono",monospace;font-size:10px;color:var(--ink4);flex-shrink:0}
+.sb-link-count.done{color:var(--ok)}
+.sb-divider{height:1px;background:var(--rule);margin:10px 16px}
+
+.sb-stat-box{margin:16px 16px 0;background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:14px}
+.sb-stat-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:10px;display:block}
+.sb-stat-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--rule)}
+.sb-stat-row:last-child{border-bottom:none;padding-bottom:0}
+.sb-stat-name{font-size:12px;color:var(--ink3)}
+.sb-stat-val{font-family:"DM Mono",monospace;font-size:12px;font-weight:700}
+.sb-stat-val.red{color:var(--red)}
+.sb-stat-val.warn{color:var(--warn)}
+.sb-stat-val.ok{color:var(--ok)}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar);margin-top:var(--topbar);padding:28px 32px 80px;max-width:900px}
+
+/* ── SECTION HEADERS ── */
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1.5px solid var(--rule)}
+.section-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-icon.blue{background:var(--accent-bg);color:var(--accent)}
+.section-icon.warn{background:var(--warn-bg);color:var(--warn)}
+.section-icon.ok{background:var(--ok-bg);color:var(--ok)}
+.section-icon.red{background:var(--red-bg);color:var(--red)}
+.section-icon svg{width:16px;height:16px}
+.section-title{font-size:19px;font-weight:700;color:var(--ink)}
+.section-desc{font-size:13px;color:var(--ink3);margin-top:2px}
+.section-badge{font-family:"DM Mono",monospace;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:auto;white-space:nowrap}
+.section-badge.blue{color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd)}
+.section-badge.warn{color:var(--warn);background:var(--warn-bg);border:1px solid var(--warn-bd)}
+.section-badge.ok{color:var(--ok);background:var(--ok-bg);border:1px solid var(--ok-bd)}
+
+/* ── CONTEXT CARDS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.stat-card-val{font-family:"DM Mono",monospace;font-size:26px;font-weight:700;line-height:1;margin-bottom:4px}
+.stat-card-val.red{color:var(--red)}
+.stat-card-val.warn{color:var(--warn)}
+.stat-card-val.ok{color:var(--ok)}
+.stat-card-val.blue{color:var(--accent)}
+.stat-card-label{font-size:12px;color:var(--ink3);line-height:1.4}
+.stat-card-sub{font-size:11px;color:var(--ink4);margin-top:3px}
+
+/* ── QUESTION BLOCKS ── */
+.q-block{margin-bottom:18px}
+.q-block-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.q-block-label span{font-family:"DM Mono",monospace}
+.q-list{display:flex;flex-direction:column;gap:6px}
+
+/* ── CHECKLIST ROWS ── */
+.check-item{display:flex;align-items:flex-start;gap:12px;background:var(--paper);border:1px solid var(--rule);border-radius:9px;padding:12px 14px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.check-item:hover{border-color:var(--accent-bd);background:var(--accent-bg)}
+.check-item.checked{background:var(--ok-bg);border-color:var(--ok-bd)}
+.check-item.checked .ci-title{color:var(--ink3);text-decoration:line-through}
+.check-item.checked .ci-body{color:var(--ink4)}
+.checkbox{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink4);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.check-item.checked .checkbox{background:var(--ok);border-color:var(--ok)}
+.check-item.checked .checkbox svg{display:block}
+.checkbox svg{display:none;width:11px;height:11px;color:#fff}
+.ci-content{flex:1;min-width:0}
+.ci-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.ci-body{font-size:12px;color:var(--ink3);line-height:1.5}
+.ci-tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.tag-pill{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.tag-pill.blue{color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd)}
+.tag-pill.warn{color:var(--warn);background:var(--warn-bg);border:1px solid var(--warn-bd)}
+.tag-pill.ok{color:var(--ok);background:var(--ok-bg);border:1px solid var(--ok-bd)}
+.tag-pill.red{color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd)}
+.tag-pill.purple{color:#6D28D9;background:#F5F3FF;border:1px solid #DDD6FE}
+.tag-pill.grey{color:var(--ink4);background:var(--paper3);border:1px solid var(--rule)}
+
+/* warn variant */
+.check-item.warn-item{border-color:var(--warn-bd);background:var(--warn-bg)}
+.check-item.warn-item:hover{border-color:var(--warn);background:#fef3ea}
+.check-item.warn-item .checkbox{border-color:var(--warn)}
+.check-item.warn-item.checked{background:var(--ok-bg);border-color:var(--ok-bd)}
+
+/* ── TRACKS (week 1) ── */
+.tracks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.track{background:var(--paper);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.track-header{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+.track-header svg{width:14px;height:14px;flex-shrink:0}
+.track-header-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.track-body{padding:10px;display:flex;flex-direction:column;gap:6px}
+.track-item{background:var(--paper2);border:1px solid var(--rule);border-radius:7px;padding:10px 12px;cursor:pointer;transition:all .15s;user-select:none;display:flex;align-items:flex-start;gap:9px}
+.track-item:hover{border-color:var(--accent-bd)}
+.track-item.checked{background:var(--ok-bg);border-color:var(--ok-bd)}
+.track-item.checked .ti-title{text-decoration:line-through;color:var(--ink3)}
+.track-item.checked .ti-body{color:var(--ink4)}
+.track-item .checkbox{width:15px;height:15px;border-radius:4px;border:1.5px solid var(--ink4);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.track-item.checked .checkbox{background:var(--ok);border-color:var(--ok)}
+.track-item.checked .checkbox svg{display:block}
+.track-item .checkbox svg{display:none;width:9px;height:9px;color:#fff}
+.ti-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;line-height:1.3}
+.ti-body{font-size:11px;color:var(--ink3);line-height:1.4}
+
+.track.ai .track-header{background:var(--accent-bg)}
+.track.ai .track-header svg,.track.ai .track-header-title{color:var(--accent-dark)}
+.track.tech .track-header{background:var(--warn-bg)}
+.track.tech .track-header svg,.track.tech .track-header-title{color:var(--warn)}
+.track.content .track-header{background:var(--ok-bg)}
+.track.content .track-header svg,.track.content .track-header-title{color:var(--ok)}
+
+/* ── OWNER SPLIT ── */
+.owner-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.owner-col-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.owner-col-label .dot{width:7px;height:7px;border-radius:50%}
+
+/* ── ACCESS TABLE ── */
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.access-card{background:var(--paper);border:1.5px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:all .15s;user-select:none}
+.access-card:hover{border-color:var(--accent-bd)}
+.access-card.checked{background:var(--ok-bg);border-color:var(--ok-bd)}
+.access-card.checked .ac-title{text-decoration:line-through;color:var(--ink3)}
+.access-card.urgent{border-color:var(--warn-bd);background:var(--warn-bg)}
+.access-card.urgent:hover{border-color:var(--warn)}
+.access-card.urgent .checkbox{border-color:var(--warn)}
+.access-card.urgent.checked{background:var(--ok-bg);border-color:var(--ok-bd)}
+.access-card .checkbox{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink4);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.access-card.checked .checkbox{background:var(--ok);border-color:var(--ok)}
+.access-card.checked .checkbox svg{display:block}
+.access-card .checkbox svg{display:none;width:11px;height:11px;color:#fff}
+.ac-body{flex:1;min-width:0}
+.ac-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ac-desc{font-size:12px;color:var(--ink3);line-height:1.5}
+.ac-unlock{font-size:11px;font-weight:600;color:var(--accent-dark);margin-top:5px;display:flex;align-items:center;gap:4px}
+.ac-unlock svg{width:11px;height:11px;flex-shrink:0}
+
+/* ── NOTE BOX ── */
+.note{background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--accent-dark);line-height:1.5;margin-bottom:16px}
+.note strong{font-weight:700}
+.note-warn{background:var(--warn-bg);border-color:var(--warn-bd);color:var(--warn)}
+
+/* ── SCROLLSPY ── */
+html{scroll-behavior:smooth}
+
+@media(max-width:900px){
+  .sidebar{display:none}
+  .main{margin-left:0;padding:20px 16px 60px}
+  .tracks{grid-template-columns:1fr}
+  .owner-split{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .access-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a class="topbar-logo" href="https://flexzo.ai" target="_blank">
+    <img src="https://www.google.com/s2/favicons?domain=flexzo.ai&sz=128" alt="Flexzo">
+    <div>
+      <div class="topbar-title">Flexzo Onboarding</div>
+      <div class="topbar-sub">Kickoff — 1 May 2026</div>
+    </div>
+  </a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-tag">Action Dashboard</span>
+  <div class="topbar-right">
+    <div class="topbar-progress-wrap">
+      <span class="topbar-progress-label">COMPLETION</span>
+      <div class="topbar-progress-bar"><div class="topbar-progress-fill" id="topProgressFill" style="width:0%"></div></div>
+      <span class="topbar-progress-pct" id="topProgressPct">0%</span>
+    </div>
+    <a href="https://www.aipeekaboo.com" target="_blank" class="powered-link">
+      <span>Powered by</span>
+      <img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo">
+    </a>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-stat-box">
+    <span class="sb-stat-label">Flexzo — Baseline</span>
+    <div class="sb-stat-row"><span class="sb-stat-name">Domain Rating</span><span class="sb-stat-val red">DR 13</span></div>
+    <div class="sb-stat-row"><span class="sb-stat-name">Indexed pages</span><span class="sb-stat-val red">~19</span></div>
+    <div class="sb-stat-row"><span class="sb-stat-name">Blog posts</span><span class="sb-stat-val red">0</span></div>
+    <div class="sb-stat-row"><span class="sb-stat-name">US pages</span><span class="sb-stat-val warn">5</span></div>
+    <div class="sb-stat-row"><span class="sb-stat-name">Broken URLs</span><span class="sb-stat-val warn">37</span></div>
+    <div class="sb-stat-row"><span class="sb-stat-name">AI visibility</span><span class="sb-stat-val red">0%</span></div>
+  </div>
+
+  <div class="sb-section" style="margin-top:18px">
+    <span class="sb-section-label">Today's Call</span>
+    <a class="sb-link" href="#q-icp" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--accent)"></span>
+      <span class="sb-link-text">ICP & Business</span>
+      <span class="sb-link-count" id="cnt-icp">0/5</span>
+    </a>
+    <a class="sb-link" href="#q-us" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--accent)"></span>
+      <span class="sb-link-text">US Expansion</span>
+      <span class="sb-link-count" id="cnt-us">0/5</span>
+    </a>
+    <a class="sb-link" href="#q-tech" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--warn)"></span>
+      <span class="sb-link-text">Technical Access</span>
+      <span class="sb-link-count" id="cnt-tech">0/6</span>
+    </a>
+    <a class="sb-link" href="#q-content" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--accent)"></span>
+      <span class="sb-link-text">Content & Sales</span>
+      <span class="sb-link-count" id="cnt-content">0/5</span>
+    </a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Action Items</span>
+    <a class="sb-link" href="#act-today" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--red)"></span>
+      <span class="sb-link-text">Today — Post-Call</span>
+      <span class="sb-link-count" id="cnt-today">0/8</span>
+    </a>
+    <a class="sb-link" href="#act-week1" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--ink3)"></span>
+      <span class="sb-link-text">Week 1 (Days 1–7)</span>
+      <span class="sb-link-count" id="cnt-week1">0/9</span>
+    </a>
+    <a class="sb-link" href="#act-week2" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--ink4)"></span>
+      <span class="sb-link-text">Week 2 (Days 8–14)</span>
+      <span class="sb-link-count" id="cnt-week2">0/5</span>
+    </a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <span class="sb-section-label">Access Checklist</span>
+    <a class="sb-link" href="#access" onclick="setActive(this)">
+      <span class="sb-link-dot" style="background:var(--warn)"></span>
+      <span class="sb-link-text">What Flexzo Needs to Send</span>
+      <span class="sb-link-count" id="cnt-access">0/7</span>
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- CONTEXT SNAPSHOT -->
+  <div class="section" id="context">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Situation Snapshot</div>
+        <div class="section-desc">What we know going into today's call — the gaps that define the first 14 days.</div>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card-val red">DR 13</div>
+        <div class="stat-card-label">Domain Rating</div>
+        <div class="stat-card-sub">Competitors avg DR 50+</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val red">~19</div>
+        <div class="stat-card-label">Live indexed pages</div>
+        <div class="stat-card-sub">vs 300+ for Patchwork, Shiftmed, Florence</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val red">0</div>
+        <div class="stat-card-label">Blog posts published</div>
+        <div class="stat-card-sub">7-month content silence</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val warn">37</div>
+        <div class="stat-card-label">Broken / expired URLs</div>
+        <div class="stat-card-sub">crawled daily, wasting budget</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val warn">5</div>
+        <div class="stat-card-label">US pages live</div>
+        <div class="stat-card-sub">0 live jobs, 13 ghost URLs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-val red">0%</div>
+        <div class="stat-card-label">AI visibility score</div>
+        <div class="stat-card-sub">Patchwork cited in every tracked prompt</div>
+      </div>
+    </div>
+    <div class="note"><strong>Why this matters today:</strong> Every question we ask in this onboarding call maps to one of these gaps. The answers determine which track we prioritise first — US or UK, technical or content.</div>
+  </div>
+
+  <!-- QUESTIONS — ICP -->
+  <div class="section" id="q-icp">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Block 01 — ICP & Business Context</div>
+        <div class="section-desc">Shapes every content angle. Ask these first — the answers feed directly into article briefs.</div>
+      </div>
+      <span class="section-badge blue" id="badge-icp">0 / 5</span>
+    </div>
+    <div class="q-list" data-group="icp">
+
+      <div class="check-item" data-id="icp-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Who is your primary buyer at an NHS Trust? Job title and department.</div>
+          <div class="ci-body">Head of Nursing? Director of Workforce? Operations lead? Clinical language vs. operational language are completely different content angles — we need to know which one we're targeting.</div>
+          <div class="ci-tags"><span class="tag-pill blue">ICP</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="icp-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">What single pain closed your last 3 deals?</div>
+          <div class="ci-body">Not the feature they liked — the breaking point. Locum agency costs? Bank fill rate? Compliance burden? Shift fulfilment failure rate? That pain goes into the first 10 articles verbatim.</div>
+          <div class="ci-tags"><span class="tag-pill blue">ICP</span><span class="tag-pill red">Content input</span><span class="tag-pill grey">~3 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="icp-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Which NHS Trusts can we name publicly as anchor clients?</div>
+          <div class="ci-body">Named case studies are the fastest route to AI citation authority in the NHS space. Even one paragraph with a named Trust outperforms 10 generic blog posts. A yes/no list is enough to start.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Authority</span><span class="tag-pill red">High impact</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="icp-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">What objection kills deals most often?</div>
+          <div class="ci-body">Integration complexity? Procurement friction? Comparison with Patchwork or Lantum? Objection-handling content ranks well for bottom-of-funnel searches and gets cited by AI models in comparison queries.</div>
+          <div class="ci-tags"><span class="tag-pill blue">ICP</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="icp-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">What's the typical sales cycle and deal size for a mid-size NHS Trust?</div>
+          <div class="ci-body">Long cycles need thought leadership and trust-building content. Short cycles need high-intent comparison and feature pages. This calibrates content depth across the entire programme.</div>
+          <div class="ci-tags"><span class="tag-pill blue">ICP</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUESTIONS — US -->
+  <div class="section" id="q-us">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Block 02 — US Expansion Goals</div>
+        <div class="section-desc">The US site has 5 pages vs 50+ for UK and zero live jobs. We need to know where to build and how fast.</div>
+      </div>
+      <span class="section-badge blue" id="badge-us">0 / 5</span>
+    </div>
+    <div class="q-list" data-group="us">
+
+      <div class="check-item" data-id="us-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Which US states or cities are you targeting first?</div>
+          <div class="ci-body">Texas, California, and Florida dominate US healthcare staffing volume — but buyer language and pain points differ by state. We need to know where to build the first /us/jobs landing pages and location content.</div>
+          <div class="ci-tags"><span class="tag-pill blue">US expansion</span><span class="tag-pill red">Unblocks technical</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="us-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Is the US ICP the same as the UK — or a completely different buyer?</div>
+          <div class="ci-body">NHS Trusts are a UK construct. In the US the buyer is typically a hospital group, health system, or staffing agency. If the ICP differs, the US content architecture needs to be built from scratch — not translated from UK pages.</div>
+          <div class="ci-tags"><span class="tag-pill blue">US expansion</span><span class="tag-pill red">Content input</span><span class="tag-pill grey">~3 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="us-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Do you have any US clients or live jobs yet?</div>
+          <div class="ci-body">Right now: 0 live jobs, 13 ghost URLs crawled daily. We need to know if that changes soon or if we build fresh. This affects sitemap architecture and crawl priority — actions that start this week.</div>
+          <div class="ci-tags"><span class="tag-pill blue">US expansion</span><span class="tag-pill warn">Urgent for tech track</span><span class="tag-pill grey">~1 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="us-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Is US urgency as high as UK, or is UK the priority for the next 90 days?</div>
+          <div class="ci-body">We can run both in parallel but that splits content bandwidth. A clear priority steer lets us concentrate output where it drives fastest returns — and build the technical architecture accordingly.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Strategy</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="us-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Who are the US competitors you're watching most closely?</div>
+          <div class="ci-body">CareRev and Shiftmed are in our research. Are there others? Competitor comparison pages and alternative landing pages are the fastest route to AI citations in a new market — we build these first.</div>
+          <div class="ci-tags"><span class="tag-pill blue">US expansion</span><span class="tag-pill red">Content input</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUESTIONS — TECHNICAL -->
+  <div class="section" id="q-tech">
+    <div class="section-header">
+      <div class="section-icon warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Block 03 — Technical & Tool Access</div>
+        <div class="section-desc">We can't fix what we can't access. Leave this call with a named contact and a handover date.</div>
+      </div>
+      <span class="section-badge warn" id="badge-tech">0 / 6</span>
+    </div>
+    <div class="note note-warn" style="color:var(--warn)"><strong>This block is the blocker.</strong> Without GSC and GA4 access, we're running the technical audit blind. Aim to have both granted before end of day.</div>
+    <div class="q-list" data-group="tech">
+
+      <div class="check-item warn-item" data-id="tech-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Can you add us to Google Search Console today?</div>
+          <div class="ci-body">Send access to <strong>filipeoliveira.duarte@gmail.com</strong> — owner level. GSC → Settings → Users & Permissions → Add User. Unlocks the full audit of 37 broken pages and indexation tracking.</div>
+          <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill red">Blocks audit</span><span class="tag-pill grey">2 min to action</span></div>
+        </div>
+      </div>
+
+      <div class="check-item warn-item" data-id="tech-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">GA4 access to the flexzo.ai property?</div>
+          <div class="ci-body">Same email, Editor level. GA4 → Admin → Property Access Management. This is how we track LLM referral traffic from ChatGPT, Perplexity, Gemini — and Reddit as a direct channel.</div>
+          <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill red">Blocks reporting</span><span class="tag-pill grey">2 min to action</span></div>
+        </div>
+      </div>
+
+      <div class="check-item warn-item" data-id="tech-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Who is the dev contact for sitemap and URL changes?</div>
+          <div class="ci-body">We need one intro email to whoever handles sitemap splits, hreflang, and URL restructuring. We write the brief — they implement. This is the unblock for the entire technical track this week.</div>
+          <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill red">Blocks technical track</span><span class="tag-pill grey">~1 min to action</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="tech-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">What CMS is the blog and main site built on?</div>
+          <div class="ci-body">WordPress, Webflow, custom build? Determines how fast we can publish content and who needs to be involved for meta title and URL structure changes on job pages.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Technical</span><span class="tag-pill grey">~1 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="tech-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Do you have access to robots.txt and can we modify it?</div>
+          <div class="ci-body">Both the /uk and /us sitemaps need to be declared in robots.txt. Five-minute fix that immediately tells Google how to crawl the two-market structure correctly.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Technical</span><span class="tag-pill grey">~1 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="tech-6" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Is there an existing Ahrefs or SEO tool account for flexzo.ai?</div>
+          <div class="ci-body">If yes, we can inherit existing data. If no, we set up a new Ahrefs project and start tracking DR 13 → DR 30+ progress from day one. Either way, we need to know before we start.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Tools</span><span class="tag-pill grey">~1 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUESTIONS — CONTENT -->
+  <div class="section" id="q-content">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Block 04 — Content & Sales Intelligence</div>
+        <div class="section-desc">Sales recordings contain exact buyer language verbatim. Worth more than any brief we could write ourselves.</div>
+      </div>
+      <span class="section-badge blue" id="badge-content">0 / 5</span>
+    </div>
+    <div class="q-list" data-group="content">
+
+      <div class="check-item" data-id="cnt-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Can you share 3–5 sales call recordings?</div>
+          <div class="ci-body">Fireflies, Gong, Zoom, Loom — any format. We're listening for the exact phrases NHS buyers use to describe their problem. That language goes directly into article titles, meta descriptions, and hero copy.</div>
+          <div class="ci-tags"><span class="tag-pill red">High impact</span><span class="tag-pill blue">Content input</span><span class="tag-pill grey">~1 min to action</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="cnt-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Who approves content before it goes live — and what's the turnaround?</div>
+          <div class="ci-body">We need a named reviewer and a target SLA (24h? 48h?). Slow approval cycles are the #1 reason content programmes stall in month one. One person with a clear process is all we need.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Process</span><span class="tag-pill warn">Week 1 dependency</span><span class="tag-pill grey">~1 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="cnt-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Are there topics, competitor names, or claims we can't publish?</div>
+          <div class="ci-body">Legal, compliance, or commercial restrictions. NHS regulatory language sometimes needs careful framing. Better to know now than after a draft is written — a quick list is enough.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Process</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="cnt-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Is there any unpublished content — case studies, whitepapers, internal guides?</div>
+          <div class="ci-body">The fastest wins often come from rescuing content that already exists but was never indexed. Even an internal onboarding doc can become a high-value article with light editing.</div>
+          <div class="ci-tags"><span class="tag-pill red">High impact</span><span class="tag-pill blue">Quick win</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="cnt-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Are there NHS Trust contacts willing to co-author or be quoted in content?</div>
+          <div class="ci-body">A quote from a Head of Nursing at a named Trust instantly signals authority to AI models. Even one willing contact is worth 20 anonymous articles. This is the authority shortcut.</div>
+          <div class="ci-tags"><span class="tag-pill red">High impact</span><span class="tag-pill blue">Authority</span><span class="tag-pill grey">~2 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS — TODAY -->
+  <div class="section" id="act-today">
+    <div class="section-header">
+      <div class="section-icon red">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Action Items — Today (Post-Call)</div>
+        <div class="section-desc">Everything that happens the moment this call ends. No ramp-up, no waiting.</div>
+      </div>
+      <span class="section-badge" id="badge-today" style="color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd)">0 / 8</span>
+    </div>
+
+    <div class="owner-split">
+      <div>
+        <div class="owner-col-label">
+          <span class="dot" style="background:var(--accent)"></span>
+          <span style="color:var(--accent-dark)">We action</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px" data-group="today-us">
+
+          <div class="check-item" data-id="tod-1" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Set up AI Peekaboo — Flexzo project live, 30 prompts loaded</div>
+              <div class="ci-body">20 UK prompts + 10 US prompts. Baseline scan runs today. We know where Flexzo stands vs. Patchwork, Lantum, Shiftmed, and CareRev before end of day.</div>
+              <div class="ci-tags"><span class="tag-pill purple">AI Peekaboo</span><span class="tag-pill blue">Today</span></div>
+            </div>
+          </div>
+
+          <div class="check-item" data-id="tod-2" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Draft technical briefing doc for Flexzo dev team</div>
+              <div class="ci-body">Sitemap split (/uk + /us), hreflang en-gb/en-us, robots.txt update, 410s on ghost URLs — packaged as a copy-paste implementation brief, ready to send to the dev contact named on this call.</div>
+              <div class="ci-tags"><span class="tag-pill warn">Technical</span><span class="tag-pill blue">Today</span></div>
+            </div>
+          </div>
+
+          <div class="check-item" data-id="tod-3" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Open Flexzo Slack channel + document call notes</div>
+              <div class="ci-body">ICP pain points, buyer language, US priority, and access grants — all documented and shared in Slack. Nothing lives only in one person's head.</div>
+              <div class="ci-tags"><span class="tag-pill blue">Process</span><span class="tag-pill blue">Today</span></div>
+            </div>
+          </div>
+
+          <div class="check-item" data-id="tod-4" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Keyword map — top 15 UK + 10 US targets from call notes</div>
+              <div class="ci-body">Using ICP pain points captured today, map the highest-intent searches into a prioritised list. First content brief drafted before day is out.</div>
+              <div class="ci-tags"><span class="tag-pill ok">Content</span><span class="tag-pill blue">Today</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="owner-col-label">
+          <span class="dot" style="background:var(--warn)"></span>
+          <span style="color:var(--warn)">Flexzo actions</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px" data-group="today-flexzo">
+
+          <div class="check-item warn-item" data-id="tod-5" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Add GSC access — owner level</div>
+              <div class="ci-body">GSC → Settings → Users → Add <strong>filipeoliveira.duarte@gmail.com</strong></div>
+              <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill grey">2 min</span></div>
+            </div>
+          </div>
+
+          <div class="check-item warn-item" data-id="tod-6" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Add GA4 access — editor level</div>
+              <div class="ci-body">GA4 → Admin → Property Access Management → add same email as Editor.</div>
+              <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill grey">2 min</span></div>
+            </div>
+          </div>
+
+          <div class="check-item warn-item" data-id="tod-7" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Email intro to dev contact</div>
+              <div class="ci-body">One-line intro email so we can send the technical brief directly. Unblocks the entire technical track this week.</div>
+              <div class="ci-tags"><span class="tag-pill warn">Urgent</span><span class="tag-pill grey">1 min</span></div>
+            </div>
+          </div>
+
+          <div class="check-item warn-item" data-id="tod-8" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div class="ci-content">
+              <div class="ci-title">Share 3–5 sales call recordings</div>
+              <div class="ci-body">Fireflies / Gong / Zoom / Loom — any format. Shared via Slack or a Google Drive link is fine.</div>
+              <div class="ci-tags"><span class="tag-pill warn">This week</span><span class="tag-pill grey">~5 min to share</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS — WEEK 1 -->
+  <div class="section" id="act-week1">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Week 1 — Three Parallel Tracks (Days 1–7)</div>
+        <div class="section-desc">AI visibility baseline, technical triage, and first content — all running simultaneously.</div>
+      </div>
+      <span class="section-badge blue" id="badge-week1">0 / 9</span>
+    </div>
+    <div class="tracks">
+
+      <div class="track ai">
+        <div class="track-header">
+          <img src="https://www.aipeekaboo.com/icon.jpg" style="width:14px;height:14px;border-radius:3px;object-fit:cover;flex-shrink:0">
+          <span class="track-header-title">AI Visibility</span>
+        </div>
+        <div class="track-body" data-group="week1">
+
+          <div class="track-item" data-id="w1-1" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Baseline AI scan — 30 prompts across 5 LLMs</div>
+              <div class="ti-body">ChatGPT, Perplexity, Gemini, Claude, Grok. UK + US prompts. Full competitor benchmark.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-2" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Gap analysis — which prompts cite Patchwork, not Flexzo?</div>
+              <div class="ti-body">These gaps become the exact content briefs for weeks 2–4. Work backwards from citations.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-3" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Final 30 prompts confirmed with Flexzo</div>
+              <div class="ti-body">Approved and locked in AI Peekaboo. These become the monthly KPI benchmark going forward.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="track tech">
+        <div class="track-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span class="track-header-title">Technical</span>
+        </div>
+        <div class="track-body" data-group="week1">
+
+          <div class="track-item" data-id="w1-4" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">GSC audit — map all 37 dead URLs</div>
+              <div class="ti-body">Coverage report pulled. Every 404 and ghost URL classified. List sent to dev with exact 410/redirect instructions.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-5" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Sitemap architecture brief sent to dev</div>
+              <div class="ti-body">/uk/sitemap.xml + /us/sitemap.xml, both in robots.txt. hreflang en-gb/en-us. Copy-paste brief, ready to implement.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-6" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Meta title audit — all /us/jobs pages rewritten</div>
+              <div class="ti-body">Every US job page has the same generic title. Rewritten and sent as CSV — dev does a bulk update in one push.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="track content">
+        <div class="track-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <span class="track-header-title">Content</span>
+        </div>
+        <div class="track-body" data-group="week1">
+
+          <div class="track-item" data-id="w1-7" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Review sales recordings — build buyer language library</div>
+              <div class="ti-body">Verbatim phrases from NHS buyers. These go directly into article titles, intros, and CTAs.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-8" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">First 2 article briefs ready for Flexzo review</div>
+              <div class="ti-body">UK-focused. Targeting zero-visibility AI prompts from baseline scan. Briefs in Slack for approval.</div>
+            </div>
+          </div>
+
+          <div class="track-item" data-id="w1-9" onclick="toggle(this)">
+            <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+            <div>
+              <div class="ti-title">Existing content audit complete</div>
+              <div class="ti-body">Every live Flexzo page scored: indexable, fixable, or cull. 27 news articles reviewed — rescuable ones get rewrite briefs. Quick wins flagged for week 2.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS — WEEK 2 -->
+  <div class="section" id="act-week2">
+    <div class="section-header">
+      <div class="section-icon ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Week 2 — First Deliverables Live (Days 8–14)</div>
+        <div class="section-desc">Content goes live. Technical fixes implemented. First AI visibility movement expected.</div>
+      </div>
+      <span class="section-badge ok" id="badge-week2">0 / 5</span>
+    </div>
+    <div class="q-list" data-group="week2">
+
+      <div class="check-item" data-id="w2-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">First 2 articles published + submitted to Google Search Console</div>
+          <div class="ci-body">Targeting the highest-gap AI prompts from the baseline scan. Indexation request submitted. Live, indexed, and AI-crawlable by end of week two.</div>
+          <div class="ci-tags"><span class="tag-pill ok">Content</span><span class="tag-pill blue">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="w2-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Sitemap split + hreflang implemented and verified in GSC</div>
+          <div class="ci-body">Both /uk and /us sitemaps submitted to Google. Coverage report checked — no new errors. Ghost URLs returning 410. Clean crawl confirmed.</div>
+          <div class="ci-tags"><span class="tag-pill warn">Technical</span><span class="tag-pill blue">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="w2-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">First AI Peekaboo baseline report delivered to Flexzo</div>
+          <div class="ci-body">Full visibility score across 30 prompts by model. Competitor benchmark included. This becomes month one's reference point — the number everything else is measured against.</div>
+          <div class="ci-tags"><span class="tag-pill purple">AI Peekaboo</span><span class="tag-pill blue">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="w2-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">First competitor alternative page drafted — Flexzo vs. Patchwork</div>
+          <div class="ci-body">Comparison pages are cited by AI models more than almost any other content type. "Patchwork alternative" is a high-intent search with near-zero Flexzo presence right now.</div>
+          <div class="ci-tags"><span class="tag-pill ok">Content</span><span class="tag-pill red">High impact</span><span class="tag-pill blue">Week 2</span></div>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="w2-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ci-content">
+          <div class="ci-title">Week 2 sync call — review progress, agree content plan for weeks 3–4</div>
+          <div class="ci-body">30 minutes. What moved, what's next. Content calendar for weeks 3 and 4 agreed. Any access or approval blockers resolved. Cadence locked in.</div>
+          <div class="ci-tags"><span class="tag-pill blue">Reporting</span><span class="tag-pill grey">30 min</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACCESS CHECKLIST -->
+  <div class="section" id="access">
+    <div class="section-header">
+      <div class="section-icon warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Access Checklist — What We Need From Flexzo</div>
+        <div class="section-desc">Each item on this list unlocks a specific action. The faster these arrive, the faster results follow.</div>
+      </div>
+      <span class="section-badge warn" id="badge-access">0 / 7</span>
+    </div>
+    <div class="access-grid" data-group="access">
+
+      <div class="access-card urgent" data-id="acc-1" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">Google Search Console — owner access</div>
+          <div class="ac-desc">Add filipeoliveira.duarte@gmail.com as an Owner in GSC Settings → Users.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: full crawl audit, 37 broken URLs, indexation tracking</div>
+        </div>
+        <span class="tag-pill warn" style="flex-shrink:0;margin-top:1px">Urgent</span>
+      </div>
+
+      <div class="access-card urgent" data-id="acc-2" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">Google Analytics 4 — editor access</div>
+          <div class="ac-desc">Same email, Editor level. GA4 → Admin → Property Access Management.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: LLM referral traffic, Reddit tracking, traffic baseline</div>
+        </div>
+        <span class="tag-pill warn" style="flex-shrink:0;margin-top:1px">Urgent</span>
+      </div>
+
+      <div class="access-card urgent" data-id="acc-3" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">Dev contact introduction</div>
+          <div class="ac-desc">One-line email intro to whoever handles sitemaps, hreflang, and URL changes.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: sitemap split, hreflang, 410s, URL restructuring</div>
+        </div>
+        <span class="tag-pill warn" style="flex-shrink:0;margin-top:1px">Urgent</span>
+      </div>
+
+      <div class="access-card urgent" data-id="acc-4" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">3–5 sales call recordings</div>
+          <div class="ac-desc">Fireflies, Gong, Zoom, or Loom. Share via Slack or Google Drive link.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: buyer language library, all content briefs</div>
+        </div>
+        <span class="tag-pill warn" style="flex-shrink:0;margin-top:1px">This week</span>
+      </div>
+
+      <div class="access-card" data-id="acc-5" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">Named content reviewer + approval SLA</div>
+          <div class="ac-desc">One person who reads drafts before publish. Target turnaround: 48h or less.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: first articles live by end of week 2</div>
+        </div>
+        <span class="tag-pill grey" style="flex-shrink:0;margin-top:1px">Week 1</span>
+      </div>
+
+      <div class="access-card" data-id="acc-6" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">CMS access or publishing workflow</div>
+          <div class="ac-desc">Direct CMS login or a clear process for submitting content for upload.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: publish without depending on Flexzo bandwidth</div>
+        </div>
+        <span class="tag-pill grey" style="flex-shrink:0;margin-top:1px">Week 1</span>
+      </div>
+
+      <div class="access-card" data-id="acc-7" onclick="toggle(this)">
+        <div class="checkbox"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="ac-body">
+          <div class="ac-title">List of NHS Trusts we can name publicly</div>
+          <div class="ac-desc">Yes/no on each current client for named case study use in published content.</div>
+          <div class="ac-unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>Unlocks: authority case studies — fastest AI citation boost available</div>
+        </div>
+        <span class="tag-pill grey" style="flex-shrink:0;margin-top:1px">Week 1</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<script>
+const STORAGE_KEY = 'flexzo-onboarding-v1';
+
+const groups = {
+  icp:    { items: ['icp-1','icp-2','icp-3','icp-4','icp-5'],         badge: 'badge-icp',     sb: 'cnt-icp' },
+  us:     { items: ['us-1','us-2','us-3','us-4','us-5'],               badge: 'badge-us',      sb: 'cnt-us' },
+  tech:   { items: ['tech-1','tech-2','tech-3','tech-4','tech-5','tech-6'], badge: 'badge-tech', sb: 'cnt-tech' },
+  content:{ items: ['cnt-1','cnt-2','cnt-3','cnt-4','cnt-5'],           badge: 'badge-content', sb: 'cnt-content' },
+  today:  { items: ['tod-1','tod-2','tod-3','tod-4','tod-5','tod-6','tod-7','tod-8'], badge: 'badge-today', sb: 'cnt-today' },
+  week1:  { items: ['w1-1','w1-2','w1-3','w1-4','w1-5','w1-6','w1-7','w1-8','w1-9'], badge: 'badge-week1', sb: 'cnt-week1' },
+  week2:  { items: ['w2-1','w2-2','w2-3','w2-4','w2-5'],               badge: 'badge-week2',   sb: 'cnt-week2' },
+  access: { items: ['acc-1','acc-2','acc-3','acc-4','acc-5','acc-6','acc-7'], badge: 'badge-access', sb: 'cnt-access' },
+};
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){}
+
+function toggle(el) {
+  const id = el.dataset.id;
+  state[id] = !state[id];
+  applyState(el, state[id]);
+  save();
+  updateCounts();
+}
+
+function applyState(el, checked) {
+  el.classList.toggle('checked', checked);
+}
+
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+}
+
+function findEl(id) {
+  return document.querySelector(`[data-id="${id}"]`);
+}
+
+function updateCounts() {
+  let totalDone = 0, totalAll = 0;
+  Object.entries(groups).forEach(([key, g]) => {
+    const done = g.items.filter(id => state[id]).length;
+    const all = g.items.length;
+    totalDone += done; totalAll += all;
+    const badge = document.getElementById(g.badge);
+    const sb = document.getElementById(g.sb);
+    if (badge) { badge.textContent = `${done} / ${all}`; }
+    if (sb) {
+      sb.textContent = `${done}/${all}`;
+      sb.className = 'sb-link-count' + (done === all && all > 0 ? ' done' : '');
+    }
+  });
+  const pct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
+  document.getElementById('topProgressFill').style.width = pct + '%';
+  document.getElementById('topProgressPct').textContent = pct + '%';
+}
+
+function init() {
+  Object.values(groups).forEach(g => {
+    g.items.forEach(id => {
+      const el = findEl(id);
+      if (el && state[id]) applyState(el, true);
+    });
+  });
+  updateCounts();
+}
+
+function setActive(link) {
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  link.classList.add('active');
+}
+
+// Scrollspy
+const sections = ['q-icp','q-us','q-tech','q-content','act-today','act-week1','act-week2','access'];
+const links = {
+  'q-icp': document.querySelector('[href="#q-icp"]'),
+  'q-us': document.querySelector('[href="#q-us"]'),
+  'q-tech': document.querySelector('[href="#q-tech"]'),
+  'q-content': document.querySelector('[href="#q-content"]'),
+  'act-today': document.querySelector('[href="#act-today"]'),
+  'act-week1': document.querySelector('[href="#act-week1"]'),
+  'act-week2': document.querySelector('[href="#act-week2"]'),
+  'access': document.querySelector('[href="#access"]'),
+};
+
+window.addEventListener('scroll', () => {
+  let current = sections[0];
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 120) current = id;
+  });
+  Object.entries(links).forEach(([id, link]) => {
+    if (link) link.classList.toggle('active', id === current);
+  });
+}, { passive: true });
+
+init();
+</script>
+</body>
+</html>
