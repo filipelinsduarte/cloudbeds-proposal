@@ -488,6 +488,36 @@ tr:hover td{background:var(--gray-50)}
 .sm-template-text{font-size:12.5px;color:var(--text-2);line-height:1.6;font-style:italic}
 .sm-avoid{font-size:12px;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;margin-top:8px}
 .sm-avoid strong{font-weight:600}
+.pain-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:20px 20px;margin-bottom:12px;box-shadow:var(--shadow-card);
+  display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start;
+}
+.pain-item:last-child{margin-bottom:12px}
+.pain-num{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--teal-dark);
+  background:var(--teal-bg);border:1px solid var(--primary-100);
+  border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pain-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px}
+.pain-desc{font-size:13.5px;color:var(--text-2);margin-bottom:8px;line-height:1.6}
+.pain-problem{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px}
+.pain-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;transition:box-shadow .15s}
+.pain-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.pain-card-header{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px}
+.pain-rank-badge{width:32px;height:32px;border-radius:50%;background:var(--teal-dark);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.pain-card-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+.pain-card-body{padding:0 20px 18px 20px}
+.pain-card-desc{font-size:13.5px;color:var(--text-2);line-height:1.65;margin-bottom:12px}
+.pain-quote-block{background:var(--gray-50);border-left:3px solid var(--border);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:12px}
+.pain-quote-text{font-size:14px;font-style:italic;color:var(--text-2);line-height:1.6;margin-bottom:4px}
+.pain-quote-text::before{content:'\201C';font-size:18px;color:var(--text-3);line-height:0;vertical-align:-4px;margin-right:2px}
+.pain-quote-text::after{content:'\201D';font-size:18px;color:var(--text-3);line-height:0;vertical-align:-4px;margin-left:2px}
+.pain-quote-src{font-size:11px;color:var(--text-3);font-style:normal}
+.pain-engage-box{border-left:3px solid #f97316;background:#fff7ed;border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:12px}
+.pain-engage-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#ea580c;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.pain-engage-text{font-size:13px;color:#9a3412;line-height:1.55}
+.pain-solve-box{border-left:3px solid var(--teal-dark);background:var(--teal-bg);border-radius:0 6px 6px 0;padding:10px 14px}
+.pain-solve-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal-dark);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.pain-solve-text{font-size:13px;color:var(--teal-dark);line-height:1.55}
 </style>
 </head>
 <body>
@@ -608,22 +638,22 @@ tr:hover td{background:var(--gray-50)}
     <div class="table-controls" style="margin-bottom:16px">
       <input class="t-input" id="pain-search" placeholder="Search pain points..." style="min-width:220px">
       <select class="t-select" id="pain-community">
-        <option value="">All communities</option>
+        <option value="">All buyer profiles</option>
       </select>
     </div>
     <div class="grid-2" style="margin-bottom:20px">
       <div class="card">
         <div class="card-title">Pain Point Frequency</div>
-        <div class="chart-wrap" style="height:180px"><canvas id="chart-pain-bar"></canvas></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:6px">Ranked by Reddit discussion volume</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chart-pain-bar"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-title">Affected Segments</div>
-        <div class="chart-wrap" style="height:180px"><canvas id="chart-pain-donut"></canvas></div>
+        <div class="card-title">Buyer Profile Breakdown</div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:6px">Which audiences feel each pain point most</div>
+        <div class="chart-wrap" style="height:200px"><canvas id="chart-pain-donut"></canvas></div>
       </div>
     </div>
-    <div class="card" style="padding:20px 20px 8px">
-      <div id="pain-list"></div>
-    </div>
+    <div id="pain-list"></div>
   </section>
 
   <!-- BRANDS -->
@@ -636,6 +666,7 @@ tr:hover td{background:var(--gray-50)}
     </div>
     <div class="table-controls" style="margin-bottom:14px">
       <input class="t-input" id="bp-search" placeholder="Search brands..." style="min-width:200px">
+      <input class="t-input" id="bp-brand-filter" placeholder="Filter brand list..." style="min-width:160px">
       <select class="t-select" id="bp-brand">
         <option value="">All brands</option>
       </select>
@@ -900,7 +931,7 @@ tr:hover td{background:var(--gray-50)}
     <div class="es-charts-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
       <div class="card">
         <div class="card-title">Brand Sentiment Landscape</div>
-        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">Top brands by mention volume, colored by net sentiment</div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">Top brands by mention volume — green = positive, red = negative, amber = mixed</div>
         <div style="position:relative;height:220px"><canvas id="es-chart-brands"></canvas></div>
       </div>
       <div class="card">
@@ -1103,7 +1134,7 @@ if (_hb) _hb.textContent = `${DATA.stats.total_posts} posts · ${DATA.stats.tota
 
   if (s.subreddit_labels.length) {
     document.getElementById('chart-sub').parentElement.style.height =
-      Math.max(260, s.subreddit_labels.length * 28 + 60) + 'px';
+      Math.max(380, s.subreddit_labels.length * 34 + 60) + 'px';
     new Chart(document.getElementById('chart-sub'),
       cfg(s.subreddit_labels.map(l => 'r/' + l), s.subreddit_values,
         Array(s.subreddit_values.length).fill('#bae6fd'), true));
@@ -1243,34 +1274,46 @@ const renderers = {
   pain() {
     if (!DATA.painPoints.length) {
       document.getElementById('pain-list').innerHTML =
-        '<div class="empty-state"><div class="es-title">No pain points yet</div>Run reviews_io_qualify.py then reviews_io_rebuild_dashboard.py.</div>';
+        '<div class="empty-state">No pain points yet.</div>';
       return;
     }
 
-    // Populate community filter
+    // Populate buyer profile filter
     const communities = [...new Set(DATA.painPoints.map(p => p.community_most_affected).filter(Boolean))].sort();
     const commSel = document.getElementById('pain-community');
-    if (commSel) communities.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; commSel.appendChild(o); });
+    if (commSel) communities.forEach(c => {
+      const o = document.createElement('option'); o.value = c; o.textContent = c; commSel.appendChild(o);
+    });
 
-    // Mini charts
-    const painNames = DATA.painPoints.slice(0, 8).map(p => p.name.length > 24 ? p.name.slice(0, 24) + '...' : p.name);
+    // Frequency bar chart (ranked 1–N by index, top 8)
+    const painNames = DATA.painPoints.slice(0, 8).map(p => p.name.length > 28 ? p.name.slice(0, 28) + '…' : p.name);
     const painCounts = DATA.painPoints.slice(0, 8).map((_, i) => DATA.painPoints.length - i);
     if (document.getElementById('chart-pain-bar')) {
       new Chart(document.getElementById('chart-pain-bar'), {
         type: 'bar',
         data: { labels: painNames, datasets: [{ data: painCounts, backgroundColor: '#14b8a6', borderRadius: 3 }] },
-        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-          scales: { x: { display: false }, y: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } } } }
+        options: {
+          indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` Rank #${ctx.dataIndex + 1} by volume` } } },
+          scales: { x: { display: false }, y: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } } }
+        }
       });
     }
+
+    // Buyer profile donut
     const segCounts = {};
     DATA.painPoints.forEach(p => { if (p.community_most_affected) segCounts[p.community_most_affected] = (segCounts[p.community_most_affected] || 0) + 1; });
     if (document.getElementById('chart-pain-donut') && Object.keys(segCounts).length) {
-      const palette = ['#14b8a6','#5cd3cb','#d97706','#dc2626','#16a34a','#6b7280','#0f766e','#b45309'];
+      const palette = ['#14b8a6','#6366f1','#f59e0b','#ec4899','#3b82f6','#8b5cf6','#0f766e','#b45309'];
+      const segKeys = Object.keys(segCounts);
       new Chart(document.getElementById('chart-pain-donut'), {
         type: 'doughnut',
-        data: { labels: Object.keys(segCounts), datasets: [{ data: Object.values(segCounts), backgroundColor: palette, borderWidth: 0 }] },
-        options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 }, color: '#6b7280' } } } }
+        data: { labels: segKeys, datasets: [{ data: segKeys.map(k => segCounts[k]), backgroundColor: palette, borderWidth: 2, borderColor: '#fff' }] },
+        options: {
+          responsive: true, maintainAspectRatio: false, cutout: '58%',
+          plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, color: '#6b7280', padding: 10 } },
+            tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed} pain point${ctx.parsed !== 1 ? 's' : ''}` } } }
+        }
       });
     }
 
@@ -1281,24 +1324,52 @@ const renderers = {
         if (_pQ && !p.name.toLowerCase().includes(_pQ) && !(p.description || '').toLowerCase().includes(_pQ)) return false;
         return true;
       });
-      document.getElementById('pain-list').innerHTML = filtered.length ? filtered.map(p => `
-        <div class="pain-item">
-          <div class="pain-num">${p.rank || ''}</div>
-          <div>
-            <div class="pain-name">${esc(p.name)}</div>
-            <div class="tags" style="margin-bottom:6px">
-              <span class="tag freq">${esc(p.frequency)}</span>
-              ${p.community_most_affected ? `<span class="tag">${esc(p.community_most_affected)}</span>` : ''}
+      if (!filtered.length) {
+        document.getElementById('pain-list').innerHTML = '<div style="color:var(--text-3);padding:20px 0;text-align:center">No pain points match your filters.</div>';
+        return;
+      }
+      document.getElementById('pain-list').innerHTML = filtered.map((p, idx) => {
+        const win = DATA.wins && DATA.wins.length ? DATA.wins[idx % DATA.wins.length] : null;
+        return `
+        <div class="pain-card">
+          <div class="pain-card-header">
+            <div class="pain-rank-badge">${p.rank || idx + 1}</div>
+            <div style="flex:1;min-width:0">
+              <div class="pain-card-title">${esc(p.name)}</div>
+              <div class="tags">
+                <span class="tag freq">${esc(p.frequency)}</span>
+                ${p.community_most_affected ? `<span class="tag" style="background:#ede9fe;color:#5b21b6;border-color:#c4b5fd">${esc(p.community_most_affected)}</span>` : ''}
+              </div>
             </div>
-            <div class="pain-problem">${esc(p.description || '')}</div>
-            ${p.direct_quote ? `<div class="quote">"${esc(p.direct_quote)}"<div class="quote-src">r/${esc(p.quote_source || '')}</div></div>` : ''}
-            ${p.reviews_io_relevance ? `<div class="reviews-solve-box">
-              <div class="reviews-solve-label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Reviews.io solves this</div>
-              <div class="reviews-solve-text">${esc(p.reviews_io_relevance)}</div>
-            </div>` : ''}
           </div>
-        </div>`).join('') : '<div style="color:var(--text-3);padding:20px 0;text-align:center">No pain points match your filters.</div>';
+          <div class="pain-card-body">
+            <div class="pain-card-desc">${esc(p.description || '')}</div>
+            ${p.direct_quote ? `
+              <div class="pain-quote-block">
+                <div class="pain-quote-text">${esc(p.direct_quote)}</div>
+                <div class="pain-quote-src">— r/${esc(p.quote_source || '')}</div>
+              </div>` : ''}
+            ${win ? `
+              <div class="pain-engage-box">
+                <div class="pain-engage-label">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  Reddit engagement — ${esc(win.type)}
+                </div>
+                <div class="pain-engage-text">${esc((win.description || '').split('.')[0] + '.')}</div>
+              </div>` : ''}
+            ${p.reviews_io_relevance ? `
+              <div class="pain-solve-box">
+                <div class="pain-solve-label">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Reviews.io opportunity
+                </div>
+                <div class="pain-solve-text">${esc(p.reviews_io_relevance)}</div>
+              </div>` : ''}
+          </div>
+        </div>`;
+      }).join('');
     };
+
     renderPainList();
     const ps = document.getElementById('pain-search');
     if (ps) ps.oninput = e => { _pQ = e.target.value.toLowerCase(); renderPainList(); };
@@ -1503,9 +1574,9 @@ const renderers = {
       'Mixed': 'No brands match the Mixed filter with your current search.',
       'Neutral': 'No brands match the Neutral filter with your current search.',
     };
-    let _bpQ = '', _bpSent = '', _bpBrand = '';
-    let _bpSortCol = 'score', _bpSortDir = -1;
-    const renderBrandTable = (bpQ, bpSent, bpBrand) => {
+    window._bpQ = ''; window._bpSent = ''; window._bpBrand = '';
+    window._bpSortCol = 'score'; window._bpSortDir = -1;
+    window.renderBrandTable = (bpQ, bpSent, bpBrand) => {
       let filtered = sorted.filter(b => {
         if (bpSent && b.sentiment !== bpSent) return false;
         if (bpBrand && b.brand !== bpBrand) return false;
@@ -1542,7 +1613,7 @@ const renderers = {
           </tr>`).join('')}</tbody>
         </table>`;
     };
-    renderBrandTable('', '', '');
+    window.renderBrandTable('', '', '');
     const bpSearch = document.getElementById('bp-search');
     const bpSentEl = document.getElementById('bp-sent');
     const bpBrandEl = document.getElementById('bp-brand');
@@ -1553,14 +1624,36 @@ const renderers = {
         o.textContent = b.brand;
         bpBrandEl.appendChild(o);
       });
-      bpBrandEl.onchange = e => { _bpBrand = e.target.value; renderBrandTable(_bpQ, _bpSent, _bpBrand); };
+      bpBrandEl.onchange = e => {
+        window._bpBrand = e.target.value;
+        window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand);
+        // Show/hide brand cards
+        document.querySelectorAll('#brand-cards .brand-card').forEach(card => {
+          card.style.display = (!window._bpBrand || card.dataset.brand === window._bpBrand) ? '' : 'none';
+        });
+      };
     }
-    if (bpSearch) bpSearch.oninput = e => { _bpQ = e.target.value.toLowerCase(); renderBrandTable(_bpQ, _bpSent, _bpBrand); };
-    if (bpSentEl) bpSentEl.onchange = e => { _bpSent = e.target.value; renderBrandTable(_bpQ, _bpSent, _bpBrand); };
+    if (bpSearch) bpSearch.oninput = e => { window._bpQ = e.target.value.toLowerCase(); window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand); };
+    if (bpSentEl) bpSentEl.onchange = e => { window._bpSent = e.target.value; window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand); };
+    const bpBrandFilterEl = document.getElementById('bp-brand-filter');
+    if (bpBrandFilterEl && bpBrandEl) {
+      const _allBrands = sorted.map(b => b.brand);
+      bpBrandFilterEl.oninput = e => {
+        const q = e.target.value.toLowerCase();
+        bpBrandEl.innerHTML = '<option value="">All brands</option>';
+        _allBrands
+          .filter(n => !q || n.toLowerCase().includes(q))
+          .forEach(n => {
+            const o = document.createElement('option');
+            o.value = n; o.textContent = n;
+            bpBrandEl.appendChild(o);
+          });
+      };
+    }
 
     // Detail cards
     document.getElementById('brand-cards').innerHTML = sorted.map(b => `
-      <div class="brand-card">
+      <div class="brand-card" data-brand="${esc(b.brand)}">
         <div class="brand-card-head">
           <span class="brand-card-name">${brandFav(b.brand)}${esc(b.brand)}</span>
           <div class="brand-card-meta">
@@ -2337,6 +2430,7 @@ const renderers = {
 
   // ── EXECUTIVE SUMMARY ─────────────────────────────────────────────────────
   'exec-summary'() {
+    const _esFav = n => { const d = _cfDomains[n]; return d ? `<img src="https://www.google.com/s2/favicons?domain=${d}&sz=16" width="16" height="16" style="border-radius:3px;vertical-align:middle;margin-right:5px" alt="">` : ''; };
     // Dominant theme banner
     if (DATA.dominantTheme) {
       document.getElementById('es-banner').textContent = DATA.dominantTheme;
@@ -2370,9 +2464,13 @@ const renderers = {
         .slice(0, 12);
       const labels = brandData.map(b => b.brand);
       const values = brandData.map(b => b.mentions);
-      const colors = brandData.map(b =>
-        b.score > 30 ? '#16a34a' : b.score < -10 ? '#dc2626' : '#f59e0b'
-      );
+      const colors = brandData.map(b => {
+        const s = (b.sentiment || '').toLowerCase();
+        if (s === 'positive') return '#16a34a';
+        if (s === 'negative') return '#dc2626';
+        if (s === 'mixed') return '#f59e0b';
+        return '#9ca3af';
+      });
       if (_esChartBrands) { _esChartBrands.destroy(); _esChartBrands = null; }
       const ctxB = document.getElementById('es-chart-brands');
       if (ctxB) {
@@ -2390,6 +2488,7 @@ const renderers = {
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
+            layout: { padding: { left: 28 } },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -2408,8 +2507,10 @@ const renderers = {
                 ticks: { font: { size: 10 }, color: '#374151' }
               }
             }
-          }
+          },
+          plugins: [_brandFavPlugin]
         });
+        if (_esChartBrands) _cfCharts.push(_esChartBrands);
       }
     }
 
@@ -2477,7 +2578,7 @@ const renderers = {
     const threatItems = threats.map((t,i) => `
       <div class="es-item">
         <div class="es-item-num">${i+1}</div>
-        <div class="es-item-text"><strong>${esc(t.name)}</strong> — ${t.total} mentions, ${Math.round(t.negRate*100)}% negative sentiment. Users are frustrated and searching for alternatives.</div>
+        <div class="es-item-text">${_esFav(t.name)}<strong>${esc(t.name)}</strong> — ${t.total} mentions, ${Math.round(t.negRate*100)}% negative sentiment. Users are frustrated and searching for alternatives.</div>
       </div>`).join('') || '<div class="es-item"><div class="es-item-text" style="color:var(--text-3)">Insufficient negative mention data for ranking.</div></div>';
 
     // Actions: top 3 wins
