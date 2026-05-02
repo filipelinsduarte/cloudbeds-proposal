@@ -282,6 +282,11 @@ body{display:flex;flex-direction:column;min-height:100vh;font-family:var(--font)
 .angle-text{font-size:13.5px;color:var(--text-2);line-height:1.6}
 .gap-banner{background:linear-gradient(135deg,var(--teal-bg) 0%,#f0fdfc 100%);border:1px solid var(--primary-100);border-radius:10px;padding:14px 18px;font-size:13.5px;color:var(--teal-dark);line-height:1.6}
 .gap-banner-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;color:var(--teal-dark);opacity:.75}
+.opp-approach-bullets{margin:4px 0 0;padding:0;list-style:none}
+.opp-approach-bullets li{font-size:12.5px;color:var(--teal-dark);line-height:1.55;margin-bottom:4px;display:flex;gap:7px}
+.opp-approach-bullets li::before{content:'→';font-size:11px;flex-shrink:0;margin-top:1px;opacity:.7}
+.opp-vol-bar-wrap{height:3px;background:var(--gray-100);border-radius:99px;margin:4px 0 8px;width:100%}
+.opp-vol-bar-fill{height:3px;border-radius:99px}
 
 /* ── CONTENT STRATEGY ──────────────────────────────────────────────────────── */
 .formula-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:20px;box-shadow:var(--shadow-card)}
@@ -548,7 +553,10 @@ tr:hover td{background:var(--gray-50)}
 .trigger-list{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
 .trigger-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:box-shadow .15s}
 .trigger-card-head{padding:16px 20px 10px;display:flex;align-items:flex-start;gap:12px}
-.trigger-num{width:28px;height:28px;border-radius:50%;background:var(--teal-bg);border:1px solid var(--primary-100);color:var(--teal-dark);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.trigger-num{width:32px;height:32px;border-radius:50%;color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+.trigger-action-box{margin:0 20px 16px;padding:10px 14px;border-radius:8px;background:#f8fafc;border:1px solid var(--border)}
+.trigger-action-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.trigger-action-text{font-size:13px;color:var(--text-2);line-height:1.55}
 .trigger-pattern-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
 .trigger-desc-text{font-size:13.5px;color:var(--text-2);line-height:1.65}
 .trigger-mock-post{margin:0 20px 16px;background:#1a1a1b;border-radius:8px;padding:12px 16px}
@@ -565,6 +573,45 @@ tr:hover td{background:var(--gray-50)}
 .playbook-icon{flex-shrink:0;line-height:1;color:var(--teal-dark);margin-top:2px}
 .playbook-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
 .playbook-desc{font-size:12.5px;color:var(--text-2);line-height:1.55}
+.feat-priority-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:0}
+.feat-priority-card{border-radius:12px;padding:16px 18px;text-align:center}
+.feat-priority-card.high{background:#fef2f2;border:1px solid #fecaca}
+.feat-priority-card.medium{background:#fffbeb;border:1px solid #fde68a}
+.feat-priority-card.low{background:#f0fdf4;border:1px solid #bbf7d0}
+.feat-priority-card .fp-val{font-size:32px;font-weight:800;line-height:1;margin-bottom:4px}
+.feat-priority-card.high .fp-val{color:#dc2626}
+.feat-priority-card.medium .fp-val{color:#d97706}
+.feat-priority-card.low .fp-val{color:#16a34a}
+.feat-priority-card .fp-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3)}
+.feat-priority-card .fp-sub{font-size:11px;color:var(--text-3);margin-top:2px}
+.feat-group{margin-bottom:28px}
+.feat-group-header{display:flex;align-items:center;gap:10px;padding:9px 16px;border-radius:8px;margin-bottom:12px}
+.feat-group-header.high{background:#fef2f2;border:1px solid #fecaca}
+.feat-group-header.medium{background:#fffbeb;border:1px solid #fde68a}
+.feat-group-header.low{background:#f0fdf4;border:1px solid #bbf7d0}
+.feat-group-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px}
+.feat-group-title.high{color:#dc2626}
+.feat-group-title.medium{color:#d97706}
+.feat-group-title.low{color:#16a34a}
+.feat-group-badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px}
+.feat-group-badge.high{background:#fecaca;color:#991b1b}
+.feat-group-badge.medium{background:#fde68a;color:#92400e}
+.feat-group-badge.low{background:#bbf7d0;color:#166534}
+.feat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.feat-card.high{border-left:4px solid #dc2626}
+.feat-card.medium{border-left:4px solid #d97706}
+.feat-card.low{border-left:4px solid #16a34a}
+.feat-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.feat-card-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3}
+.feat-vol-wrap{flex-shrink:0;text-align:right;min-width:100px}
+.feat-vol-pill{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;display:inline-block;margin-bottom:5px}
+.feat-vol-pill.hv{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.feat-vol-pill.mv{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.feat-vol-pill.lv{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.feat-vol-bar{width:100%;height:4px;background:var(--gray-100);border-radius:99px}
+.feat-vol-fill{height:4px;border-radius:99px}
+.feat-card-desc{font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:6px}
+.feat-card-who{font-size:11.5px;color:var(--text-3);font-style:italic;margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -742,16 +789,7 @@ tr:hover td{background:var(--gray-50)}
     <div class="page-title">Feature Requests</div>
     <div class="page-desc">Product gaps and capability requests stated directly by ecommerce merchants on Reddit.</div>
     <div id="gap-bar"></div>
-    <div class="grid-2" style="margin-bottom:20px">
-      <div class="card">
-        <div class="card-title">Priority Split</div>
-        <div class="chart-wrap" style="height:160px"><canvas id="chart-feat-donut"></canvas></div>
-      </div>
-      <div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-        <div class="card-title">Top Requested</div>
-        <div id="feat-top-list" style="flex:1"></div>
-      </div>
-    </div>
+    <div class="feat-priority-row" id="feat-priority-stats" style="margin-bottom:24px"></div>
     <div class="table-controls" style="margin-bottom:14px">
       <input class="t-input" id="feat-search" placeholder="Search features..." style="min-width:220px">
       <select class="t-select" id="feat-priority">
@@ -1859,45 +1897,32 @@ const renderers = {
         `<div class="gap-bar"><strong>Biggest gap:</strong> ${esc(DATA.biggestGap)}</div>`;
     }
     if (!DATA.features || !DATA.features.length) {
-      document.getElementById('feature-list').innerHTML = '<div class="empty-state"><div class="es-title">Feature data generating…</div>Run reviews_io_rebuild_dashboard.py to populate.</div>';
+      document.getElementById('feature-list').innerHTML = '<div class="empty-state">Feature data generating…</div>';
       return;
     }
 
-    // Priority donut chart
     const groups = {High:[],Medium:[],Low:[]};
     DATA.features.forEach(f => (groups[f.build_priority]||groups.Medium).push(f));
-    if (document.getElementById('chart-feat-donut')) {
-      new Chart(document.getElementById('chart-feat-donut'), {
-        type: 'doughnut',
-        data: {
-          labels: ['High','Medium','Low'],
-          datasets: [{ data: [groups.High.length, groups.Medium.length, groups.Low.length], backgroundColor: ['#dc2626','#d97706','#16a34a'], borderWidth: 0 }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
-          plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, color: '#6b7280' } } } }
-      });
+
+    // Priority stat cards
+    const psEl = document.getElementById('feat-priority-stats');
+    if (psEl) {
+      psEl.innerHTML = [
+        ['High', groups.High.length, '~40+ mentions avg', '#dc2626'],
+        ['Medium', groups.Medium.length, '~15–25 mentions avg', '#d97706'],
+        ['Low', groups.Low.length, '~5–10 mentions avg', '#16a34a'],
+      ].map(([p,count,sub]) => `
+        <div class="feat-priority-card ${p.toLowerCase()}">
+          <div class="fp-val">${count}</div>
+          <div class="fp-lbl">${p} priority</div>
+          <div class="fp-sub">${sub}</div>
+        </div>`).join('');
     }
 
-    // Top requested list
-    const topEl = document.getElementById('feat-top-list');
-    if (topEl) {
-      window._renderFeatTop = (showAll) => {
-        const list = showAll ? DATA.features : DATA.features.slice(0, 4);
-        const freqLabel = f => f.frequency==='High' ? '~40+ mentions' : f.frequency==='Medium' ? '~15–25 mentions' : '~5–10 mentions';
-        const freqColor = f => f.frequency==='High' ? '#dc2626' : f.frequency==='Medium' ? '#d97706' : '#16a34a';
-        topEl.innerHTML = list.map((f,i) =>
-          `<div style="padding:7px 0;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;gap:8px">
-            <div style="display:flex;align-items:center;gap:7px;min-width:0">
-              <span style="font-size:10px;font-weight:700;color:var(--text-3);width:14px;flex-shrink:0">#${i+1}</span>
-              <span style="font-size:12.5px;color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.idea||'')}</span>
-            </div>
-            <span style="font-size:10px;font-weight:600;color:${freqColor(f)};white-space:nowrap;flex-shrink:0">${freqLabel(f)}</span>
-          </div>`
-        ).join('') +
-        `<div style="display:flex;justify-content:space-between;align-items:center;padding-top:8px">
-          <span style="font-size:11px;color:var(--text-3)">${DATA.features.length} total requests tracked</span>
-          <button onclick="window._featShowAll=!window._featShowAll;window._renderFeatTop(window._featShowAll)" style="font-size:11px;color:var(--teal-dark);background:none;border:none;cursor:pointer;font-weight:600;padding:0">${showAll ? 'Show top 4 ↑' : 'Show all ' + DATA.features.length + ' ↓'}</button>
-        </div>`;
+    const volCfg = {
+      High:   { pill: 'hv', pct: 100, color: '#dc2626', label: '40+ mentions' },
+      Medium: { pill: 'mv', pct:  55, color: '#d97706', label: '15–25 mentions' },
+      Low:    { pill: 'lv', pct:  20, color: '#16a34a', label: '5–10 mentions' },
       };
       window._featShowAll = false;
       window._renderFeatTop(false);
@@ -2032,24 +2057,42 @@ const renderers = {
     (DATA.stats.subreddit_labels||[]).forEach((l,i) => { subVol[l] = DATA.stats.subreddit_values[i]; });
 
     // Priority opportunity cards
+    // Tier colors: top 3 green, middle 3 amber, bottom 2 slate
+    const tierColor = i => i < 3 ? '#16a34a' : i < 6 ? '#d97706' : '#6b7280';
+    const maxVol = Math.max(...DATA.opps.map(o => subVol[(o.subreddit||'').replace('r/','')] || 0), 1);
+
+    // Helper: split engagement_style into bullet points
+    const toApproachBullets = text => {
+      if (!text) return '';
+      // Split on '. ', ' — ', '; ' to create separate bullet points
+      const pts = text.replace(/\s+—\s+/g, '. ').split(/\.\s+/).map(s => s.replace(/[.;]+$/, '').trim()).filter(s => s.length > 8);
+      return pts.map(p => `<li>${esc(p)}</li>`).join('');
+    };
+
     document.getElementById('opp-list').innerHTML = DATA.opps.map((o, i) => {
       const subKey = (o.subreddit||'').replace('r/','');
-      const vol = subVol[subKey];
+      const vol = subVol[subKey] || 0;
+      const volPct = Math.round((vol / maxVol) * 100);
+      const tc = tierColor(i);
       const topics = (o.topics_to_lead_with||[]);
       return `
-        <div class="opp-card">
+        <div class="opp-card" style="border-left:4px solid ${tc}">
           <div class="opp-card-top">
-            <div class="opp-rank">${i+1}</div>
+            <div class="opp-rank" style="background:${tc};border-color:${tc}">${i+1}</div>
             <div style="flex:1;min-width:0">
-              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-                <span class="opp-sub-name">${esc(o.subreddit||'')}</span>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px">
+                <span class="opp-sub-name" style="color:${tc}">${esc(o.subreddit||'')}</span>
                 ${vol ? `<span class="opp-volume-pill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>${vol} posts</span>` : ''}
               </div>
+              <div class="opp-vol-bar-wrap"><div class="opp-vol-bar-fill" style="width:${volPct}%;background:${tc}"></div></div>
               <div class="opp-why">${esc(o.why||'')}</div>
             </div>
           </div>
           <div class="opp-card-body">
-            ${o.engagement_style ? `<div class="opp-approach-box"><div class="opp-approach-label">Approach</div>${esc(o.engagement_style)}</div>` : ''}
+            ${o.engagement_style ? `<div class="opp-approach-box" style="border-left:none">
+              <div class="opp-approach-label">Approach</div>
+              <ul class="opp-approach-bullets">${toApproachBullets(o.engagement_style)}</ul>
+            </div>` : ''}
             <div class="topic-chips">${topics.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
           </div>
         </div>`;
@@ -2116,12 +2159,26 @@ const renderers = {
     if (!DATA.triggers || !DATA.triggers.length) {
       document.getElementById('trigger-grid').innerHTML = '<div class="empty-state">Trigger data generating…</div>';
     } else {
-      document.getElementById('trigger-grid').innerHTML = DATA.triggers.map((t, i) => `
-        <div class="trigger-card">
+    const tColors = ['#0d9488','#6366f1','#f59e0b','#dc2626','#16a34a','#8b5cf6'];
+    // Per-trigger "what to do" actions derived from DATA.wins cycling
+    const tActions = [
+      'Search for threads asking about Trustpilot pricing. Reply with a data-backed pricing comparison — lead with the merchant\'s frustration, not the product.',
+      'Find "fake review" or "review manipulation" threads. Explain how verified-purchase reviews structurally prevent this rather than just moderating after the fact.',
+      'Engage "Judge.me vs X" or "best review app for Shopify" threads with an honest comparison table. Include Reviews.io, Yotpo, Okendo, and Loox.',
+      'Reply to "too many tools, too complex" threads. Lead with a single clear use case — e.g. "one widget, Google Seller Ratings, done."',
+      'Contribute to ORM and reputation threads in r/AskMarketing. Share how authentic UGC builds long-term trust vs solicited reviews.',
+      'Engage Google Shopping or GSC threads. Explain the Google Seller Ratings integration — this is a concrete, searchable outcome merchants care about.',
+    ];
+
+      document.getElementById('trigger-grid').innerHTML = DATA.triggers.map((t, i) => {
+      const color = tColors[i % tColors.length];
+      const action = tActions[i % tActions.length];
+      return `
+        <div class="trigger-card" style="border-top:3px solid ${color}">
           <div class="trigger-card-head">
-            <div class="trigger-num">${i+1}</div>
+            <div class="trigger-num" style="background:${color}">${i+1}</div>
             <div style="flex:1;min-width:0">
-              <div class="trigger-pattern-name">${esc(t.pattern||'')}</div>
+              <div class="trigger-pattern-name" style="color:${color}">${esc(t.pattern||'')}</div>
               <div class="trigger-desc-text">${esc(t.description||'')}</div>
             </div>
           </div>
@@ -2130,7 +2187,15 @@ const renderers = {
             <div class="trigger-mock-label">Real thread example</div>
             <div class="trigger-mock-title">${esc(t.example_title)}</div>
           </div>` : ''}
-        </div>`).join('');
+          <div class="trigger-action-box">
+            <div class="trigger-action-label" style="color:${color}">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              What to do
+            </div>
+            <div class="trigger-action-text">${esc(action)}</div>
+          </div>
+        </div>`;
+    }).join('');
     }
 
     // Reddit playbook cards
