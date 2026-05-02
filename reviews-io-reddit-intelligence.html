@@ -559,7 +559,6 @@ tr:hover td{background:var(--gray-50)}
 .trigger-action-text{font-size:13px;color:var(--text-2);line-height:1.55}
 .trigger-pattern-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
 .trigger-desc-text{font-size:13.5px;color:var(--text-2);line-height:1.65}
-.trigger-mock-post{margin:0 20px 16px;background:#1a1a1b;border-radius:8px;padding:12px 16px}
 .cs-formula-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
 .formula-segments{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
 .formula-seg{padding:5px 12px;border-radius:6px;font-size:13px;font-weight:600}
@@ -573,17 +572,17 @@ tr:hover td{background:var(--gray-50)}
 .playbook-icon{flex-shrink:0;line-height:1;color:var(--teal-dark);margin-top:2px}
 .playbook-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
 .playbook-desc{font-size:12.5px;color:var(--text-2);line-height:1.55}
-.feat-priority-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:0}
-.feat-priority-card{border-radius:12px;padding:16px 18px;text-align:center}
-.feat-priority-card.high{background:#fef2f2;border:1px solid #fecaca}
-.feat-priority-card.medium{background:#fffbeb;border:1px solid #fde68a}
-.feat-priority-card.low{background:#f0fdf4;border:1px solid #bbf7d0}
-.feat-priority-card .fp-val{font-size:32px;font-weight:800;line-height:1;margin-bottom:4px}
-.feat-priority-card.high .fp-val{color:#dc2626}
-.feat-priority-card.medium .fp-val{color:#d97706}
-.feat-priority-card.low .fp-val{color:#16a34a}
-.feat-priority-card .fp-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3)}
-.feat-priority-card .fp-sub{font-size:11px;color:var(--text-3);margin-top:2px}
+.feat-priority-row{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:20px}
+.fp-chip{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600}
+.fp-chip.high{background:#fef2f2;color:#dc2626}
+.fp-chip.medium{background:#fffbeb;color:#d97706}
+.fp-chip.low{background:#f0fdf4;color:#16a34a}
+.fp-chip-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.fp-chip.high .fp-chip-dot{background:#dc2626}
+.fp-chip.medium .fp-chip-dot{background:#d97706}
+.fp-chip.low .fp-chip-dot{background:#16a34a}
+.fp-divider{width:1px;height:20px;background:var(--border);margin:0 4px}
+.fp-label{font-size:11px;color:var(--text-3);margin-right:4px}
 .feat-group{margin-bottom:28px}
 .feat-group-header{display:flex;align-items:center;gap:10px;padding:9px 16px;border-radius:8px;margin-bottom:12px}
 .feat-group-header.high{background:#fef2f2;border:1px solid #fecaca}
@@ -598,9 +597,6 @@ tr:hover td{background:var(--gray-50)}
 .feat-group-badge.medium{background:#fde68a;color:#92400e}
 .feat-group-badge.low{background:#bbf7d0;color:#166534}
 .feat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
-.feat-card.high{border-left:4px solid #dc2626}
-.feat-card.medium{border-left:4px solid #d97706}
-.feat-card.low{border-left:4px solid #16a34a}
 .feat-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
 .feat-card-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.3}
 .feat-vol-wrap{flex-shrink:0;text-align:right;min-width:100px}
@@ -822,6 +818,12 @@ tr:hover td{background:var(--gray-50)}
     <div class="page-title">Opportunity Map</div>
     <div class="page-desc">Where Reviews.io should engage on Reddit — ranked by priority, with the approach and exact topics to lead with.</div>
     <div id="opp-gap-banner" style="margin-bottom:20px"></div>
+    <div style="display:flex;align-items:center;gap:16px;padding:10px 16px;background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:16px;font-size:12px;color:var(--text-2)">
+      <span style="font-weight:600;color:var(--text-3);font-size:11px;text-transform:uppercase;letter-spacing:.5px">Tier</span>
+      <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16a34a;flex-shrink:0"></span><strong style="color:var(--text)">1–3</strong>&nbsp;Core targets — highest volume &amp; fit</span>
+      <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0"></span><strong style="color:var(--text)">4–6</strong>&nbsp;Secondary — solid but more competitive</span>
+      <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#9ca3af;flex-shrink:0"></span><strong style="color:var(--text)">7+</strong>&nbsp;Exploratory — niche, lower volume</span>
+    </div>
     <div class="stats-row" id="opp-stats" style="margin-bottom:24px"></div>
     <div id="opp-list" class="opp-list"></div>
     <div class="section-subhead">Quick Actions</div>
@@ -1904,19 +1906,18 @@ const renderers = {
     const groups = {High:[],Medium:[],Low:[]};
     DATA.features.forEach(f => (groups[f.build_priority]||groups.Medium).push(f));
 
-    // Priority stat cards
+    // Priority stat chips
     const psEl = document.getElementById('feat-priority-stats');
     if (psEl) {
-      psEl.innerHTML = [
-        ['High', groups.High.length, '~40+ mentions avg', '#dc2626'],
-        ['Medium', groups.Medium.length, '~15–25 mentions avg', '#d97706'],
-        ['Low', groups.Low.length, '~5–10 mentions avg', '#16a34a'],
-      ].map(([p,count,sub]) => `
-        <div class="feat-priority-card ${p.toLowerCase()}">
-          <div class="fp-val">${count}</div>
-          <div class="fp-lbl">${p} priority</div>
-          <div class="fp-sub">${sub}</div>
-        </div>`).join('');
+      const chips = [
+        ['High', groups.High.length, 'high'],
+        ['Medium', groups.Medium.length, 'medium'],
+        ['Low', groups.Low.length, 'low'],
+      ];
+      psEl.innerHTML = `<span class="fp-label">Priority breakdown:</span>` +
+        chips.map(([p, n, cls]) =>
+          `<div class="fp-chip ${cls}"><span class="fp-chip-dot"></span>${n} ${p}</div>`
+        ).join('<div class="fp-divider"></div>');
     }
 
     const volCfg = {
@@ -2088,7 +2089,7 @@ const renderers = {
       const tc = tierColor(i);
       const topics = (o.topics_to_lead_with||[]);
       return `
-        <div class="opp-card" style="border-left:4px solid ${tc}">
+        <div class="opp-card">
           <div class="opp-card-top">
             <div class="opp-rank" style="background:${tc};border-color:${tc}">${i+1}</div>
             <div style="flex:1;min-width:0">
@@ -2186,7 +2187,7 @@ const renderers = {
       const color = tColors[i % tColors.length];
       const action = tActions[i % tActions.length];
       return `
-        <div class="trigger-card" style="border-top:3px solid ${color}">
+        <div class="trigger-card">
           <div class="trigger-card-head">
             <div class="trigger-num" style="background:${color}">${i+1}</div>
             <div style="flex:1;min-width:0">
@@ -2194,11 +2195,6 @@ const renderers = {
               <div class="trigger-desc-text">${esc(t.description||'')}</div>
             </div>
           </div>
-          ${t.example_title ? `
-          <div class="trigger-mock-post">
-            <div class="trigger-mock-label">Real thread example</div>
-            <div class="trigger-mock-title">${esc(t.example_title)}</div>
-          </div>` : ''}
           <div class="trigger-action-box">
             <div class="trigger-action-label" style="color:${color}">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
