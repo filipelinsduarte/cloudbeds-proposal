@@ -507,8 +507,13 @@ tr:hover td{background:var(--gray-50)}
     </div>
   </div>
   <nav class="sidebar-nav">
+    <a class="nav-item active" data-s="exec-summary">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+      Executive Summary
+    </a>
+    <div class="nav-divider"></div>
     <div class="nav-section-label">Analysis</div>
-    <a class="nav-item active" data-s="overview">
+    <a class="nav-item" data-s="overview">
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
       Overview
     </a>
@@ -528,7 +533,7 @@ tr:hover td{background:var(--gray-50)}
     </a>
     <a class="nav-item" data-s="archetypes">
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-      Archetypes
+      Buyer Profiles
     </a>
     <a class="nav-item" data-s="opportunity">
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
@@ -539,25 +544,7 @@ tr:hover td{background:var(--gray-50)}
       Content Strategy
     </a>
     <div class="nav-divider"></div>
-    <div class="nav-section-label">Data</div>
-    <a class="nav-item" data-s="threads">
-      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span>
-      Top Threads
-    </a>
-    <a class="nav-item" data-s="subreddits">
-      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-      Subreddits
-    </a>
-    <a class="nav-item" data-s="brand-mentions">
-      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
-      Brand Mentions
-    </a>
-    <div class="nav-divider"></div>
     <div class="nav-section-label">Insights</div>
-    <a class="nav-item" data-s="exec-summary">
-      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
-      Executive Summary
-    </a>
     <a class="nav-item" data-s="competitor-compare">
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
       Competitor Comparison
@@ -574,6 +561,20 @@ tr:hover td{background:var(--gray-50)}
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg></span>
       Subreddit Messaging
     </a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Data</div>
+    <a class="nav-item" data-s="threads">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span>
+      Top Threads
+    </a>
+    <a class="nav-item" data-s="subreddits">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+      Subreddits
+    </a>
+    <a class="nav-item" data-s="brand-mentions">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      Brand Mentions
+    </a>
   </nav>
   <div class="sidebar-foot" id="sidebar-foot">0 posts · 0 communities</div>
 </aside>
@@ -581,7 +582,7 @@ tr:hover td{background:var(--gray-50)}
 <main class="main">
 
   <!-- OVERVIEW -->
-  <section class="section active" id="s-overview">
+  <section class="section" id="s-overview">
     <div class="page-title">Overview</div>
     <div class="page-desc">Corpus stats and high-level distribution across ecommerce and review management communities.</div>
     <div id="stats-row" class="stats-row"></div>
@@ -679,7 +680,7 @@ tr:hover td{background:var(--gray-50)}
 
   <!-- ARCHETYPES -->
   <section class="section" id="s-archetypes">
-    <div class="page-title">Community Archetypes</div>
+    <div class="page-title">Buyer Profiles</div>
     <div class="page-desc">Distinct buyer profiles driving review management conversations across UK ecommerce communities.</div>
     <div id="arch-insight" class="arch-insight"></div>
     <div class="card" style="margin-bottom:20px">
@@ -687,7 +688,7 @@ tr:hover td{background:var(--gray-50)}
       <div id="arch-composition"></div>
     </div>
     <div class="table-controls" style="margin-bottom:14px">
-      <input class="t-input" id="arch-search" placeholder="Search archetypes..." style="min-width:220px">
+      <input class="t-input" id="arch-search" placeholder="Search buyer profiles..." style="min-width:220px">
     </div>
     <div class="arch-grid" id="arch-grid"></div>
   </section>
@@ -889,7 +890,7 @@ tr:hover td{background:var(--gray-50)}
   </section>
 
   <!-- EXECUTIVE SUMMARY -->
-  <section class="section" id="s-exec-summary">
+  <section class="section active" id="s-exec-summary">
     <div class="page-title">Executive Summary</div>
     <div class="page-desc">The most important signals from 377 Reddit posts — distilled into opportunities, threats, and recommended actions for Reviews.io.</div>
     <div class="divider"></div>
@@ -1053,7 +1054,7 @@ document.querySelectorAll('.nav-item').forEach(a => {
   });
 });
 
-const done = new Set(['overview']);
+const done = new Set(['exec-summary']);
 const esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Sidebar foot
