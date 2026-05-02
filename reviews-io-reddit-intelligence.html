@@ -1923,12 +1923,8 @@ const renderers = {
       High:   { pill: 'hv', pct: 100, color: '#dc2626', label: '40+ mentions' },
       Medium: { pill: 'mv', pct:  55, color: '#d97706', label: '15–25 mentions' },
       Low:    { pill: 'lv', pct:  20, color: '#16a34a', label: '5–10 mentions' },
-      };
-      window._featShowAll = false;
-      window._renderFeatTop(false);
-    }
+    };
 
-    // Render with filter
     const renderFeatures = (q, pri) => {
       const all = DATA.features.filter(f => {
         if (pri && f.build_priority !== pri) return false;
@@ -1937,29 +1933,45 @@ const renderers = {
       });
       const g2 = {High:[],Medium:[],Low:[]};
       all.forEach(f => (g2[f.build_priority]||g2.Medium).push(f));
+
       document.getElementById('feature-list').innerHTML = all.length
-        ? Object.entries(g2).filter(([,v])=>v.length).map(([p,items]) => `
-          <div>
-            <div class="priority-label"><span class="dot ${p.toLowerCase()}"></span>${p} Priority</div>
-            ${items.map(f=>`
-              <div class="feature-item">
-                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px">
-                  <h4 style="margin:0">${esc(f.idea||'')}</h4>
-                  <span style="flex-shrink:0;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:${f.frequency==='High'?'#fef2f2':f.frequency==='Medium'?'#fffbeb':'#f0fdf4'};color:${f.frequency==='High'?'#dc2626':f.frequency==='Medium'?'#d97706':'#16a34a'};border:1px solid ${f.frequency==='High'?'#fecaca':f.frequency==='Medium'?'#fde68a':'#bbf7d0'}">${f.frequency==='High'?'~40+ mentions':f.frequency==='Medium'?'~15–25 mentions':'~5–10 mentions'}</span>
+        ? ['High','Medium','Low'].filter(p => g2[p].length).map(p => {
+            const pLow = p.toLowerCase();
+            const items = g2[p];
+            return `
+              <div class="feat-group">
+                <div class="feat-group-header ${pLow}">
+                  <span class="feat-group-title ${pLow}">${p} Priority</span>
+                  <span class="feat-group-badge ${pLow}">${items.length} feature${items.length>1?'s':''}</span>
+                  <span style="margin-left:auto;font-size:11px;color:var(--text-3)">${volCfg[p].label} avg</span>
                 </div>
-                <div class="desc">${esc(f.description||'')}</div>
-                <div class="feature-who">${esc(f.who_wants_it||'')}</div>
-                ${f.direct_quote?`<div class="quote" style="margin-top:8px;font-style:italic;font-size:13px;color:var(--text-2)">"${esc(f.direct_quote)}"<div style="font-size:10.5px;color:var(--text-3);margin-top:2px;font-style:normal">r/${esc(f.quote_source||'')}</div></div>`:''}
-              </div>`).join('')}
-          </div>`).join('')
+                ${items.map(f => {
+                  const vc = volCfg[f.frequency] || volCfg[p];
+                  return `
+                    <div class="feat-card ${pLow}">
+                      <div class="feat-card-top">
+                        <div class="feat-card-name">${esc(f.idea||'')}</div>
+                        <div class="feat-vol-wrap">
+                          <div class="feat-vol-pill ${vc.pill}">${vc.label}</div>
+                          <div class="feat-vol-bar"><div class="feat-vol-fill" style="width:${vc.pct}%;background:${vc.color}"></div></div>
+                        </div>
+                      </div>
+                      <div class="feat-card-desc">${esc(f.description||'')}</div>
+                      <div class="feat-card-who">${esc(f.who_wants_it||'')}</div>
+                      ${f.direct_quote?`<div class="quote">"${esc(f.direct_quote)}"<div style="font-size:10.5px;color:var(--text-3);margin-top:2px">r/${esc(f.quote_source||'')}</div></div>`:''}
+                    </div>`;
+                }).join('')}
+              </div>`;
+          }).join('')
         : '<div style="color:var(--text-3);padding:20px 0;text-align:center">No features match your filters.</div>';
     };
+
     renderFeatures('', '');
     const fs = document.getElementById('feat-search');
     const fp = document.getElementById('feat-priority');
     let _fq='', _fp='';
-    if (fs) fs.oninput = e => { _fq = e.target.value.toLowerCase(); renderFeatures(_fq, _fp); };
-    if (fp) fp.onchange = e => { _fp = e.target.value; renderFeatures(_fq, _fp); };
+    if (fs) fs.oninput = e => { _fq=e.target.value.toLowerCase(); renderFeatures(_fq,_fp); };
+    if (fp) fp.onchange = e => { _fp=e.target.value; renderFeatures(_fq,_fp); };
   },
 
   // ── ARCHETYPES ──────────────────────────────────────────────────────────────
