@@ -454,6 +454,7 @@ tr:hover td{background:var(--gray-50)}
 .es-item-text{font-size:13px;color:var(--text-2);line-height:1.55}
 .es-item-text strong{color:var(--text);font-weight:600}
 .es-banner{background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:var(--teal-dark);line-height:1.6;font-weight:500}
+.es-charts-row .card{margin-bottom:0}
 /* ── STEAL THE THREAD ─────────────────────────────────────────────────── */
 .steal-table{width:100%;border-collapse:collapse}
 .steal-table th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);padding:10px 14px;border-bottom:1px solid var(--border);text-align:left;background:var(--gray-50)}
@@ -895,14 +896,26 @@ tr:hover td{background:var(--gray-50)}
     <div class="page-desc">The most important signals from 377 Reddit posts — distilled into opportunities, threats, and recommended actions for Reviews.io.</div>
     <div class="divider"></div>
     <div id="es-banner" class="es-banner"></div>
+    <div class="stats-row" id="es-stats" style="margin-bottom:20px"></div>
+    <div class="es-charts-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+      <div class="card">
+        <div class="card-title">Brand Sentiment Landscape</div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">Top brands by mention volume, colored by net sentiment</div>
+        <div style="position:relative;height:220px"><canvas id="es-chart-brands"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Community Distribution</div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">Posts by subreddit — where conversations happen</div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="position:relative;height:200px;width:200px;flex-shrink:0"><canvas id="es-chart-subs"></canvas></div>
+          <div id="es-sub-legend" style="font-size:11px;line-height:1.9;color:var(--text-2)"></div>
+        </div>
+      </div>
+    </div>
     <div class="es-grid" id="es-grid"></div>
     <div class="card" style="margin-bottom:16px">
       <div class="card-title">Top Pain Point</div>
       <div id="es-pain"></div>
-    </div>
-    <div class="card">
-      <div class="card-title">Key Stats at a Glance</div>
-      <div class="stats-row" id="es-stats"></div>
     </div>
   </section>
 
@@ -1219,6 +1232,9 @@ if (_hb) _hb.textContent = `${DATA.stats.total_posts} posts · ${DATA.stats.tota
       `<div class="theme-banner"><strong>Dominant theme:</strong> ${esc(DATA.dominantTheme)}</div>`;
   }
 })();
+
+// ── EXECUTIVE SUMMARY CHART INSTANCES ────────────────────────────────────────
+let _esChartBrands, _esChartSubs;
 
 // ── RENDERERS ─────────────────────────────────────────────────────────────────
 const renderers = {
@@ -2335,6 +2351,115 @@ const renderers = {
       if (m.rating==='Positive') _bmTally[m.brand].pos++;
     });
 
+    // Key stats (rendered before charts)
+    const totalBrands = Object.keys(_bmTally).length;
+    const totalNeg = Object.values(_bmTally).reduce((s,t)=>s+t.neg,0);
+    document.getElementById('es-stats').innerHTML = [
+      [DATA.stats.total_posts, 'Posts analysed'],
+      [DATA.stats.total_subreddits, 'Communities'],
+      [totalBrands, 'Brands mentioned'],
+      [totalNeg, 'Negative brand mentions'],
+      [(DATA.opps||[]).length, 'Target subreddits'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val">${v}</div><div class="lbl">${l}</div></div>`).join('');
+
+    // ── Chart 1: Brand Sentiment Landscape (horizontal bar) ──────────────────
+    {
+      const brandData = (DATA.brands || [])
+        .slice()
+        .sort((a, b) => b.mentions - a.mentions)
+        .slice(0, 12);
+      const labels = brandData.map(b => b.brand);
+      const values = brandData.map(b => b.mentions);
+      const colors = brandData.map(b =>
+        b.score > 30 ? '#16a34a' : b.score < -10 ? '#dc2626' : '#f59e0b'
+      );
+      if (_esChartBrands) { _esChartBrands.destroy(); _esChartBrands = null; }
+      const ctxB = document.getElementById('es-chart-brands');
+      if (ctxB) {
+        _esChartBrands = new Chart(ctxB, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [{
+              data: values,
+              backgroundColor: colors,
+              borderRadius: 3,
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => ` ${ctx.parsed.x} mentions`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(0,0,0,0.05)' },
+                ticks: { font: { size: 10 }, color: '#6b7280' }
+              },
+              y: {
+                grid: { display: false },
+                ticks: { font: { size: 10 }, color: '#374151' }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // ── Chart 2: Community Distribution (doughnut) ────────────────────────────
+    {
+      const subLabels = (DATA.stats.subreddit_labels || []).slice(0, 6);
+      const subValues = (DATA.stats.subreddit_values || []).slice(0, 6);
+      const subColors = ['#0d9488','#6366f1','#f59e0b','#ec4899','#3b82f6','#8b5cf6'];
+      if (_esChartSubs) { _esChartSubs.destroy(); _esChartSubs = null; }
+      const ctxS = document.getElementById('es-chart-subs');
+      if (ctxS) {
+        _esChartSubs = new Chart(ctxS, {
+          type: 'doughnut',
+          data: {
+            labels: subLabels,
+            datasets: [{
+              data: subValues,
+              backgroundColor: subColors,
+              borderWidth: 2,
+              borderColor: '#ffffff',
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '62%',
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => ` ${ctx.label}: ${ctx.parsed} posts`
+                }
+              }
+            }
+          }
+        });
+        // Custom legend
+        const legendEl = document.getElementById('es-sub-legend');
+        if (legendEl) {
+          legendEl.innerHTML = subLabels.map((lbl, i) =>
+            `<div style="display:flex;align-items:center;gap:6px">
+               <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${subColors[i]};flex-shrink:0"></span>
+               <span>r/${esc(lbl)}</span>
+               <span style="color:var(--text-3);margin-left:2px">${subValues[i]}</span>
+             </div>`
+          ).join('');
+        }
+      }
+    }
+
     // Opportunities: top 3 from opps
     const oppItems = (DATA.opps||[]).slice(0,3).map((o,i) => `
       <div class="es-item">
@@ -2403,17 +2528,6 @@ const renderers = {
           ${p1.reviews_io_relevance?`<div style="margin-top:10px;padding:8px 12px;background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:6px;font-size:12.5px;color:var(--teal-dark)"><strong>Reviews.io:</strong> ${esc(p1.reviews_io_relevance)}</div>`:''}
         </div>`;
     }
-
-    // Key stats
-    const totalBrands = Object.keys(_bmTally).length;
-    const totalNeg = Object.values(_bmTally).reduce((s,t)=>s+t.neg,0);
-    document.getElementById('es-stats').innerHTML = [
-      [DATA.stats.total_posts, 'Posts analysed'],
-      [DATA.stats.total_subreddits, 'Communities'],
-      [totalBrands, 'Brands mentioned'],
-      [totalNeg, 'Negative brand mentions'],
-      [(DATA.opps||[]).length, 'Target subreddits'],
-    ].map(([v,l])=>`<div class="stat-item"><div class="val">${v}</div><div class="lbl">${l}</div></div>`).join('');
   },
 
   // ── STEAL THE THREAD ──────────────────────────────────────────────────────
@@ -2607,6 +2721,9 @@ const renderers = {
   },
 
 };
+
+// Boot: render exec-summary immediately (it's the default active section)
+renderers['exec-summary']?.();
 </script>
 </div>
 </body>
