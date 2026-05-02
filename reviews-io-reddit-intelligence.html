@@ -408,6 +408,85 @@ tr:hover td{background:var(--gray-50)}
 /* ── EMPTY STATE ───────────────────────────────────────────────────────────── */
 .empty-state{padding:48px 20px;text-align:center;color:var(--text-3);font-size:13px}
 .empty-state .es-title{font-weight:600;color:var(--text-2);font-size:14px;margin-bottom:6px}
+/* ── COMPETITOR COMPARISON ────────────────────────────────────────────── */
+.cc-selectors{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.cc-selector-wrap{display:flex;align-items:center;gap:6px}
+.cc-selector-label{font-size:11px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px}
+.cc-grid{display:grid;gap:14px;margin-bottom:24px}
+.cc-grid.cols-2{grid-template-columns:1fr 1fr}
+.cc-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+.cc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.cc-card-head{padding:16px 20px 14px;border-bottom:3px solid var(--border)}
+.cc-card-head.Positive{border-bottom-color:#16a34a}
+.cc-card-head.Negative{border-bottom-color:#dc2626}
+.cc-card-head.Mixed{border-bottom-color:#d97706}
+.cc-card-head.Neutral{border-bottom-color:#6b7280}
+.cc-brand-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cc-brand-name{font-size:16px;font-weight:700;color:var(--text)}
+.cc-score-bar-wrap{height:6px;background:var(--gray-100);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.cc-score-bar{height:100%;border-radius:99px;transition:width .4s}
+.cc-score-label{font-size:11px;color:var(--text-3)}
+.cc-body{padding:16px 20px}
+.cc-row{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--gray-100)}
+.cc-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cc-row-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-3);margin-bottom:4px}
+.cc-row-val{font-size:13px;color:var(--text-2);line-height:1.55}
+.cc-row-val.good{color:#16a34a}
+.cc-row-val.bad{color:#dc2626}
+.cc-quote{font-style:italic;font-size:12.5px;color:var(--text-2);padding:8px 10px;background:var(--gray-50);border-left:3px solid var(--border);border-radius:0 4px 4px 0;margin-top:4px;line-height:1.5}
+.cc-add-btn{display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px dashed var(--border);border-radius:6px;background:none;cursor:pointer;font-size:12px;color:var(--text-3);transition:all .12s}
+.cc-add-btn:hover{border-color:var(--teal);color:var(--teal-dark)}
+.cc-remove-btn{background:none;border:none;cursor:pointer;color:var(--text-3);font-size:14px;padding:0 4px;line-height:1;transition:color .12s}
+.cc-remove-btn:hover{color:var(--red)}
+/* ── SHARE OF VOICE ───────────────────────────────────────────────────── */
+.sov-highlight{background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:var(--teal-dark);line-height:1.6}
+/* ── EXECUTIVE SUMMARY ────────────────────────────────────────────────── */
+.es-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.es-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.es-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.es-card-label.opportunity{color:#16a34a}
+.es-card-label.threat{color:#dc2626}
+.es-card-label.action{color:var(--teal-dark)}
+.es-card-label.insight{color:#6366f1}
+.es-item{padding:8px 0;border-bottom:1px solid var(--gray-100);display:flex;gap:10px;align-items:flex-start}
+.es-item:last-child{border-bottom:none}
+.es-item-num{font-size:11px;font-weight:700;color:var(--text-3);width:16px;flex-shrink:0;padding-top:2px}
+.es-item-text{font-size:13px;color:var(--text-2);line-height:1.55}
+.es-item-text strong{color:var(--text);font-weight:600}
+.es-banner{background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:var(--teal-dark);line-height:1.6;font-weight:500}
+/* ── STEAL THE THREAD ─────────────────────────────────────────────────── */
+.steal-table{width:100%;border-collapse:collapse}
+.steal-table th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);padding:10px 14px;border-bottom:1px solid var(--border);text-align:left;background:var(--gray-50)}
+.steal-table td{padding:12px 14px;border-bottom:1px solid var(--gray-100);vertical-align:top}
+.steal-table tr:hover td{background:var(--gray-50)}
+.steal-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;white-space:nowrap}
+.steal-badge.neg{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.steal-badge.mix{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.steal-opp-score{font-size:13px;font-weight:700;color:var(--teal-dark)}
+.steal-sub{font-size:11px;color:var(--text-3);font-family:var(--mono);margin-top:2px}
+.steal-link{color:var(--text);text-decoration:none;font-weight:500;font-size:13px;line-height:1.4;display:block}
+.steal-link:hover{color:var(--teal-dark);text-decoration:underline}
+.steal-competitors{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+
+/* ── SUBREDDIT MESSAGING ──────────────────────────────────────────────── */
+.sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.sm-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.sm-card-head{padding:14px 18px 12px;background:var(--gray-50);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sm-card-sub{font-size:15px;font-weight:700;color:var(--teal-dark)}
+.sm-card-meta{font-size:11px;color:var(--text-3);margin-top:1px}
+.sm-card-body{padding:16px 18px}
+.sm-section{margin-bottom:14px}
+.sm-section:last-child{margin-bottom:0}
+.sm-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-3);margin-bottom:6px}
+.sm-tone{display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:3px 8px;border-radius:99px;background:var(--teal-bg);color:var(--teal-dark);border:1px solid var(--primary-100);font-weight:500;margin-bottom:8px}
+.sm-topics{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.sm-topic-chip{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--gray-100);color:var(--text-2);font-weight:500}
+.sm-template{background:var(--gray-50);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.sm-template:last-child{margin-bottom:0}
+.sm-template-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-bottom:5px}
+.sm-template-text{font-size:12.5px;color:var(--text-2);line-height:1.6;font-style:italic}
+.sm-avoid{font-size:12px;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;margin-top:8px}
+.sm-avoid strong{font-weight:600}
 </style>
 </head>
 <body>
@@ -472,6 +551,28 @@ tr:hover td{background:var(--gray-50)}
     <a class="nav-item" data-s="brand-mentions">
       <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
       Brand Mentions
+    </a>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Insights</div>
+    <a class="nav-item" data-s="exec-summary">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+      Executive Summary
+    </a>
+    <a class="nav-item" data-s="competitor-compare">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+      Competitor Comparison
+    </a>
+    <a class="nav-item" data-s="share-of-voice">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+      Share of Voice
+    </a>
+    <a class="nav-item" data-s="steal-thread">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+      Steal the Thread
+    </a>
+    <a class="nav-item" data-s="sub-messaging">
+      <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg></span>
+      Subreddit Messaging
     </a>
   </nav>
   <div class="sidebar-foot" id="sidebar-foot">0 posts · 0 communities</div>
@@ -731,6 +832,118 @@ tr:hover td{background:var(--gray-50)}
       </table>
       <div class="bm-table-foot" id="bm-count"></div>
     </div>
+  </section>
+
+  <!-- COMPETITOR COMPARISON -->
+  <section class="section" id="s-competitor-compare">
+    <div class="page-title">Competitor Comparison</div>
+    <div class="page-desc">Select up to three competitors to compare side-by-side — sentiment, what Reddit praises, criticises, and how they stack up against Reviews.io.</div>
+    <div class="divider"></div>
+    <div class="cc-selectors" id="cc-selectors">
+      <div class="cc-selector-wrap">
+        <span class="cc-selector-label">A</span>
+        <select class="t-select" id="cc-sel-0" style="min-width:180px"><option value="">Select brand…</option></select>
+      </div>
+      <div style="font-size:18px;color:var(--text-3);font-weight:300">vs</div>
+      <div class="cc-selector-wrap">
+        <span class="cc-selector-label">B</span>
+        <select class="t-select" id="cc-sel-1" style="min-width:180px"><option value="">Select brand…</option></select>
+      </div>
+      <div id="cc-third-wrap" style="display:none;align-items:center;gap:6px">
+        <div style="font-size:18px;color:var(--text-3);font-weight:300">vs</div>
+        <div class="cc-selector-wrap">
+          <span class="cc-selector-label">C</span>
+          <select class="t-select" id="cc-sel-2" style="min-width:180px"><option value="">Select brand…</option></select>
+        </div>
+        <button class="cc-remove-btn" id="cc-remove-third" title="Remove">✕</button>
+      </div>
+      <button class="cc-add-btn" id="cc-add-third">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add third brand
+      </button>
+    </div>
+    <div id="cc-grid" class="cc-grid cols-2"></div>
+    <div id="cc-empty" style="text-align:center;padding:60px 20px;color:var(--text-3);font-size:14px">Select brands above to compare them head-to-head.</div>
+  </section>
+
+  <!-- SHARE OF VOICE -->
+  <section class="section" id="s-share-of-voice">
+    <div class="page-title">Share of Voice</div>
+    <div class="page-desc">How often each brand appears across the 377 Reddit posts analysed — a proxy for mindshare in the review management conversation.</div>
+    <div class="divider"></div>
+    <div class="stats-row" id="sov-stats" style="margin-bottom:20px"></div>
+    <div class="grid-2" style="margin-bottom:20px">
+      <div class="card">
+        <div class="card-title">Brand Mention Share (top 20)</div>
+        <div class="chart-wrap" id="sov-chart-wrap" style="height:520px"><canvas id="chart-sov"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Sentiment Breakdown by Brand</div>
+        <div id="sov-sent-list" style="max-height:540px;overflow-y:auto"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Reviews.io Position</div>
+      <div id="sov-position" class="sov-highlight"></div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="section" id="s-exec-summary">
+    <div class="page-title">Executive Summary</div>
+    <div class="page-desc">The most important signals from 377 Reddit posts — distilled into opportunities, threats, and recommended actions for Reviews.io.</div>
+    <div class="divider"></div>
+    <div id="es-banner" class="es-banner"></div>
+    <div class="es-grid" id="es-grid"></div>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-title">Top Pain Point</div>
+      <div id="es-pain"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Key Stats at a Glance</div>
+      <div class="stats-row" id="es-stats"></div>
+    </div>
+  </section>
+
+  <!-- STEAL THE THREAD -->
+  <section class="section" id="s-steal-thread">
+    <div class="page-title">Steal the Thread</div>
+    <div class="page-desc">Threads where a competitor is mentioned negatively or with mixed sentiment — and Reviews.io is not present. These are live, high-intent engagement opportunities.</div>
+    <div class="divider"></div>
+    <div class="stats-row" id="steal-stats" style="margin-bottom:20px"></div>
+    <div class="table-controls" style="margin-bottom:16px">
+      <input class="t-input" id="steal-search" placeholder="Search threads…" style="min-width:220px">
+      <select class="t-select" id="steal-sub">
+        <option value="">All subreddits</option>
+      </select>
+      <select class="t-select" id="steal-fit">
+        <option value="">All fit scores</option>
+        <option value="high">High fit (7+)</option>
+        <option value="mid">Mid fit (4–6)</option>
+      </select>
+    </div>
+    <div id="steal-count" style="font-size:12px;color:var(--text-3);margin-bottom:10px"></div>
+    <div style="overflow-x:auto">
+      <table class="steal-table">
+        <thead><tr>
+          <th style="width:120px">Community</th>
+          <th>Thread</th>
+          <th>Competitors mentioned</th>
+          <th style="width:80px;text-align:center">Fit</th>
+          <th style="width:80px;text-align:center">Upvotes</th>
+        </tr></thead>
+        <tbody id="steal-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SUBREDDIT MESSAGING -->
+  <section class="section" id="s-sub-messaging">
+    <div class="page-title">Subreddit Messaging</div>
+    <div class="page-desc">Tone, topics, and response templates tailored to each high-value subreddit — so Reviews.io can engage authentically without getting flagged or ignored.</div>
+    <div class="divider"></div>
+    <div class="stats-row" id="sm-stats" style="margin-bottom:24px"></div>
+    <div class="sm-grid" id="sm-grid"></div>
   </section>
 
 </main>
@@ -1925,6 +2138,471 @@ const renderers = {
         [allBrands.length, 'Brands tracked'],
       ].map(([v, l]) => `<div class="stat-item"><div class="val" style="font-size:20px">${v}</div><div class="lbl">${l}</div></div>`).join('');
     }
+  },
+
+  // ── COMPETITOR COMPARISON ─────────────────────────────────────────────────
+  'competitor-compare'() {
+    // Build enriched brand map from brandMentions + DATA.brands
+    const _bLookup = {}, _bLower = {};
+    (DATA.brands || []).forEach(b => { _bLookup[b.brand] = b; _bLower[b.brand.toLowerCase()] = b; });
+    const _bmGroups = {};
+    (DATA.brandMentions || []).forEach(m => {
+      const k = m.brand;
+      if (!_bmGroups[k]) _bmGroups[k] = { brand:k, pos:0, neg:0, mix:0, total:0 };
+      const g = _bmGroups[k];
+      g.total++;
+      if (m.rating==='Positive') g.pos++;
+      else if (m.rating==='Negative') g.neg++;
+      else if (m.rating==='Mixed') g.mix++;
+    });
+    Object.values(_bmGroups).forEach(g => {
+      const known = _bLookup[g.brand] || _bLower[g.brand.toLowerCase()];
+      if (known) Object.assign(g, known);
+      g.mentions = g.total;
+      if (!g.score) g.score = Math.round(((g.pos - g.neg) / Math.max(g.total,1)) * 5);
+      if (!g.sentiment) g.sentiment = g.score >= 2 ? 'Positive' : g.score <= -2 ? 'Negative' : g.score < 0 ? 'Mixed' : 'Neutral';
+    });
+
+    // Sort by total mentions desc for dropdown
+    const allBrands = Object.values(_bmGroups).sort((a,b) => b.total - a.total);
+    const brandDomains = { 'Trustpilot':'trustpilot.com','Feefo':'feefo.com','Yotpo':'yotpo.com','Judge.me':'judge.me','Okendo':'okendo.io','Loox':'loox.io','Stamped.io':'stamped.io','Google Reviews':'google.com','Fera':'fera.ai','Bazaarvoice':'bazaarvoice.com','Reviews.io':'reviews.io','CusRev':'cusrev.com','Cusrev':'cusrev.com','HiFiveStar':'hifivestar.com','Birdeye':'birdeye.com','Podium':'podium.com','Yelp':'yelp.com','G2':'g2.com','Klaviyo':'klaviyo.com','BrightLocal':'brightlocal.com','Senja':'senja.io','Growave':'growave.io','Clutch':'clutch.co','BigCommerce':'bigcommerce.com','WooCommerce':'woocommerce.com' };
+    const fav = name => { const d=brandDomains[name]||brandDomains[(name||'').toLowerCase()]; return d?`<img src="https://www.google.com/s2/favicons?domain=${d}&sz=16" width="16" height="16" style="border-radius:3px;vertical-align:middle;margin-right:5px" alt="">`:''; };
+
+    // Populate dropdowns
+    [0,1,2].forEach(i => {
+      const sel = document.getElementById('cc-sel-'+i);
+      if (!sel) return;
+      sel.innerHTML = '<option value="">Select brand…</option>' + allBrands.map(b=>`<option value="${esc(b.brand)}">${esc(b.brand)} (${b.total} mentions)</option>`).join('');
+    });
+
+    // Set sensible defaults: Trustpilot vs Judge.me
+    const sel0 = document.getElementById('cc-sel-0');
+    const sel1 = document.getElementById('cc-sel-1');
+    if (sel0) { const opt = [...sel0.options].find(o=>o.value==='Trustpilot'); if(opt) opt.selected=true; }
+    if (sel1) { const opt = [...sel1.options].find(o=>o.value==='Judge.me'); if(opt) opt.selected=true; }
+
+    // Add/remove third column
+    const thirdWrap = document.getElementById('cc-third-wrap');
+    const addBtn = document.getElementById('cc-add-third');
+    const removeBtn = document.getElementById('cc-remove-third');
+    if (addBtn) addBtn.onclick = () => { thirdWrap.style.display='flex'; addBtn.style.display='none'; render(); };
+    if (removeBtn) removeBtn.onclick = () => { thirdWrap.style.display='none'; addBtn.style.display=''; document.getElementById('cc-sel-2').value=''; render(); };
+
+    const sentColor = s => s==='Positive'?'#16a34a':s==='Negative'?'#dc2626':s==='Mixed'?'#d97706':'#6b7280';
+    const scoreBarW = score => Math.round(Math.min(100, Math.max(0, ((score+5)/10)*100)));
+
+    const renderCard = b => {
+      if (!b) return '';
+      const barW = scoreBarW(b.score||0);
+      const barColor = (b.score||0) >= 0 ? '#16a34a' : '#dc2626';
+      return `
+        <div class="cc-card">
+          <div class="cc-card-head ${esc(b.sentiment||'Neutral')}">
+            <div class="cc-brand-row">
+              ${fav(b.brand)}
+              <span class="cc-brand-name">${esc(b.brand)}</span>
+              <span class="sent-pill ${esc(b.sentiment||'Neutral')}" style="margin-left:auto">${esc(b.sentiment||'Neutral')}</span>
+            </div>
+            <div class="cc-score-bar-wrap"><div class="cc-score-bar" style="width:${barW}%;background:${barColor}"></div></div>
+            <div class="cc-score-label">${b.mentions||0} Reddit mentions \xb7 Net sentiment ${b.score >= 0 ? '+' : ''}${Math.round(b.score||0)}</div>
+          </div>
+          <div class="cc-body">
+            ${b.reddit_summary ? `<div class="cc-row"><div class="cc-row-label">Reddit says</div><div class="cc-row-val">${esc(b.reddit_summary)}</div></div>` : ''}
+            ${b.praise ? `<div class="cc-row"><div class="cc-row-label">Praised for</div><div class="cc-row-val good">${esc(b.praise)}</div></div>` : ''}
+            ${b.criticism ? `<div class="cc-row"><div class="cc-row-label">Criticised for</div><div class="cc-row-val bad">${esc(b.criticism)}</div></div>` : ''}
+            ${b.vs_reviews_io ? `<div class="cc-row"><div class="cc-row-label">vs Reviews.io</div><div class="cc-row-val">${esc(b.vs_reviews_io)}</div></div>` : ''}
+            ${b.quote ? `<div class="cc-row"><div class="cc-row-label">Reddit quote</div><div class="cc-quote">"${esc(b.quote)}"<div style="font-size:10.5px;color:var(--text-3);margin-top:4px;font-style:normal">r/${esc(b.quote_src||'')}</div></div></div>` : ''}
+          </div>
+        </div>`;
+    };
+
+    const render = () => {
+      const names = [
+        document.getElementById('cc-sel-0')?.value,
+        document.getElementById('cc-sel-1')?.value,
+        document.getElementById('cc-sel-2')?.value,
+      ].filter(Boolean);
+      const brands = names.map(n => _bmGroups[n] || Object.values(_bmGroups).find(b=>b.brand.toLowerCase()===n.toLowerCase()) || null);
+      const grid = document.getElementById('cc-grid');
+      const empty = document.getElementById('cc-empty');
+      const activeBrands = brands.filter(Boolean);
+      if (!activeBrands.length) { grid.innerHTML=''; empty.style.display='block'; return; }
+      empty.style.display='none';
+      grid.className = 'cc-grid ' + (activeBrands.length >= 3 ? 'cols-3' : 'cols-2');
+      grid.innerHTML = activeBrands.map(b => renderCard(b)).join('');
+    };
+
+    [0,1,2].forEach(i => {
+      const sel = document.getElementById('cc-sel-'+i);
+      if (sel) sel.onchange = render;
+    });
+    render();
+  },
+
+  // ── SHARE OF VOICE ────────────────────────────────────────────────────────
+  'share-of-voice'() {
+    // Count mentions per brand from brandMentions
+    const counts = {};
+    const sentCounts = {};
+    (DATA.brandMentions || []).forEach(m => {
+      counts[m.brand] = (counts[m.brand]||0) + 1;
+      if (!sentCounts[m.brand]) sentCounts[m.brand] = {pos:0,neg:0,mix:0,neu:0};
+      if (m.rating==='Positive') sentCounts[m.brand].pos++;
+      else if (m.rating==='Negative') sentCounts[m.brand].neg++;
+      else if (m.rating==='Mixed') sentCounts[m.brand].mix++;
+      else sentCounts[m.brand].neu++;
+    });
+    const total = Object.values(counts).reduce((s,v)=>s+v,0);
+    const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+    const top20 = sorted.slice(0,20);
+    const reviewsIoCount = counts['Reviews.io']||0;
+    const reviewsIoRank = sorted.findIndex(([n])=>n==='Reviews.io')+1;
+    const topBrand = sorted[0];
+
+    // Stats row
+    document.getElementById('sov-stats').innerHTML = [
+      [sorted.length, 'Brands tracked'],
+      [total, 'Total brand mentions'],
+      [topBrand ? topBrand[0] : '—', 'Most mentioned'],
+      [reviewsIoCount > 0 ? `#${reviewsIoRank}` : 'Not ranked', 'Reviews.io rank'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val" style="font-size:${String(v).length>5?'18px':'26px'}">${v}</div><div class="lbl">${l}</div></div>`).join('');
+
+    // Bar chart
+    const labels = top20.map(([n])=>n);
+    const data = top20.map(([,c])=>c);
+    const colors = labels.map(n => n==='Reviews.io'?'#14b8a6':'#bae6fd');
+    const pcts = data.map(c=>(c/total*100).toFixed(1));
+    const chartH = Math.max(400, top20.length*26+60);
+    document.getElementById('sov-chart-wrap').style.height = chartH+'px';
+    new Chart(document.getElementById('chart-sov'),{
+      type:'bar',
+      data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:3}]},
+      options:{
+        indexAxis:'y',responsive:true,maintainAspectRatio:false,
+        plugins:{
+          legend:{display:false},
+          tooltip:{callbacks:{label:ctx=>`${ctx.raw} mentions (${pcts[ctx.dataIndex]}% of corpus)`}}
+        },
+        scales:{
+          x:{grid:{color:'#f0f2f5'},ticks:{color:'#999',font:{family:'system-ui,-apple-system,sans-serif',size:11}},border:{display:false}},
+          y:{grid:{display:false},ticks:{color:'#374151',font:{family:'system-ui,-apple-system,sans-serif',size:11,weight:'500'}},border:{display:false}}
+        }
+      }
+    });
+
+    // Sentiment breakdown list
+    document.getElementById('sov-sent-list').innerHTML = top20.map(([name,count])=>{
+      const sc = sentCounts[name]||{pos:0,neg:0,mix:0,neu:0};
+      const posW = Math.round(sc.pos/count*100);
+      const negW = Math.round(sc.neg/count*100);
+      const mixW = Math.round(sc.mix/count*100);
+      const isRio = name==='Reviews.io';
+      return `<div style="padding:10px 0;border-bottom:1px solid var(--gray-100)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <span style="font-size:13px;font-weight:${isRio?'700':'500'};color:${isRio?'var(--teal-dark)':'var(--text)'}">${esc(name)}</span>
+          <span style="font-size:11px;color:var(--text-3)">${count} mentions</span>
+        </div>
+        <div style="display:flex;height:6px;border-radius:99px;overflow:hidden;gap:1px">
+          ${posW?`<div style="width:${posW}%;background:#16a34a;border-radius:99px 0 0 99px" title="${posW}% positive"></div>`:''}
+          ${mixW?`<div style="width:${mixW}%;background:#d97706" title="${mixW}% mixed"></div>`:''}
+          ${negW?`<div style="width:${negW}%;background:#dc2626;border-radius:0 99px 99px 0" title="${negW}% negative"></div>`:''}
+        </div>
+      </div>`;
+    }).join('');
+
+    // Reviews.io position card
+    const rioMentions = counts['Reviews.io']||0;
+    const trustpilotMentions = counts['Trustpilot']||counts['trustpilot']||0;
+    document.getElementById('sov-position').innerHTML = rioMentions > 0
+      ? `<strong>Reviews.io ranks #${reviewsIoRank} of ${sorted.length} brands</strong> with ${rioMentions} mentions (${(rioMentions/total*100).toFixed(1)}% of corpus). Trustpilot dominates with ${trustpilotMentions} mentions (${(trustpilotMentions/total*100).toFixed(1)}%). The opportunity: Reviews.io is mentioned far less than competitors, meaning most "which review tool?" conversations happen without a Reviews.io advocate in the thread. This is the core rationale for an active Reddit presence.`
+      : `Reviews.io does not yet appear in the brand mentions corpus. Trustpilot dominates with ${trustpilotMentions} mentions (${(trustpilotMentions/total*100).toFixed(1)}% of all brand mentions). This represents a significant awareness gap and the core case for a Reddit engagement strategy.`;
+  },
+
+  // ── EXECUTIVE SUMMARY ─────────────────────────────────────────────────────
+  'exec-summary'() {
+    // Dominant theme banner
+    if (DATA.dominantTheme) {
+      document.getElementById('es-banner').textContent = DATA.dominantTheme;
+    }
+
+    // Build brand sentiment map for threat detection
+    const _bmTally = {};
+    (DATA.brandMentions || []).forEach(m => {
+      if (!_bmTally[m.brand]) _bmTally[m.brand] = {total:0,neg:0,pos:0};
+      _bmTally[m.brand].total++;
+      if (m.rating==='Negative') _bmTally[m.brand].neg++;
+      if (m.rating==='Positive') _bmTally[m.brand].pos++;
+    });
+
+    // Opportunities: top 3 from opps
+    const oppItems = (DATA.opps||[]).slice(0,3).map((o,i) => `
+      <div class="es-item">
+        <div class="es-item-num">${i+1}</div>
+        <div class="es-item-text"><strong>${esc(o.subreddit)}</strong> — ${esc((o.why||'').split('.')[0]+'.')}</div>
+      </div>`).join('');
+
+    // Threats: top 3 competitors by negative mentions with high volume
+    const threats = Object.entries(_bmTally)
+      .filter(([n]) => n !== 'Reviews.io')
+      .map(([name, t]) => ({ name, ...t, negRate: t.neg/Math.max(t.total,1) }))
+      .filter(t => t.negRate > 0.2 && t.total >= 5)
+      .sort((a,b) => b.total - a.total)
+      .slice(0,3);
+    const threatItems = threats.map((t,i) => `
+      <div class="es-item">
+        <div class="es-item-num">${i+1}</div>
+        <div class="es-item-text"><strong>${esc(t.name)}</strong> — ${t.total} mentions, ${Math.round(t.negRate*100)}% negative sentiment. Users are frustrated and searching for alternatives.</div>
+      </div>`).join('') || '<div class="es-item"><div class="es-item-text" style="color:var(--text-3)">Insufficient negative mention data for ranking.</div></div>';
+
+    // Actions: top 3 wins
+    const actionItems = (DATA.wins||[]).slice(0,3).map((w,i) => `
+      <div class="es-item">
+        <div class="es-item-num">${i+1}</div>
+        <div class="es-item-text"><strong>${esc(w.type||'')}</strong> — ${esc((w.description||'').split('.')[0]+'.')}</div>
+      </div>`).join('');
+
+    // Insight: dominant buyer persona
+    const topArch = (DATA.archetypes||[])[0];
+    const insightItems = topArch ? `
+      <div class="es-item">
+        <div class="es-item-num">1</div>
+        <div class="es-item-text"><strong>${esc(topArch.name)}</strong> — ${esc((topArch.description||'').split('.')[0]+'.')}</div>
+      </div>
+      <div class="es-item">
+        <div class="es-item-num">2</div>
+        <div class="es-item-text"><strong>Core pain:</strong> ${esc(topArch.core_pain||'')}</div>
+      </div>` : '';
+
+    document.getElementById('es-grid').innerHTML = `
+      <div class="es-card">
+        <div class="es-card-label opportunity"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg> Top Opportunities</div>
+        ${oppItems}
+      </div>
+      <div class="es-card">
+        <div class="es-card-label threat"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Competitor Threats</div>
+        ${threatItems}
+      </div>
+      <div class="es-card">
+        <div class="es-card-label action"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Recommended Actions</div>
+        ${actionItems}
+      </div>
+      <div class="es-card">
+        <div class="es-card-label insight"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Primary Audience</div>
+        ${insightItems}
+      </div>`;
+
+    // Top pain point
+    const p1 = (DATA.painPoints||[])[0];
+    if (p1) {
+      document.getElementById('es-pain').innerHTML = `
+        <div style="padding:14px 0">
+          <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">${esc(p1.name)}</div>
+          <div style="font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:10px">${esc(p1.description||'')}</div>
+          ${p1.direct_quote?`<div style="font-style:italic;font-size:13px;color:var(--text-2);border-left:3px solid var(--border);padding:6px 12px;background:var(--gray-50);border-radius:0 4px 4px 0">"${esc(p1.direct_quote)}"<div style="font-size:10.5px;color:var(--text-3);margin-top:3px;font-style:normal">r/${esc(p1.quote_source||'')}</div></div>`:''}
+          ${p1.reviews_io_relevance?`<div style="margin-top:10px;padding:8px 12px;background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:6px;font-size:12.5px;color:var(--teal-dark)"><strong>Reviews.io:</strong> ${esc(p1.reviews_io_relevance)}</div>`:''}
+        </div>`;
+    }
+
+    // Key stats
+    const totalBrands = Object.keys(_bmTally).length;
+    const totalNeg = Object.values(_bmTally).reduce((s,t)=>s+t.neg,0);
+    document.getElementById('es-stats').innerHTML = [
+      [DATA.stats.total_posts, 'Posts analysed'],
+      [DATA.stats.total_subreddits, 'Communities'],
+      [totalBrands, 'Brands mentioned'],
+      [totalNeg, 'Negative brand mentions'],
+      [(DATA.opps||[]).length, 'Target subreddits'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val">${v}</div><div class="lbl">${l}</div></div>`).join('');
+  },
+
+  // ── STEAL THE THREAD ──────────────────────────────────────────────────────
+  'steal-thread'() {
+    // Build per-thread brand mention index from brandMentions
+    // Map: thread URL → set of {brand, rating}
+    const threadBrands = {};
+    (DATA.brandMentions || []).forEach(m => {
+      if (!threadBrands[m.url]) threadBrands[m.url] = [];
+      threadBrands[m.url].push({ brand: m.brand, rating: m.rating });
+    });
+
+    // Find threads where: competitor mentioned neg/mixed AND Reviews.io not present
+    const rioVariants = new Set(['Reviews.io','reviews.io','REVIEWS.IO']);
+    const opportunities = (DATA.threads || []).filter(t => {
+      const mentions = threadBrands[t.url] || [];
+      const hasRio = mentions.some(m => rioVariants.has(m.brand));
+      if (hasRio) return false;
+      const hasNegComp = mentions.some(m => m.rating === 'Negative' || m.rating === 'Mixed');
+      return hasNegComp && t.fit >= 4;
+    }).map(t => {
+      const mentions = threadBrands[t.url] || [];
+      const negComps = mentions.filter(m => m.rating==='Negative'||m.rating==='Mixed');
+      return { ...t, negComps };
+    }).sort((a,b) => b.fit - a.fit || b.score - a.score);
+
+    // Stats
+    const highFit = opportunities.filter(t=>t.fit>=7).length;
+    const subs = [...new Set(opportunities.map(t=>t.subreddit))];
+    document.getElementById('steal-stats').innerHTML = [
+      [opportunities.length, 'Steal opportunities'],
+      [highFit, 'High-fit (7+)'],
+      [subs.length, 'Subreddits covered'],
+      [opportunities.filter(t=>t.negComps.some(m=>m.brand==='Trustpilot')).length, 'Trustpilot threads'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val" style="font-size:20px">${v}</div><div class="lbl">${l}</div></div>`).join('');
+
+    // Populate subreddit filter
+    const subSel = document.getElementById('steal-sub');
+    subs.sort().forEach(s => { const o=document.createElement('option'); o.value=s; o.textContent='r/'+s; subSel.appendChild(o); });
+
+    let _sq='', _ssub='', _sfit='';
+
+    function draw() {
+      let rows = opportunities.filter(t => {
+        if (_ssub && t.subreddit !== _ssub) return false;
+        if (_sfit==='high' && t.fit < 7) return false;
+        if (_sfit==='mid' && (t.fit < 4 || t.fit >= 7)) return false;
+        if (_sq && !t.title.toLowerCase().includes(_sq) && !t.subreddit.toLowerCase().includes(_sq)) return false;
+        return true;
+      });
+      document.getElementById('steal-count').textContent = `${rows.length} of ${opportunities.length} opportunities`;
+      document.getElementById('steal-body').innerHTML = rows.slice(0,100).map(t => {
+        const fc = t.fit >= 7 ? 'high' : t.fit >= 4 ? 'mid' : 'low';
+        const compBadges = [...new Map(t.negComps.map(m=>[m.brand+m.rating,m])).values()]
+          .slice(0,4)
+          .map(m=>`<span class="steal-badge ${m.rating==='Negative'?'neg':'mix'}">${esc(m.brand)}</span>`)
+          .join('');
+        return `<tr>
+          <td><span class="sub-mono">r/${esc(t.subreddit)}</span></td>
+          <td><a class="steal-link" href="${esc(t.url)}" target="_blank">${esc(t.title)}</a></td>
+          <td><div class="steal-competitors">${compBadges}</div></td>
+          <td style="text-align:center"><span class="fit-chip ${fc}">${t.fit}</span></td>
+          <td style="text-align:center;font-size:13px;color:var(--text-2)">${t.score||'—'}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="5" style="padding:30px;text-align:center;color:var(--text-3)">No threads match your filters.</td></tr>';
+    }
+
+    document.getElementById('steal-search').oninput = e => { _sq=e.target.value.toLowerCase(); draw(); };
+    document.getElementById('steal-sub').onchange = e => { _ssub=e.target.value; draw(); };
+    document.getElementById('steal-fit').onchange = e => { _sfit=e.target.value; draw(); };
+    draw();
+  },
+
+  // ── SUBREDDIT MESSAGING ────────────────────────────────────────────────────
+  'sub-messaging'() {
+    // Enrich each opp with tone label + 2 response templates + avoid note
+    const smEnrich = {
+      'r/ecommerce': {
+        tone: 'Peer · Data-backed · Non-promotional',
+        templates: [
+          { label: 'When someone asks for Trustpilot alternatives', text: '"We switched from Trustpilot last year — the pricing was just not justifiable for a £1M store. Reviews.io has been solid: verified purchase reviews, Google Seller Ratings integration, and the support is actually responsive. Happy to share our setup if useful."' },
+          { label: 'When a review manipulation thread surfaces', text: '"This is the core problem with open platforms — anyone can submit a review. We use Reviews.io specifically because they only send collection invites to verified purchasers. Not perfect but the ratio of fake reviews is way lower in our experience."' },
+        ],
+        avoid: 'Avoid leading with pricing comparisons or linking to the Reviews.io site directly — threads that feel like ads get removed.',
+      },
+      'r/shopify': {
+        tone: 'Practical · Integration-focused · Helpful',
+        templates: [
+          { label: 'On "which review app" threads', text: '"Depends on your goals. Judge.me is great for pure Shopify UGC. If you also want Google Seller Ratings (which can lift Shopping ROAS noticeably), Reviews.io is worth the extra cost — the GSR integration is native. I\'d only pay for Yotpo if you\'re doing serious loyalty programme work."' },
+          { label: 'When someone complains about review app cost', text: '"What are you currently paying and what features are you actually using? A lot of merchants are on Okendo or Yotpo plans and only using 20% of the features. Reviews.io\'s lower tiers cover verified reviews + Google integration for a fraction of the price."' },
+        ],
+        avoid: 'Don\'t position against Judge.me aggressively — it\'s well-liked in this sub and direct attacks backfire. Frame as "depends on your use case".',
+      },
+      'r/smallbusiness': {
+        tone: 'Empathetic · Cost-conscious · Practical',
+        templates: [
+          { label: 'When someone feels priced out of review platforms', text: '"I felt the same way about Trustpilot — £300/month for a business our size felt like a credibility tax. Reviews.io has an entry-level plan that covers the basics. The key thing is getting Google Seller Ratings working, which is free on their lower tier."' },
+          { label: 'When someone asks how to build trust with no reviews', text: '"Start with Google Business Profile reviews — they\'re free and customers trust them. Then use a tool to automate post-purchase collection. We\'ve had good results with Reviews.io because it sends the invite at the right time (not immediately after purchase, but after the product arrives)."' },
+        ],
+        avoid: 'Avoid jargon like "UGC" or "social proof infrastructure" — this audience responds to plain language and concrete cost comparisons.',
+      },
+      'r/smallbusinessuk': {
+        tone: 'UK-specific · Compliance-aware · Peer',
+        templates: [
+          { label: 'On GDPR and review collection', text: '"Worth noting that not all review platforms are equal on GDPR compliance. Reviews.io is UK-based so their data processing agreements are built for UK/EU requirements — that mattered to us post-Brexit when we were tightening our data practices."' },
+          { label: 'On Trustpilot UK frustration threads', text: '"The Trustpilot pricing model for UK SMBs is brutal — you\'re essentially paying for a logo you can put on your site. Reviews.io costs a third of the price for similar functionality and their UK team is actually reachable when something goes wrong."' },
+        ],
+        avoid: 'Don\'t make claims about GDPR compliance you can\'t back up precisely. Saying "UK-based" is safer than making specific legal claims.',
+      },
+      'r/AskMarketing': {
+        tone: 'ROI-focused · Strategic · Evidence-based',
+        templates: [
+          { label: 'On review impact on Google Shopping', text: '"One underrated lever: Google Seller Ratings on Shopping ads. You need 100+ verified reviews via a Google-licensed partner. We saw a 12–15% CTR lift after getting the stars showing. Reviews.io is one of the licensed partners — took about 6 weeks to accumulate enough reviews to trigger the stars."' },
+          { label: 'On ORM tool comparisons', text: '"For pure ecommerce reputation, the stack I\'d recommend: Reviews.io for verified purchase reviews + Google integration, Google Business Profile for local, and Trustpilot only if your industry specifically expects it. Trustpilot\'s brand recognition is its main value — if your customers don\'t ask for it by name, you can skip it."' },
+        ],
+        avoid: 'Don\'t cite specific conversion lift percentages unless you can back them up — marketing subs are sceptical and will challenge unsourced numbers.',
+      },
+      'r/AskUK': {
+        tone: 'Consumer-empathetic · Transparent · Conversational',
+        templates: [
+          { label: 'On "is Trustpilot trustworthy?" threads', text: '"Short answer: not really, for the reasons you\'ve described. The business model creates perverse incentives — companies pay to manage their profile, which includes flagging reviews. The better-moderated alternatives are Google Reviews (harder to game) and platforms like Reviews.io that only send collection invites to verified purchasers."' },
+          { label: 'On fake review concerns', text: '"The verification model is what matters. Trustpilot allows anyone to leave a review for any company — that\'s why manipulation is so easy. Platforms that tie reviews to actual purchase data (order confirmation, delivery verification) are structurally harder to game."' },
+        ],
+        avoid: 'Don\'t directly promote Reviews.io in this subreddit — it\'s a consumer forum, not a business one. Educate on the market, let users draw their own conclusions.',
+      },
+      'r/GoogleMyBusiness': {
+        tone: 'Technical · Setup-focused · Specific',
+        templates: [
+          { label: 'On getting Google Seller Ratings', text: '"To get stars showing on your Google Shopping ads you need: (1) a licensed review aggregator — Reviews.io, Trustpilot, Bazaarvoice etc., (2) 100+ reviews in the last 12 months, (3) the reviews to be linked to your domain. Reviews.io has a setup guide for this specifically — it\'s about a 2-hour integration if you\'re on Shopify."' },
+          { label: 'On Google review management', text: '"If you want to pull Google reviews into your own platform for display and analytics, Reviews.io has an import/sync feature. Useful for showing Google + verified purchase reviews together on your product pages."' },
+        ],
+        avoid: 'This sub is heavily technical and moderated — don\'t post without adding genuine setup value. Vague "check out X tool" replies get downvoted.',
+      },
+      'r/SEO': {
+        tone: 'Technical · Schema-focused · Evidence-backed',
+        templates: [
+          { label: 'On review rich snippets', text: '"For ecommerce review structured data: make sure you\'re implementing both Product schema (for individual product reviews) and LocalBusiness AggregateRating if applicable. Reviews.io generates both automatically via their Shopify/WooCommerce widgets — saves the manual schema work."' },
+          { label: 'On review signals for SEO', text: '"Review velocity and recency matter more than raw count for local SEO signals. A tool that automates post-purchase collection (so you\'re getting consistent reviews rather than spikes) tends to outperform manual campaigns over 6–12 months. Reviews.io\'s automated flows do this well."' },
+        ],
+        avoid: 'Don\'t make SEO ranking claims you can\'t specifically attribute. This audience is technically sophisticated and will call out correlation/causation errors.',
+      },
+    };
+
+    // Stats
+    const smOpps = DATA.opps || [];
+    document.getElementById('sm-stats').innerHTML = [
+      [smOpps.length, 'Subreddits covered'],
+      [smOpps.reduce((s,o)=>(o.topics_to_lead_with||[]).length+s,0), 'Topic hooks'],
+      [smOpps.length * 2, 'Response templates'],
+      ['r/ecommerce', 'Highest priority'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val" style="font-size:${String(v).length>8?'16px':'20px'}">${v}</div><div class="lbl">${l}</div></div>`).join('');
+
+    // Render cards
+    document.getElementById('sm-grid').innerHTML = smOpps.map(o => {
+      const sub = o.subreddit;
+      const enrich = smEnrich[sub] || {};
+      const templates = enrich.templates || [];
+      const tone = enrich.tone || o.engagement_style || '';
+      const avoid = enrich.avoid || '';
+      const topics = o.topics_to_lead_with || [];
+
+      return `
+        <div class="sm-card">
+          <div class="sm-card-head">
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" width="16" height="16" style="border-radius:2px;flex-shrink:0" alt="">
+            <div>
+              <div class="sm-card-sub">${esc(sub)}</div>
+            </div>
+          </div>
+          <div class="sm-card-body">
+            <div class="sm-section">
+              <div class="sm-section-label">Tone</div>
+              <div class="sm-tone">${esc(tone)}</div>
+            </div>
+            ${topics.length ? `<div class="sm-section">
+              <div class="sm-section-label">Lead with these topics</div>
+              <div class="sm-topics">${topics.map(t=>`<span class="sm-topic-chip">${esc(t)}</span>`).join('')}</div>
+            </div>` : ''}
+            ${o.why ? `<div class="sm-section">
+              <div class="sm-section-label">Why this subreddit</div>
+              <div style="font-size:12.5px;color:var(--text-2);line-height:1.55">${esc(o.why)}</div>
+            </div>` : ''}
+            ${templates.length ? `<div class="sm-section">
+              <div class="sm-section-label">Response templates</div>
+              ${templates.map(t=>`<div class="sm-template"><div class="sm-template-label">${esc(t.label)}</div><div class="sm-template-text">${esc(t.text)}</div></div>`).join('')}
+            </div>` : ''}
+            ${avoid ? `<div class="sm-avoid"><strong>Avoid:</strong> ${esc(avoid)}</div>` : ''}
+          </div>
+        </div>`;
+    }).join('');
   },
 
 };
