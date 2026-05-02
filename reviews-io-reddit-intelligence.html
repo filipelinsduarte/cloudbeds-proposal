@@ -261,6 +261,27 @@ body{display:flex;flex-direction:column;min-height:100vh;font-family:var(--font)
 .angle-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--text-2);line-height:1.6;box-shadow:var(--shadow-card)}
 .red-flag{background:var(--red-bg);border:1px solid var(--red-bd);border-radius:10px;padding:14px 18px;font-size:12.5px;color:var(--red);line-height:1.5}
 .red-flag strong{font-weight:700}
+.opp-card{background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:box-shadow .15s}
+.opp-card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.09)}
+.opp-card-top{display:flex;align-items:flex-start;gap:14px;padding:16px 20px 10px}
+.opp-card-body{padding:0 20px 16px 62px}
+.opp-rank{width:30px;height:30px;border-radius:50%;background:var(--teal-dark);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.opp-sub-name{font-size:16px;font-weight:700;color:var(--teal-dark);font-family:var(--mono)}
+.opp-volume-pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:var(--text-3);background:var(--gray-50);border:1px solid var(--border);border-radius:99px;padding:2px 8px}
+.opp-why{font-size:13.5px;color:var(--text-2);line-height:1.65;margin-bottom:10px}
+.opp-approach-box{background:var(--teal-bg);border-radius:6px;padding:8px 12px;margin-bottom:10px;font-size:12.5px;color:var(--teal-dark);line-height:1.55}
+.opp-approach-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;opacity:.8}
+.action-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:10px}
+.action-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal-dark);background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:99px;padding:2px 10px;display:inline-block;margin-bottom:8px}
+.action-desc{font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:8px}
+.action-example{font-size:12.5px;color:var(--text-3);font-style:italic;background:var(--gray-50);border-radius:6px;padding:6px 10px}
+.angle-num-list{list-style:none;margin:0;padding:0}
+.angle-num-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--gray-100)}
+.angle-num-item:last-child{border-bottom:none}
+.angle-num-badge{font-size:11px;font-weight:700;color:var(--teal-dark);background:var(--teal-bg);border:1px solid var(--primary-100);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.angle-text{font-size:13.5px;color:var(--text-2);line-height:1.6}
+.gap-banner{background:linear-gradient(135deg,var(--teal-bg) 0%,#f0fdfc 100%);border:1px solid var(--primary-100);border-radius:10px;padding:14px 18px;font-size:13.5px;color:var(--teal-dark);line-height:1.6}
+.gap-banner-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;color:var(--teal-dark);opacity:.75}
 
 /* ── CONTENT STRATEGY ──────────────────────────────────────────────────────── */
 .formula-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:20px;box-shadow:var(--shadow-card)}
@@ -524,6 +545,26 @@ tr:hover td{background:var(--gray-50)}
 .bp-dd-opt:hover{background:var(--gray-50)}
 .bp-dd-opt.selected{background:var(--teal-bg);color:var(--teal-dark);font-weight:600}
 .sov-sent-row:hover .sov-counts{opacity:1}
+.trigger-list{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+.trigger-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:box-shadow .15s}
+.trigger-card-head{padding:16px 20px 10px;display:flex;align-items:flex-start;gap:12px}
+.trigger-num{width:28px;height:28px;border-radius:50%;background:var(--teal-bg);border:1px solid var(--primary-100);color:var(--teal-dark);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.trigger-pattern-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.trigger-desc-text{font-size:13.5px;color:var(--text-2);line-height:1.65}
+.trigger-mock-post{margin:0 20px 16px;background:#1a1a1b;border-radius:8px;padding:12px 16px}
+.cs-formula-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.formula-segments{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.formula-seg{padding:5px 12px;border-radius:6px;font-size:13px;font-weight:600}
+.formula-seg.type{background:#dbeafe;color:#1d4ed8}
+.formula-seg.topic{background:#dcfce7;color:#166534}
+.formula-seg.audience{background:#fef9c3;color:#713f12}
+.formula-op{font-size:15px;color:var(--text-3);font-weight:300;padding:0 2px}
+.cs-spotlight-card{background:linear-gradient(135deg,#f0fdfc 0%,var(--surface) 100%);border:1px solid var(--primary-100);border-radius:12px;padding:18px 20px}
+.playbook-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.playbook-card{display:flex;gap:12px;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--gray-50)}
+.playbook-icon{flex-shrink:0;line-height:1;color:var(--teal-dark);margin-top:2px}
+.playbook-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.playbook-desc{font-size:12.5px;color:var(--text-2);line-height:1.55}
 </style>
 </head>
 <body>
@@ -741,45 +782,26 @@ tr:hover td{background:var(--gray-50)}
   <!-- OPPORTUNITY MAP -->
   <section class="section" id="s-opportunity">
     <div class="page-title">Opportunity Map</div>
-    <div class="page-desc">Where Reviews.io should engage, in what order, and with what approach.</div>
-    <div class="section-subhead">Priority Communities</div>
-    <div class="grid-2" style="margin-bottom:20px" id="opp-summary-grid">
-      <div class="card">
-        <div class="card-title">Engagement Opportunities</div>
-        <div id="opp-chart-wrap" class="chart-wrap" style="height:160px"><canvas id="chart-opp-bar"></canvas></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Quick Stats</div>
-        <div id="opp-quick-stats"></div>
-      </div>
-    </div>
+    <div class="page-desc">Where Reviews.io should engage on Reddit — ranked by priority, with the approach and exact topics to lead with.</div>
+    <div id="opp-gap-banner" style="margin-bottom:20px"></div>
+    <div class="stats-row" id="opp-stats" style="margin-bottom:24px"></div>
     <div id="opp-list" class="opp-list"></div>
-    <div class="section-subhead">Immediate Wins</div>
+    <div class="section-subhead">Quick Actions</div>
     <div id="wins-list"></div>
     <div class="section-subhead">Content Angles</div>
-    <div class="angles-grid" id="angles-grid"></div>
-    <div id="red-flag"></div>
+    <div id="angles-list"></div>
+    <div id="red-flag" style="margin-top:16px"></div>
   </section>
 
   <!-- CONTENT STRATEGY -->
   <section class="section" id="s-triggers">
     <div class="page-title">Content Strategy</div>
-    <div class="page-desc">What drives high-engagement threads and how Reviews.io can use it.</div>
-    <div class="grid-2" style="margin-bottom:20px">
-      <div class="card">
-        <div class="card-title">Trigger Types</div>
-        <div id="chart-trigger-wrap" class="chart-wrap" style="height:160px"><canvas id="chart-trigger-donut"></canvas></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Engagement Formula</div>
-        <div id="formula-block"></div>
-      </div>
-    </div>
-    <div id="trigger-grid" class="trigger-grid"></div>
-    <div style="margin-bottom:8px">
-      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px">Reddit content playbook for Reviews.io</div>
-      <div style="font-size:12.5px;color:var(--text-2)">Proven post types and engagement strategies — ordered by impact. Use these as templates for your Reddit presence.</div>
-    </div>
+    <div class="page-desc">The conversation patterns that drive high-engagement threads — and exactly how Reviews.io can lead each one.</div>
+    <div id="cs-formula-wrap" style="margin-bottom:20px"></div>
+    <div id="cs-spotlight" style="margin-bottom:24px"></div>
+    <div class="section-subhead">Conversation Triggers</div>
+    <div id="trigger-grid" class="trigger-list"></div>
+    <div class="section-subhead" style="margin-top:24px">Reddit Playbook</div>
     <div id="eng-box"></div>
   </section>
 
@@ -1983,118 +2005,155 @@ const renderers = {
   // ── OPPORTUNITY MAP ──────────────────────────────────────────────────────────
   opportunity() {
     if (!DATA.opps || !DATA.opps.length) {
-      document.getElementById('opp-list').innerHTML = '<div class="empty-state"><div class="es-title">Opportunity data generating…</div>Run reviews_io_rebuild_dashboard.py to populate.</div>';
+      document.getElementById('opp-list').innerHTML = '<div class="empty-state">Opportunity data generating…</div>';
       return;
     }
 
-    // Chart: subreddit opportunities bar
-    if (document.getElementById('chart-opp-bar')) {
-      const oppLabels = DATA.opps.map(o => 'r/' + o.subreddit);
-      const oppTopics = DATA.opps.map(o => (o.topics_to_lead_with || []).length);
-      new Chart(document.getElementById('chart-opp-bar'), {
-        type: 'bar',
-        data: { labels: oppLabels, datasets: [{ label: 'Topic angles', data: oppTopics, backgroundColor: '#14b8a6', borderRadius: 4 }] },
-        options: { responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: { x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
-            y: { grid: { color: '#f0f2f5' }, ticks: { stepSize: 1, color: '#9ca3af', font: { size: 10 } } } } }
-      });
+    // Biggest gap banner
+    if (DATA.biggestGap) {
+      document.getElementById('opp-gap-banner').innerHTML = `
+        <div class="gap-banner">
+          <div class="gap-banner-label">Core opportunity</div>
+          ${esc(DATA.biggestGap)}
+        </div>`;
     }
 
-    // Quick stats
-    const qs = document.getElementById('opp-quick-stats');
-    if (qs) {
-      const totalAngles = DATA.angles ? DATA.angles.length : 0;
-      const totalWins = DATA.wins ? DATA.wins.length : 0;
-      qs.innerHTML = [
-        [DATA.opps.length, 'Subreddit opportunities'],
-        [totalAngles, 'Content angles identified'],
-        [totalWins, 'Proven win types'],
-        [(DATA.opps.reduce((s, o) => s + (o.topics_to_lead_with||[]).length, 0)), 'Total topic hooks'],
-      ].map(([v, l]) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--gray-100)">
-        <span style="font-size:13px;color:var(--text-2)">${l}</span>
-        <span style="font-size:18px;font-weight:700;color:var(--teal-dark)">${v}</span>
+    // Stats row
+    const totalTopics = DATA.opps.reduce((s, o) => s + (o.topics_to_lead_with||[]).length, 0);
+    document.getElementById('opp-stats').innerHTML = [
+      [DATA.opps.length, 'Priority subreddits'],
+      [totalTopics, 'Topic hooks'],
+      [(DATA.wins||[]).length, 'Quick actions'],
+      [(DATA.angles||[]).length, 'Content angles'],
+    ].map(([v,l])=>`<div class="stat-item"><div class="val">${v}</div><div class="lbl">${l}</div></div>`).join('');
+
+    // Post volume lookup from DATA.stats
+    const subVol = {};
+    (DATA.stats.subreddit_labels||[]).forEach((l,i) => { subVol[l] = DATA.stats.subreddit_values[i]; });
+
+    // Priority opportunity cards
+    document.getElementById('opp-list').innerHTML = DATA.opps.map((o, i) => {
+      const subKey = (o.subreddit||'').replace('r/','');
+      const vol = subVol[subKey];
+      const topics = (o.topics_to_lead_with||[]);
+      return `
+        <div class="opp-card">
+          <div class="opp-card-top">
+            <div class="opp-rank">${i+1}</div>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+                <span class="opp-sub-name">${esc(o.subreddit||'')}</span>
+                ${vol ? `<span class="opp-volume-pill"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>${vol} posts</span>` : ''}
+              </div>
+              <div class="opp-why">${esc(o.why||'')}</div>
+            </div>
+          </div>
+          <div class="opp-card-body">
+            ${o.engagement_style ? `<div class="opp-approach-box"><div class="opp-approach-label">Approach</div>${esc(o.engagement_style)}</div>` : ''}
+            <div class="topic-chips">${topics.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Quick Actions
+    document.getElementById('wins-list').innerHTML = (DATA.wins||[]).map(w => `
+      <div class="action-card">
+        <div class="action-type">${esc(w.type||'')}</div>
+        <div class="action-desc">${esc(w.description||'')}</div>
+        ${w.example_thread_type ? `<div class="action-example">"${esc(w.example_thread_type)}"</div>` : ''}
       </div>`).join('');
+
+    // Content Angles — numbered list
+    const angleWrap = document.getElementById('angles-list');
+    if (angleWrap) {
+      angleWrap.innerHTML = `<div class="card" style="padding:6px 20px 10px"><ul class="angle-num-list">${
+        (DATA.angles||[]).map((a,i)=>`<li class="angle-num-item"><span class="angle-num-badge">${i+1}</span><span class="angle-text">${esc(a)}</span></li>`).join('')
+      }</ul></div>`;
     }
 
-    document.getElementById('opp-list').innerHTML = DATA.opps.map(o => `
-      <div class="opp-item">
-        <div class="opp-sub">r/${esc(o.subreddit)}</div>
-        <div class="opp-right">
-          <div class="why">${esc(o.why||'')}</div>
-          <div class="approach">${esc(o.engagement_style||'')}</div>
-          <div class="topic-chips">${(o.topics_to_lead_with||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
-        </div>
-      </div>`).join('');
-    document.getElementById('wins-list').innerHTML = (DATA.wins||[]).map((w,i) => `
-      <div class="win-item">
-        <div class="win-num">0${i+1}</div>
-        <div class="win-body">
-          <h4>${esc(w.type||'')}</h4>
-          <p>${esc(w.description||'')}${w.example_thread_type?' · <em>'+esc(w.example_thread_type)+'</em>':''}</p>
-        </div>
-      </div>`).join('');
-    document.getElementById('angles-grid').innerHTML =
-      (DATA.angles||[]).map(a=>`<div class="angle-item">${esc(a)}</div>`).join('');
+    // Red flag
     if (DATA.redFlags) {
       document.getElementById('red-flag').innerHTML =
-        `<div class="red-flag"><strong>Do not:</strong> ${esc(DATA.redFlags)}</div>`;
+        `<div class="red-flag"><strong>Avoid:</strong> ${esc(DATA.redFlags)}</div>`;
     }
   },
 
   // ── CONTENT STRATEGY ────────────────────────────────────────────────────────
   triggers() {
-    if (DATA.titleFormula) {
-      const fb = document.getElementById('formula-block');
-      if (fb) fb.innerHTML = `<div class="formula-label" style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-bottom:6px">Post Title Formula</div><div class="formula-text" style="font-size:15px;font-weight:600;color:var(--text);line-height:1.4">${esc(DATA.titleFormula)}</div>`;
+    // Title formula card — parse [Segment] tokens into colored pills
+    const formulaWrap = document.getElementById('cs-formula-wrap');
+    if (formulaWrap && DATA.titleFormula) {
+      const parts = DATA.titleFormula.split(/(\[[^\]]+\])/g).filter(s => s.trim());
+      const segHtml = parts.map(s => {
+        if (s.startsWith('[') && s.endsWith(']')) {
+          const inner = s.slice(1,-1);
+          const lc = inner.toLowerCase();
+          const cls = (lc.includes('comparison') || lc.includes('question')) ? 'type'
+            : lc.includes('audience') ? 'audience' : 'topic';
+          return `<span class="formula-seg ${cls}">${esc(inner)}</span>`;
+        }
+        return `<span class="formula-op">${esc(s.trim())}</span>`;
+      }).join(' ');
+      formulaWrap.innerHTML = `
+        <div class="cs-formula-card">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-bottom:4px">Post title formula</div>
+          <div class="formula-segments">${segHtml}</div>
+          <div style="font-size:12px;color:var(--text-3);margin-top:10px;line-height:1.5">Apply this structure to all Reddit posts and comments — each coloured segment maps to the elements of threads with highest engagement.</div>
+        </div>`;
     }
+
+    // Community spotlight from bestEngagement
+    const spotlightEl = document.getElementById('cs-spotlight');
+    if (spotlightEl && DATA.bestEngagement) {
+      spotlightEl.innerHTML = `
+        <div class="cs-spotlight-card">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal-dark);margin-bottom:8px">Community spotlight</div>
+          <div style="font-size:13.5px;color:var(--text-2);line-height:1.65">${esc(DATA.bestEngagement)}</div>
+        </div>`;
+    }
+
+    // Trigger cards
     if (!DATA.triggers || !DATA.triggers.length) {
-      document.getElementById('trigger-grid').innerHTML = '<div class="empty-state"><div class="es-title">Trigger data generating…</div>Run reviews_io_rebuild_dashboard.py to populate.</div>';
-      return;
+      document.getElementById('trigger-grid').innerHTML = '<div class="empty-state">Trigger data generating…</div>';
+    } else {
+      document.getElementById('trigger-grid').innerHTML = DATA.triggers.map((t, i) => `
+        <div class="trigger-card">
+          <div class="trigger-card-head">
+            <div class="trigger-num">${i+1}</div>
+            <div style="flex:1;min-width:0">
+              <div class="trigger-pattern-name">${esc(t.pattern||'')}</div>
+              <div class="trigger-desc-text">${esc(t.description||'')}</div>
+            </div>
+          </div>
+          ${t.example_title ? `
+          <div class="trigger-mock-post">
+            <div class="trigger-mock-label">Real thread example</div>
+            <div class="trigger-mock-title">${esc(t.example_title)}</div>
+          </div>` : ''}
+        </div>`).join('');
     }
 
-    // Donut chart of trigger types
-    if (document.getElementById('chart-trigger-donut')) {
-      const triggerNames = DATA.triggers.map(t => (t.pattern||'').length > 20 ? (t.pattern||'').slice(0,20)+'...' : (t.pattern||''));
-      const palette = ['#14b8a6','#5cd3cb','#d97706','#dc2626','#16a34a','#6366f1'];
-      new Chart(document.getElementById('chart-trigger-donut'), {
-        type: 'doughnut',
-        data: {
-          labels: triggerNames,
-          datasets: [{ data: Array(DATA.triggers.length).fill(1), backgroundColor: palette, borderWidth: 0 }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, cutout: '55%',
-          plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 }, color: '#6b7280' } } } }
-      });
-    }
-
-    document.getElementById('trigger-grid').innerHTML = DATA.triggers.map(t => `
-      <div class="trigger-item">
-        <h4>${esc(t.pattern||'')}</h4>
-        <div class="td">${esc(t.description||'')}</div>
-        ${t.example_title?`<div class="trigger-eg">${esc(t.example_title)}</div>`:''}
-      </div>`).join('');
+    // Reddit playbook cards
     const eb = document.getElementById('eng-box');
     if (eb) {
-      const redditTactics = [
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>', title: 'Answer before pitching', desc: 'Lead with a genuine, expert answer to the OP\'s question. Only mention Reviews.io in the last 1-2 sentences if directly relevant. Posts that lead with value get upvoted; posts that lead with the product get removed.' },
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>', title: 'Target "which review app" threads', desc: 'r/shopify and r/ecommerce regularly surface "which review app should I use?" threads. Compare honestly: acknowledge Trustpilot\'s brand recognition while explaining Reviews.io\'s pricing model and verified-review difference.' },
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-5"/></svg>', title: 'Use real numbers', desc: 'Reddit users respond to specifics. "Reviews.io costs X vs Trustpilot\'s Y for similar features" outperforms vague claims. Reference real pricing tiers and explain the per-seat vs platform model distinction.' },
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>', title: 'Engage Trustpilot frustration threads', desc: 'Trustpilot pricing and fake-review complaints are the #1 pain point across 299 mentions. These threads are the highest-fit entry points. Empathise with the frustration before positioning Reviews.io as the alternative.' },
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>', title: 'Post in first 2 hours', desc: 'Reddit threads peak in the first 2-4 hours. Set up alerts for keywords like "review platform", "trustpilot alternative", "judge.me vs" in r/shopify, r/ecommerce, r/smallbusiness. Early, helpful replies get the most visibility.' },
-        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>', title: 'Own the "verified reviews" angle', desc: 'Authenticity and verification are recurring themes. Position Reviews.io around verified purchase reviews and moderation. This directly addresses the #2 pain point (review manipulation) that 200+ posts reference.' },
+      const tactics = [
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>', title: 'Answer before pitching', desc: 'Lead with a genuine, expert answer. Only mention Reviews.io in the final 1–2 sentences if directly relevant. Posts that lead with value get upvoted; posts that lead with the product get removed.' },
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>', title: 'Target comparison threads', desc: 'r/shopify and r/ecommerce regularly surface "which review app?" threads. Compare honestly — acknowledge Trustpilot\'s brand recognition while explaining Reviews.io\'s pricing and verified-review difference.' },
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 5-5"/></svg>', title: 'Use specific numbers', desc: '"Reviews.io costs £X vs Trustpilot\'s £Y for similar features" outperforms vague claims. Reference actual pricing tiers and explain the per-seat vs platform model distinction clearly.' },
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>', title: 'Engage Trustpilot frustration', desc: 'Trustpilot pricing and fake-review complaints are the #1 pain point across 299 mentions. Empathise with the frustration, then position Reviews.io as the alternative — don\'t lead with the product.' },
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>', title: 'Reply in first 2 hours', desc: 'Reddit threads peak in the first 2–4 hours. Set alerts for "review platform", "trustpilot alternative", "judge.me vs" in r/shopify and r/ecommerce. Early, helpful replies get the most upvotes and visibility.' },
+        { icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>', title: 'Own the verification angle', desc: 'Authenticity and verification are recurring themes across 200+ posts. Position Reviews.io\'s verified-purchase model as a structural solution to fake reviews — not just better moderation.' },
       ];
-      eb.innerHTML = `
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          ${redditTactics.map(t => `
-            <div style="display:flex;gap:10px;padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--gray-50)">
-              <span style="flex-shrink:0;line-height:1;color:var(--teal-dark);margin-top:1px">${t.icon}</span>
-              <div>
-                <div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">${t.title}</div>
-                <div style="font-size:12px;color:var(--text-2);line-height:1.55">${t.desc}</div>
-              </div>
-            </div>`).join('')}
-        </div>`;
+      eb.innerHTML = `<div class="playbook-grid">${
+        tactics.map(t=>`
+          <div class="playbook-card">
+            <span class="playbook-icon">${t.icon}</span>
+            <div>
+              <div class="playbook-title">${t.title}</div>
+              <div class="playbook-desc">${t.desc}</div>
+            </div>
+          </div>`).join('')
+      }</div>`;
     }
   },
 
