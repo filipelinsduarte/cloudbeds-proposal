@@ -151,7 +151,7 @@ body{display:flex;flex-direction:column;min-height:100vh;font-family:var(--font)
 /* ── PAIN POINTS ──────────────────────────────────────────────────────────── */
 .pain-item{
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow-card);
+  padding:20px 20px;margin-bottom:12px;box-shadow:var(--shadow-card);
   display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start;
 }
 .pain-item:last-child{margin-bottom:12px}
@@ -518,7 +518,7 @@ tr:hover td{background:var(--gray-50)}
         <div class="chart-wrap" style="height:180px"><canvas id="chart-pain-donut"></canvas></div>
       </div>
     </div>
-    <div class="card" style="padding:0 20px">
+    <div class="card" style="padding:20px 20px 8px">
       <div id="pain-list"></div>
     </div>
   </section>
@@ -720,12 +720,12 @@ tr:hover td{background:var(--gray-50)}
     <div class="stats-row" style="margin-bottom:14px" id="bm-stats-row"></div>
     <div class="bm-table-wrap">
       <table class="bm-table">
-        <thead><tr>
-          <th>Brand</th>
-          <th>Post</th>
-          <th>Rating</th>
-          <th>Comment / Context</th>
-          <th>Fit</th>
+        <thead><tr id="bm-thead">
+          <th data-bmcol="brand" style="cursor:pointer;user-select:none">Brand ↕</th>
+          <th data-bmcol="title" style="cursor:pointer;user-select:none">Post ↕</th>
+          <th data-bmcol="rating" style="cursor:pointer;user-select:none">Rating ↕</th>
+          <th data-bmcol="comment" style="cursor:pointer;user-select:none">Comment / Context ↕</th>
+          <th data-bmcol="fit_score" style="cursor:pointer;user-select:none">Fit ↕</th>
         </tr></thead>
         <tbody id="bm-body"></tbody>
       </table>
@@ -899,9 +899,10 @@ if (_hb) _hb.textContent = `${DATA.stats.total_posts} posts · ${DATA.stats.tota
     });
     // Merge with DATA.brands for accurate sentiment labels
     const _brandLookup = {};
-    (DATA.brands || []).forEach(b => { _brandLookup[b.brand] = b; });
+    const _brandLookupLower = {};
+    (DATA.brands || []).forEach(b => { _brandLookup[b.brand] = b; _brandLookupLower[b.brand.toLowerCase()] = b; });
     Object.values(_bmGroups).forEach(g => {
-      const known = _brandLookup[g.brand];
+      const known = _brandLookup[g.brand] || _brandLookupLower[g.brand.toLowerCase()];
       g.score = known ? Math.round((known.score / 5) * 100) : Math.round(((g.pos - g.neg) / Math.max(g.total, 1)) * 100);
       g.sentiment = known ? known.sentiment : (g.score > 20 ? 'Positive' : g.score < -20 ? 'Negative' : g.score < 0 ? 'Mixed' : 'Neutral');
       g.mentions = g.total;
@@ -1157,9 +1158,10 @@ const renderers = {
       else if (m.rating === 'Negative') g.neg++;
     });
     const _detBrandLookup = {};
-    (DATA.brands || []).forEach(b => { _detBrandLookup[b.brand] = b; });
+    const _detBrandLookupLower = {};
+    (DATA.brands || []).forEach(b => { _detBrandLookup[b.brand] = b; _detBrandLookupLower[b.brand.toLowerCase()] = b; });
     Object.values(_detGroups).forEach(g => {
-      const known = _detBrandLookup[g.brand];
+      const known = _detBrandLookup[g.brand] || _detBrandLookupLower[g.brand.toLowerCase()];
       g.score = known ? Math.round((known.score / 5) * 100) : Math.round(((g.pos - g.neg) / Math.max(g.total, 1)) * 100);
       g.sentiment = known ? known.sentiment : (g.score > 20 ? 'Positive' : g.score < -20 ? 'Negative' : g.score < 0 ? 'Mixed' : 'Neutral');
       g.mentions = g.total;
@@ -1292,12 +1294,14 @@ const renderers = {
           </div>`;
         return;
       }
+      const _bpSortArrow = col => _bpSortCol === col ? (_bpSortDir === -1 ? ' ↓' : ' ↑') : ' ↕';
+      const _bpThStyle = col => `cursor:pointer;user-select:none;${_bpSortCol === col ? 'color:var(--teal-dark);font-weight:700' : ''}`;
       document.getElementById('brand-table-wrap').innerHTML = `
         <table class="brand-table">
           <thead><tr>
             <th>Brand</th>
-            <th style="cursor:pointer;user-select:none" data-bpcol="sentiment" onclick="(function(el){const col='sentiment';if(_bpSortCol===col)_bpSortDir*=-1;else{_bpSortCol=col;_bpSortDir=1;}document.querySelectorAll('th[data-bpcol]').forEach(t=>t.style.color='');el.style.color='var(--teal-dark)';renderBrandTable(_bpQ,_bpSent,_bpBrand);})(this)">Sentiment ↕</th>
-            <th style="cursor:pointer;user-select:none" data-bpcol="mentions" onclick="(function(el){const col='mentions';if(_bpSortCol===col)_bpSortDir*=-1;else{_bpSortCol=col;_bpSortDir=-1;}document.querySelectorAll('th[data-bpcol]').forEach(t=>t.style.color='');el.style.color='var(--teal-dark)';renderBrandTable(_bpQ,_bpSent,_bpBrand);})(this)">Mentions ↕</th>
+            <th style="${_bpThStyle('sentiment')}" data-bpcol="sentiment" onclick="(function(el){const col='sentiment';if(_bpSortCol===col)_bpSortDir*=-1;else{_bpSortCol=col;_bpSortDir=1;}renderBrandTable(_bpQ,_bpSent,_bpBrand);})(this)">Sentiment${_bpSortArrow('sentiment')}</th>
+            <th style="${_bpThStyle('mentions')}" data-bpcol="mentions" onclick="(function(el){const col='mentions';if(_bpSortCol===col)_bpSortDir*=-1;else{_bpSortCol=col;_bpSortDir=-1;}renderBrandTable(_bpQ,_bpSent,_bpBrand);})(this)">Mentions${_bpSortArrow('mentions')}</th>
             <th>What Reddit says</th>
           </tr></thead>
           <tbody>${filtered.map(b => `<tr>
@@ -1465,15 +1469,26 @@ const renderers = {
     // Top requested list
     const topEl = document.getElementById('feat-top-list');
     if (topEl) {
-      topEl.innerHTML = DATA.features.slice(0, 4).map((f,i) =>
-        `<div style="padding:7px 0;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;gap:8px">
-          <div style="display:flex;align-items:center;gap:7px">
-            <span style="font-size:10px;font-weight:700;color:var(--text-3);width:14px;flex-shrink:0">#${i+1}</span>
-            <span style="font-size:12.5px;color:var(--text);font-weight:500">${esc(f.idea||'')}</span>
-          </div>
-          <span style="font-size:10px;font-weight:600;color:${f.frequency==='High'?'#dc2626':f.frequency==='Medium'?'#d97706':'#16a34a'};white-space:nowrap;flex-shrink:0">${f.frequency==='High'?'~40+':f.frequency==='Medium'?'~15–25':'~5–10'}</span>
-        </div>`
-      ).join('') + `<div style="font-size:11px;color:var(--text-3);padding-top:8px">${DATA.features.length} total requests tracked</div>`;
+      window._renderFeatTop = (showAll) => {
+        const list = showAll ? DATA.features : DATA.features.slice(0, 4);
+        const freqLabel = f => f.frequency==='High' ? '~40+ mentions' : f.frequency==='Medium' ? '~15–25 mentions' : '~5–10 mentions';
+        const freqColor = f => f.frequency==='High' ? '#dc2626' : f.frequency==='Medium' ? '#d97706' : '#16a34a';
+        topEl.innerHTML = list.map((f,i) =>
+          `<div style="padding:7px 0;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <div style="display:flex;align-items:center;gap:7px;min-width:0">
+              <span style="font-size:10px;font-weight:700;color:var(--text-3);width:14px;flex-shrink:0">#${i+1}</span>
+              <span style="font-size:12.5px;color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(f.idea||'')}</span>
+            </div>
+            <span style="font-size:10px;font-weight:600;color:${freqColor(f)};white-space:nowrap;flex-shrink:0">${freqLabel(f)}</span>
+          </div>`
+        ).join('') +
+        `<div style="display:flex;justify-content:space-between;align-items:center;padding-top:8px">
+          <span style="font-size:11px;color:var(--text-3)">${DATA.features.length} total requests tracked</span>
+          <button onclick="window._featShowAll=!window._featShowAll;window._renderFeatTop(window._featShowAll)" style="font-size:11px;color:var(--teal-dark);background:none;border:none;cursor:pointer;font-weight:600;padding:0">${showAll ? 'Show top 4 ↑' : 'Show all ' + DATA.features.length + ' ↓'}</button>
+        </div>`;
+      };
+      window._featShowAll = false;
+      window._renderFeatTop(false);
     }
 
     // Render with filter
@@ -1770,6 +1785,7 @@ const renderers = {
     let activeRating = '';
     let activeSub = '';
     let activeQ = '';
+    let bmSortCol = '', bmSortDir = -1;
 
     // Custom brand select with favicons
     const bmTrigger = document.getElementById('bm-brand-trigger');
@@ -1836,6 +1852,15 @@ const renderers = {
         return true;
       });
 
+      if (bmSortCol) {
+        const isNum = bmSortCol === 'fit_score';
+        rows.sort((a, b) => {
+          const av = isNum ? (a[bmSortCol] || 0) : String(a[bmSortCol] || '').toLowerCase();
+          const bv = isNum ? (b[bmSortCol] || 0) : String(b[bmSortCol] || '').toLowerCase();
+          return bmSortDir * (isNum ? (bv - av) : (av < bv ? 1 : av > bv ? -1 : 0));
+        });
+      }
+
       const sentClass = r => r === 'Positive' ? 'Positive' : r === 'Negative' ? 'Negative' : r === 'Mixed' ? 'Mixed' : 'Neutral';
       const fitClass  = f => f >= 6 ? 'high' : f >= 3 ? 'mid' : 'low';
 
@@ -1868,6 +1893,23 @@ const renderers = {
       document.getElementById('bm-count').textContent = `${rows.length} of ${DATA.brandMentions.length} mentions`;
     }
     draw();
+
+    // Sortable brand mentions headers
+    document.querySelectorAll('#bm-thead th[data-bmcol]').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.bmcol;
+        if (bmSortCol === col) { bmSortDir *= -1; } else { bmSortCol = col; bmSortDir = -1; }
+        document.querySelectorAll('#bm-thead th[data-bmcol]').forEach(t => {
+          const c = t.dataset.bmcol;
+          const arrow = bmSortCol === c ? (bmSortDir === -1 ? ' ↓' : ' ↑') : ' ↕';
+          const colNames = {brand:'Brand',title:'Post',rating:'Rating',comment:'Comment / Context',fit_score:'Fit'};
+          t.textContent = (colNames[c] || c) + arrow;
+          t.style.color = bmSortCol === c ? 'var(--teal-dark)' : '';
+          t.style.fontWeight = bmSortCol === c ? '700' : '';
+        });
+        draw();
+      });
+    });
 
     // Populate brand mention stats
     const bmStatsEl = document.getElementById('bm-stats-row');
