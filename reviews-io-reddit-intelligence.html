@@ -507,17 +507,23 @@ tr:hover td{background:var(--gray-50)}
 .pain-card-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
 .pain-card-body{padding:0 20px 18px 20px}
 .pain-card-desc{font-size:13.5px;color:var(--text-2);line-height:1.65;margin-bottom:12px}
-.pain-quote-block{background:var(--gray-50);border-left:3px solid var(--border);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:12px}
+.pain-quote-block{background:var(--gray-50);border-radius:6px;padding:10px 14px;margin-bottom:12px}
 .pain-quote-text{font-size:14px;font-style:italic;color:var(--text-2);line-height:1.6;margin-bottom:4px}
 .pain-quote-text::before{content:'\201C';font-size:18px;color:var(--text-3);line-height:0;vertical-align:-4px;margin-right:2px}
 .pain-quote-text::after{content:'\201D';font-size:18px;color:var(--text-3);line-height:0;vertical-align:-4px;margin-left:2px}
 .pain-quote-src{font-size:11px;color:var(--text-3);font-style:normal}
-.pain-engage-box{border-left:3px solid #f97316;background:#fff7ed;border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:12px}
+.pain-engage-box{background:#fff7ed;border-radius:6px;padding:10px 14px;margin-bottom:12px}
 .pain-engage-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#ea580c;margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .pain-engage-text{font-size:13px;color:#9a3412;line-height:1.55}
-.pain-solve-box{border-left:3px solid var(--teal-dark);background:var(--teal-bg);border-radius:0 6px 6px 0;padding:10px 14px}
+.pain-solve-box{background:var(--teal-bg);border-radius:6px;padding:10px 14px}
 .pain-solve-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal-dark);margin-bottom:4px;display:flex;align-items:center;gap:5px}
 .pain-solve-text{font-size:13px;color:var(--teal-dark);line-height:1.55}
+.bp-dd-opt{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sov-sent-row{padding:10px 0;border-bottom:1px solid var(--gray-100)}
+.sov-counts{font-size:10.5px;margin-top:5px;display:flex;gap:12px;opacity:0;transition:opacity .15s;pointer-events:none}
+.bp-dd-opt:hover{background:var(--gray-50)}
+.bp-dd-opt.selected{background:var(--teal-bg);color:var(--teal-dark);font-weight:600}
+.sov-sent-row:hover .sov-counts{opacity:1}
 </style>
 </head>
 <body>
@@ -666,10 +672,17 @@ tr:hover td{background:var(--gray-50)}
     </div>
     <div class="table-controls" style="margin-bottom:14px">
       <input class="t-input" id="bp-search" placeholder="Search brands..." style="min-width:200px">
-      <input class="t-input" id="bp-brand-filter" placeholder="Filter brand list..." style="min-width:160px">
-      <select class="t-select" id="bp-brand">
-        <option value="">All brands</option>
-      </select>
+      <div class="custom-brand-dd" id="bp-brand-wrap" style="position:relative;min-width:200px">
+        <div id="bp-brand-trigger" onclick="window._bpDdToggle()" style="display:flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;font-size:13px;color:var(--text);min-width:200px;box-sizing:border-box;user-select:none">
+          <span id="bp-brand-sel-icon" style="flex-shrink:0;line-height:0"></span>
+          <span id="bp-brand-sel-text" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">All brands</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;color:var(--text-3)"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div id="bp-brand-dd" style="display:none;position:absolute;top:calc(100% + 4px);left:0;min-width:240px;max-width:320px;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);z-index:999;padding:8px">
+          <input id="bp-brand-dd-search" class="t-input" placeholder="Search brands…" style="width:100%;box-sizing:border-box;margin-bottom:6px;font-size:12px">
+          <div id="bp-brand-dd-opts" style="max-height:260px;overflow-y:auto"></div>
+        </div>
+      </div>
       <select class="t-select" id="bp-sent">
         <option value="">All sentiments</option>
         <option value="Positive">Positive</option>
@@ -931,7 +944,13 @@ tr:hover td{background:var(--gray-50)}
     <div class="es-charts-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
       <div class="card">
         <div class="card-title">Brand Sentiment Landscape</div>
-        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">Top brands by mention volume — green = positive, red = negative, amber = mixed</div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-size:11px;color:var(--text-3)">Top brands by mention volume</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:11px;color:#16a34a"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#16a34a;flex-shrink:0"></span>Positive</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:11px;color:#dc2626"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#dc2626;flex-shrink:0"></span>Negative</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:11px;color:#d97706"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#f59e0b;flex-shrink:0"></span>Mixed</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:11px;color:#6b7280"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#9ca3af;flex-shrink:0"></span>Neutral</span>
+        </div>
         <div style="position:relative;height:220px"><canvas id="es-chart-brands"></canvas></div>
       </div>
       <div class="card">
@@ -1352,7 +1371,7 @@ const renderers = {
             ${win ? `
               <div class="pain-engage-box">
                 <div class="pain-engage-label">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=16" width="13" height="13" style="border-radius:50%;flex-shrink:0" alt="">
                   Reddit engagement — ${esc(win.type)}
                 </div>
                 <div class="pain-engage-text">${esc((win.description || '').split('.')[0] + '.')}</div>
@@ -1360,7 +1379,7 @@ const renderers = {
             ${p.reviews_io_relevance ? `
               <div class="pain-solve-box">
                 <div class="pain-solve-label">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <img src="https://www.google.com/s2/favicons?domain=reviews.io&sz=16" width="13" height="13" style="border-radius:3px;flex-shrink:0" alt="">
                   Reviews.io opportunity
                 </div>
                 <div class="pain-solve-text">${esc(p.reviews_io_relevance)}</div>
@@ -1473,8 +1492,34 @@ const renderers = {
       g.quote = known ? known.quote : '';
       g.quote_src = known ? known.quote_src : '';
     });
+    // Deduplicate _detGroups — merge case variants into canonical brand name
+    const _dedupedGroups = {};
+    Object.values(_detGroups).forEach(g => {
+      const canonical = _detBrandLookup[g.brand]?.brand || _detBrandLookupLower[g.brand.toLowerCase()]?.brand || g.brand;
+      if (!_dedupedGroups[canonical]) {
+        _dedupedGroups[canonical] = { ...g, brand: canonical };
+      } else {
+        const ex = _dedupedGroups[canonical];
+        ex.total += g.total; ex.pos += g.pos; ex.neg += g.neg; ex.mentions = ex.total;
+      }
+    });
+    // Re-derive score/sentiment from canonical brand data after merge
+    Object.values(_dedupedGroups).forEach(g => {
+      const known = _detBrandLookup[g.brand] || _detBrandLookupLower[g.brand.toLowerCase()];
+      if (known) {
+        g.score = Math.round((known.score / 5) * 100);
+        g.sentiment = known.sentiment;
+        g.mentions = g.total;
+        g.reddit_summary = known.reddit_summary || g.reddit_summary;
+        g.praise = known.praise || g.praise;
+        g.criticism = known.criticism || g.criticism;
+        g.vs_reviews_io = known.vs_reviews_io || g.vs_reviews_io;
+        g.quote = known.quote || g.quote;
+        g.quote_src = known.quote_src || g.quote_src;
+      }
+    });
     // All brands sorted by mention count desc (no minimum threshold)
-    const _bpAllBrands = Object.values(_detGroups)
+    const _bpAllBrands = Object.values(_dedupedGroups)
       .sort((a, b) => b.total - a.total);
     // Keep a score-desc sorted version for the summary table (used later)
     const sorted = _bpAllBrands.slice().sort((a, b) => b.score - a.score);
@@ -1616,40 +1661,62 @@ const renderers = {
     window.renderBrandTable('', '', '');
     const bpSearch = document.getElementById('bp-search');
     const bpSentEl = document.getElementById('bp-sent');
-    const bpBrandEl = document.getElementById('bp-brand');
-    if (bpBrandEl) {
-      sorted.forEach(b => {
-        const o = document.createElement('option');
-        o.value = b.brand;
-        o.textContent = b.brand;
-        bpBrandEl.appendChild(o);
-      });
-      bpBrandEl.onchange = e => {
-        window._bpBrand = e.target.value;
-        window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand);
-        // Show/hide brand cards
-        document.querySelectorAll('#brand-cards .brand-card').forEach(card => {
-          card.style.display = (!window._bpBrand || card.dataset.brand === window._bpBrand) ? '' : 'none';
-        });
-      };
-    }
     if (bpSearch) bpSearch.oninput = e => { window._bpQ = e.target.value.toLowerCase(); window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand); };
     if (bpSentEl) bpSentEl.onchange = e => { window._bpSent = e.target.value; window.renderBrandTable(window._bpQ, window._bpSent, window._bpBrand); };
-    const bpBrandFilterEl = document.getElementById('bp-brand-filter');
-    if (bpBrandFilterEl && bpBrandEl) {
-      const _allBrands = sorted.map(b => b.brand);
-      bpBrandFilterEl.oninput = e => {
-        const q = e.target.value.toLowerCase();
-        bpBrandEl.innerHTML = '<option value="">All brands</option>';
-        _allBrands
-          .filter(n => !q || n.toLowerCase().includes(q))
-          .forEach(n => {
-            const o = document.createElement('option');
-            o.value = n; o.textContent = n;
-            bpBrandEl.appendChild(o);
-          });
-      };
-    }
+
+    // Custom brand dropdown — alphabetical, with favicons
+    const _alphaBrands = Object.values(_dedupedGroups).sort((a, b) => a.brand.localeCompare(b.brand));
+
+    const _bpDdRenderOpts = (filter) => {
+      const q = (filter || '').toLowerCase();
+      const filtered = _alphaBrands.filter(b => !q || b.brand.toLowerCase().includes(q));
+      const optsEl = document.getElementById('bp-brand-dd-opts');
+      if (!optsEl) return;
+      optsEl.innerHTML =
+        `<div class="bp-dd-opt${!window._bpBrand?' selected':''}" onclick="window._bpDdSelect('')" style="color:var(--text-3);font-style:italic">All brands</div>` +
+        filtered.map(b => `
+          <div class="bp-dd-opt${window._bpBrand===b.brand?' selected':''}" onclick="window._bpDdSelect(${JSON.stringify(b.brand)})">
+            ${brandFav(b.brand)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(b.brand)}</span>
+          </div>`).join('');
+    };
+
+    window._bpDdToggle = () => {
+      const dd = document.getElementById('bp-brand-dd');
+      if (!dd) return;
+      const open = dd.style.display !== 'none';
+      dd.style.display = open ? 'none' : 'block';
+      if (!open) {
+        const si = document.getElementById('bp-brand-dd-search');
+        if (si) { si.value = ''; si.focus(); }
+        _bpDdRenderOpts('');
+      }
+    };
+
+    window._bpDdSelect = (name) => {
+      window._bpBrand = name;
+      const selText = document.getElementById('bp-brand-sel-text');
+      const selIcon = document.getElementById('bp-brand-sel-icon');
+      if (selText) selText.textContent = name || 'All brands';
+      if (selIcon) selIcon.innerHTML = name ? brandFav(name) : '';
+      const dd = document.getElementById('bp-brand-dd');
+      if (dd) dd.style.display = 'none';
+      window.renderBrandTable(window._bpQ, window._bpSent, name);
+      document.querySelectorAll('#brand-cards .brand-card').forEach(card => {
+        card.style.display = (!name || card.dataset.brand === name) ? '' : 'none';
+      });
+    };
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function _bpDdOutside(e) {
+      if (!e.target.closest('#bp-brand-wrap')) {
+        const dd = document.getElementById('bp-brand-dd');
+        if (dd) dd.style.display = 'none';
+      }
+    }, { capture: true });
+
+    const ddSearchEl = document.getElementById('bp-brand-dd-search');
+    if (ddSearchEl) ddSearchEl.oninput = e => _bpDdRenderOpts(e.target.value);
+    _bpDdRenderOpts('');
 
     // Detail cards
     document.getElementById('brand-cards').innerHTML = sorted.map(b => `
@@ -2384,11 +2451,12 @@ const renderers = {
     const pcts = data.map(c=>(c/total*100).toFixed(1));
     const chartH = Math.max(400, top20.length*26+60);
     document.getElementById('sov-chart-wrap').style.height = chartH+'px';
-    new Chart(document.getElementById('chart-sov'),{
+    const _sovChart = new Chart(document.getElementById('chart-sov'),{
       type:'bar',
       data:{labels,datasets:[{data,backgroundColor:colors,borderRadius:3}]},
       options:{
         indexAxis:'y',responsive:true,maintainAspectRatio:false,
+        layout:{padding:{left:28}},
         plugins:{
           legend:{display:false},
           tooltip:{callbacks:{label:ctx=>`${ctx.raw} mentions (${pcts[ctx.dataIndex]}% of corpus)`}}
@@ -2397,25 +2465,35 @@ const renderers = {
           x:{grid:{color:'#f0f2f5'},ticks:{color:'#999',font:{family:'system-ui,-apple-system,sans-serif',size:11}},border:{display:false}},
           y:{grid:{display:false},ticks:{color:'#374151',font:{family:'system-ui,-apple-system,sans-serif',size:11,weight:'500'}},border:{display:false}}
         }
-      }
+      },
+      plugins:[_brandFavPlugin]
     });
+    _cfCharts.push(_sovChart);
 
-    // Sentiment breakdown list
+    // Local favicon helper for SOV (module-level _cfDomains is available)
+    const _sovFav = n => { const d = _cfDomains[n]; return d ? `<img src="https://www.google.com/s2/favicons?domain=${d}&sz=16" width="16" height="16" style="border-radius:3px;vertical-align:middle;margin-right:6px;flex-shrink:0" alt="">` : ''; };
+
     document.getElementById('sov-sent-list').innerHTML = top20.map(([name,count])=>{
       const sc = sentCounts[name]||{pos:0,neg:0,mix:0,neu:0};
       const posW = Math.round(sc.pos/count*100);
       const negW = Math.round(sc.neg/count*100);
       const mixW = Math.round(sc.mix/count*100);
       const isRio = name==='Reviews.io';
-      return `<div style="padding:10px 0;border-bottom:1px solid var(--gray-100)">
+      return `<div class="sov-sent-row">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <span style="font-size:13px;font-weight:${isRio?'700':'500'};color:${isRio?'var(--teal-dark)':'var(--text)'}">${esc(name)}</span>
+          <span style="font-size:13px;font-weight:${isRio?'700':'500'};color:${isRio?'var(--teal-dark)':'var(--text)'};display:flex;align-items:center">${_sovFav(name)}${esc(name)}</span>
           <span style="font-size:11px;color:var(--text-3)">${count} mentions</span>
         </div>
         <div style="display:flex;height:6px;border-radius:99px;overflow:hidden;gap:1px">
-          ${posW?`<div style="width:${posW}%;background:#16a34a;border-radius:99px 0 0 99px" title="${posW}% positive"></div>`:''}
-          ${mixW?`<div style="width:${mixW}%;background:#d97706" title="${mixW}% mixed"></div>`:''}
-          ${negW?`<div style="width:${negW}%;background:#dc2626;border-radius:0 99px 99px 0" title="${negW}% negative"></div>`:''}
+          ${posW?`<div style="width:${posW}%;background:#16a34a;border-radius:99px 0 0 99px"></div>`:''}
+          ${mixW?`<div style="width:${mixW}%;background:#d97706"></div>`:''}
+          ${negW?`<div style="width:${negW}%;background:#dc2626;border-radius:0 99px 99px 0"></div>`:''}
+        </div>
+        <div class="sov-counts">
+          ${sc.pos?`<span style="color:#16a34a">● ${sc.pos} positive</span>`:''}
+          ${sc.mix?`<span style="color:#d97706">● ${sc.mix} mixed</span>`:''}
+          ${sc.neg?`<span style="color:#dc2626">● ${sc.neg} negative</span>`:''}
+          ${sc.neu?`<span style="color:#9ca3af">● ${sc.neu} neutral</span>`:''}
         </div>
       </div>`;
     }).join('');
@@ -2633,6 +2711,7 @@ const renderers = {
 
   // ── STEAL THE THREAD ──────────────────────────────────────────────────────
   'steal-thread'() {
+    const _stFav = n => { const d = _cfDomains[n]; return d ? `<img src="https://www.google.com/s2/favicons?domain=${d}&sz=16" width="14" height="14" style="border-radius:3px;vertical-align:middle;margin-right:3px;flex-shrink:0" alt="">` : ''; };
     // Build per-thread brand mention index from brandMentions
     // Map: thread URL → set of {brand, rating}
     const threadBrands = {};
@@ -2684,7 +2763,7 @@ const renderers = {
         const fc = t.fit >= 7 ? 'high' : t.fit >= 4 ? 'mid' : 'low';
         const compBadges = [...new Map(t.negComps.map(m=>[m.brand+m.rating,m])).values()]
           .slice(0,4)
-          .map(m=>`<span class="steal-badge ${m.rating==='Negative'?'neg':'mix'}">${esc(m.brand)}</span>`)
+          .map(m=>`<span class="steal-badge ${m.rating==='Negative'?'neg':'mix'}" style="display:inline-flex;align-items:center;gap:3px">${_stFav(m.brand)}${esc(m.brand)}</span>`)
           .join('');
         return `<tr>
           <td><span class="sub-mono">r/${esc(t.subreddit)}</span></td>
