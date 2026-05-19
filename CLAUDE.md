@@ -153,6 +153,22 @@ This order never changes between clients:
 - No `align-items:stretch` on grid containers
 - Slide 01 (cover): no `.shdr` — manual layout with client favicon, tag, headline, "Powered by" row
 - Every other slide: starts with `<div class="shdr" data-n="XX"></div>`
+
+### Client Favicon (use everywhere — never a custom SVG)
+
+Use the Google S2 favicon service throughout. Never create a custom SVG icon for the client brand.
+
+| Context | URL | Size |
+|---|---|---|
+| Cover slide icon (large) | `https://www.google.com/s2/favicons?domain=[CLIENT]&sz=64` | `clamp(36px,5vh,54px)` square, `border-radius:10px` |
+| JS `LEAD` variable (shdr header) | `https://www.google.com/s2/favicons?domain=[CLIENT]&sz=64` | `class="hdr-favicon"` |
+| Client row in tables | `https://www.google.com/s2/favicons?domain=[CLIENT]&sz=32` | `width:14px;height:14px;border-radius:2px` |
+| Transition slide icon | `https://www.google.com/s2/favicons?domain=[CLIENT]&sz=64` | `clamp(22px,3vh,32px)` square, `border-radius:6px` |
+
+JS `LEAD` variable pattern:
+```js
+var LEAD='<img src="https://www.google.com/s2/favicons?domain=[CLIENT]&sz=64" class="hdr-favicon">';
+```
 - **"Book a 30-Minute Strategy Call" CTA button in slide 16:** always `flex-shrink:0` — never `flex:1`
 - **Calendly "Book a 30-min call" link text:** always `color:#2563eb;text-decoration:underline` — visually blue and underlined so it reads as a hyperlink
 
