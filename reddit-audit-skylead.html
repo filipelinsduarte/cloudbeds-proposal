@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skylead · Reddit Audit · AI Peekaboo</title>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV8FCLN403"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YV8FCLN403');</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+<style>
+  :root {
+    --accent:      #FF4500;
+    --accent-dark: #cc3700;
+    --accent-bg:   #fff4f0;
+    --accent-bd:   #ffd0bf;
+    --ink:         #1c1c1c;
+    --ink2:        #313131;
+    --ink3:        #6b6b6b;
+    --ink4:        #a8a8a8;
+    --paper:       #dae0e6;
+    --paper2:      #f6f7f8;
+    --paper3:      #edeff1;
+    --rule:        #edeff1;
+    --ok:          #46d160;
+    --ok-bg:       #edfbf0;
+    --ok-bd:       #b3f0c4;
+    --warn:        #ffd635;
+    --warn-bg:     #fffbe6;
+    --warn-bd:     #ffe680;
+    --red:         #ea0027;
+    --neutral:     #a8a8a8;
+    --mixed:       #FF4500;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--paper); }
+  body {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Top bar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 10px; }
+  .topbar-left img { width: 22px; height: 22px; border-radius: 5px; object-fit: contain; }
+  .topbar-left .brand-name { font-size: 14px; font-weight: 700; color: var(--ink2); }
+  .topbar-left .sep { color: var(--rule); font-size: 14px; }
+  .topbar-left .topbar-sub { font-size: 13px; color: var(--ink4); font-weight: 400; }
+  .topbar-right { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+  .topbar-right span { font-size: 13px; color: var(--ink4); }
+  .topbar-right img { height: 16px; width: auto; opacity: 0.6; }
+
+  /* Page */
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 100px; }
+  .sheet {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 56px 56px 64px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+
+  /* Cover */
+  .cover { padding-bottom: 44px; border-bottom: 1px solid var(--rule); margin-bottom: 48px; }
+  .cover-favicon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid var(--rule);
+    padding: 6px;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .cover-meta {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 18px; flex-wrap: wrap;
+    font-family: "DM Mono", monospace;
+    font-size: 12px;
+    color: var(--ink4);
+    letter-spacing: 0.04em;
+  }
+  .cover-meta .sep { color: var(--rule); }
+  .cover h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .cover-sub {
+    font-size: 17px; color: var(--ink3); line-height: 1.65; max-width: 620px;
+  }
+
+  /* Stat chips */
+  .stats-row {
+    display: flex; gap: 10px;
+    margin: 24px 0 0;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 12px 16px;
+    flex-shrink: 0;
+    min-width: 120px;
+  }
+  .stat-chip-num {
+    font-family: "DM Mono", monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+    display: block;
+  }
+  .stat-chip-label {
+    font-size: 11px;
+    font-family: "DM Mono", monospace;
+    color: var(--ink4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+  .stat-chip.accent {
+    background: var(--accent-bg);
+    border-color: var(--accent-bd);
+  }
+  .stat-chip.accent .stat-chip-num { color: var(--accent-dark); }
+  .stat-chip.accent .stat-chip-label { color: var(--accent); }
+
+  /* Sections */
+  .section { margin-top: 56px; }
+  .section-label {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label img {
+    width: 16px; height: 16px;
+    border-radius: 3px;
+    object-fit: contain;
+  }
+  h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+  p { font-size: 16px; color: var(--ink2); line-height: 1.7; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Section card wrapper */
+  .card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 18px;
+    flex-shrink: 0;
+  }
+
+  /* Chart containers */
+  .chart-wrap {
+    height: 280px;
+    position: relative;
+    margin-top: 8px;
+  }
+  .chart-wrap.donut { height: 240px; }
+  .chart-wrap.bar-h { height: 320px; }
+
+  /* Competitor table */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 22px;
+    font-size: 14px;
+  }
+  .comp-table th {
+    text-align: left;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .comp-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--paper3);
+    vertical-align: middle;
+    color: var(--ink2);
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table tr.highlight td { background: var(--accent-bg); }
+  .comp-name {
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .comp-name img {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .comp-count {
+    font-family: "DM Mono", monospace;
+    font-size: 13px;
+    color: var(--ink3);
+    text-align: right;
+    width: 1%;
+    white-space: nowrap;
+  }
+  .sent-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--paper3);
+    min-width: 140px;
+  }
+  .sent-bar > span { display: block; height: 100%; }
+  .sent-bar .pos { background: var(--ok); }
+  .sent-bar .neg { background: var(--red); }
+  .sent-bar .neu { background: var(--neutral); }
+  .sent-bar .mix { background: var(--mixed); }
+
+  /* Sentiment bar tooltip */
+  .sent-bar-wrap {
+    position: relative;
+    display: block;
+  }
+  .sent-bar-wrap:hover .sent-tooltip {
+    opacity: 1;
+    pointer-events: none;
+  }
+  .sent-tooltip {
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 7px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 20;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  .sent-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--ink);
+  }
+
+  /* Competitor ranked rows */
+  .comp-row:hover { background: var(--paper2); }
+  .comp-row.highlight { background: var(--accent-bg) !important; }
+
+  /* Sentiment legend */
+  .sent-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    color: var(--ink3);
+  }
+  .sent-legend .dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 2px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  /* Two-column layout */
+  .two-col {
+    display: flex;
+    gap: 18px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .two-col > .card { margin-top: 0; flex: 1 1 320px; min-width: 0; }
+  .two-col > .card.narrow { flex: 0 0 240px; }
+
+  @media (max-width: 700px) {
+    .two-col { flex-direction: column; }
+    .two-col > .card.narrow { flex: 1; }
+  }
+
+  /* Posts table */
+  .posts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .posts-table th {
+    text-align: left;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .posts-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--paper3);
+    vertical-align: middle;
+    color: var(--ink2);
+  }
+  .posts-table tr:last-child td { border-bottom: none; }
+  .posts-table a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .posts-table a:hover {
+    color: var(--accent-dark);
+    border-bottom-color: var(--accent);
+  }
+
+  .pill {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    color: var(--ink3);
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    padding: 3px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .sent-badge {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .sent-badge.positive { background: var(--ok-bg); color: #1b8a3a; border: 1px solid var(--ok-bd); }
+  .sent-badge.negative { background: #fdecec; color: #b51c1c; border: 1px solid #f5b7b7; }
+  .sent-badge.neutral  { background: var(--paper3); color: var(--ink3); border: 1px solid var(--rule); }
+  .sent-badge.mixed    { background: var(--accent-bg); color: var(--accent-dark); border: 1px solid var(--accent-bd); }
+
+  /* Filter pills */
+  .filter-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 4px 0 14px;
+  }
+  .filter-pill {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .filter-pill:hover { border-color: var(--accent-bd); }
+  .filter-pill.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* Timeline */
+  .timeline-wrap {
+    margin-top: 18px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .timeline {
+    display: flex;
+    gap: 10px;
+    min-width: min-content;
+  }
+  .timeline-card {
+    flex-shrink: 0;
+    width: 200px;
+    background: var(--paper2);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, background 0.15s;
+    display: block;
+  }
+  .timeline-card:hover {
+    border-color: var(--accent-bd);
+    background: var(--accent-bg);
+  }
+  .timeline-card .pill { margin-bottom: 8px; }
+  .timeline-card .tl-date {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    color: var(--ink4);
+    margin-bottom: 6px;
+  }
+  .timeline-card .tl-title {
+    font-size: 12px;
+    color: var(--ink2);
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  /* Thread cards */
+  .threads {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .thread {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .thread-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .badge.high { background: var(--accent-bg); color: var(--accent-dark); border: 1px solid var(--accent-bd); }
+  .badge.medium { background: var(--paper3); color: var(--ink3); border: 1px solid var(--rule); }
+  .thread-date {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    color: var(--ink4);
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .thread h3 { font-size: 16px; margin-bottom: 8px; line-height: 1.4; }
+  .thread h3 a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .thread h3 a:hover {
+    color: var(--accent-dark);
+    border-bottom-color: var(--accent);
+  }
+  .thread-stats {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    color: var(--ink4);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .thread-stats .dot { margin: 0 8px; opacity: 0.5; }
+  .thread-why {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .thread-why strong { color: var(--ink); font-weight: 700; }
+  .angle {
+    background: var(--paper2);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 14px 16px 14px 18px;
+  }
+  .angle-label {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .angle p {
+    font-size: 14px;
+    color: var(--ink2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Steps */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 18px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-bd);
+    border-radius: 4px;
+    padding: 2px 7px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+  .step-body h3 { margin-bottom: 4px; }
+  .step-body p {
+    font-size: 14px;
+    margin: 0;
+    color: var(--ink3);
+    line-height: 1.55;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: var(--accent-bg);
+    border: 1.5px solid var(--accent-bd);
+    border-radius: 14px;
+    padding: 36px 40px;
+    text-align: center;
+    margin-top: 28px;
+  }
+  .cta-block h2 { margin-bottom: 10px; }
+  .cta-block > p {
+    font-size: 15px;
+    color: var(--ink3);
+    max-width: 480px;
+    margin: 0 auto 24px;
+  }
+  .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-email, .cta-calendar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .cta-email { background: var(--accent); color: #fff; }
+  .cta-email:hover { background: var(--accent-dark); }
+  .cta-calendar {
+    background: #fff;
+    color: var(--accent);
+    border: 1.5px solid var(--accent-bd);
+  }
+  .cta-calendar:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent);
+  }
+  .cta-email svg, .cta-calendar svg { width: 16px; height: 16px; }
+  .cta-note {
+    font-size: 13px;
+    color: var(--ink4);
+    margin-top: 14px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-left { display: flex; align-items: center; gap: 10px; }
+  .footer-left img.brand-fav {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    object-fit: contain;
+    border: 1px solid var(--rule);
+    padding: 2px;
+  }
+  .footer-left a {
+    display: flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .footer-left img.peekaboo {
+    height: 18px;
+    width: auto;
+    opacity: 0.55;
+  }
+  .footer-right { font-size: 13px; color: var(--ink4); }
+
+  @media (max-width: 700px) {
+    .page { padding: 32px 12px 64px; }
+    .sheet { padding: 32px 22px 40px; border-radius: 12px; }
+    .stat-chip { flex: 1 0 calc(50% - 5px); min-width: 0; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .cta-block { padding: 28px 20px; }
+    .thread { padding: 18px 18px; }
+    .thread-date { margin-left: 0; }
+    .timeline-card { width: 170px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-left">
+    <img src="https://www.google.com/s2/favicons?domain=skylead.io&sz=32" alt="Skylead">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" alt="Reddit" style="opacity:0.75">
+    <span class="brand-name">Skylead</span>
+    <span class="sep">·</span>
+    <span class="topbar-sub">Reddit Audit</span>
+  </div>
+  <a class="topbar-right" href="https://www.aipeekaboo.com" target="_blank" rel="noopener">
+    <span>Powered by</span>
+    <img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo">
+  </a>
+</div>
+
+<div class="page">
+  <div class="sheet">
+
+    <!-- Cover -->
+    <div class="cover">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+        <img src="https://www.google.com/s2/favicons?domain=skylead.io&sz=64" alt="Skylead" style="width:48px;height:48px;border-radius:12px;border:1px solid var(--rule);padding:6px;background:#fff;flex-shrink:0;">
+        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="Reddit" style="width:48px;height:48px;border-radius:12px;border:1px solid var(--rule);padding:6px;background:#fff;flex-shrink:0;opacity:0.8;">
+      </div>
+      <div class="cover-meta">
+        <span>Multichannel sales engagement · B2B</span>
+        <span class="sep">·</span>
+        <span>20 posts reviewed</span>
+        <span class="sep">·</span>
+        <span>May 2026</span>
+      </div>
+      <h1>Skylead, Reddit Thread Audit</h1>
+      <p class="cover-sub">Every "Lemlist alternative", "LinkedIn automation" and "best cold email tool" thread is a Skylead thread waiting to happen. The conversation lives on r/coldemail, r/automation, r/LinkedInTips, r/Entrepreneur and r/sales, and Skylead already gets named in nine of the twenty threads in this audit. May 2026.</p>
+
+      <div class="stats-row">
+        <div class="stat-chip">
+          <span class="stat-chip-num">20</span>
+          <span class="stat-chip-label">Posts reviewed</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip-num">10</span>
+          <span class="stat-chip-label">High fit</span>
+        </div>
+        <div class="stat-chip accent">
+          <span class="stat-chip-num">3</span>
+          <span class="stat-chip-label">High priority</span>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="section" id="competitor-section">
+      <div class="section-label">
+        <img src="https://www.google.com/s2/favicons?domain=skylead.io&sz=32" alt="Skylead">
+        Competitor landscape
+      </div>
+      <h2>Who else is in the conversation</h2>
+      <p>Mentions of Skylead's top competitors across all 20 posts in the audit. Click a bar to highlight the row.</p>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div class="comp-ranked-list" id="compRankedList">
+          <div class="comp-row" data-idx="0" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=clay.com&sz=32" alt="Clay" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Clay</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">17 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:14.3%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:85.7%"></span>
+                <span class="mix" style="width:0%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 1 · negative: 0 · neutral: 6 · mixed: 0</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="1" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=reply.io&sz=32" alt="Reply.io" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Reply.io</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">17 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:14.3%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:85.7%"></span>
+                <span class="mix" style="width:0%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 1 · negative: 0 · neutral: 6 · mixed: 0</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="2" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=lemlist.com&sz=32" alt="Lemlist" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Lemlist</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">16 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:28.6%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:42.9%"></span>
+                <span class="mix" style="width:28.6%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 2 · negative: 0 · neutral: 3 · mixed: 2</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="3" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=waalaxy.com&sz=32" alt="Waalaxy" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Waalaxy</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">16 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:0%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:71.4%"></span>
+                <span class="mix" style="width:28.6%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 0 · negative: 0 · neutral: 5 · mixed: 2</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="4" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=expandi.io&sz=32" alt="Expandi" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Expandi</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">16 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:0%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:85.7%"></span>
+                <span class="mix" style="width:14.3%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 0 · negative: 0 · neutral: 6 · mixed: 1</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="5" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=salesflow.io&sz=32" alt="Salesflow" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Salesflow</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">16 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:16.7%"></span>
+                <span class="neg" style="width:0%"></span>
+                <span class="neu" style="width:66.6%"></span>
+                <span class="mix" style="width:16.7%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 1 · negative: 0 · neutral: 4 · mixed: 1</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="6" style="padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=dux-soup.com&sz=32" alt="Dux-Soup" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">Dux-Soup</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">15 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:16.7%"></span>
+                <span class="neg" style="width:16.7%"></span>
+                <span class="neu" style="width:66.6%"></span>
+                <span class="mix" style="width:0%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 1 · negative: 1 · neutral: 4 · mixed: 0</div>
+            </div>
+          </div>
+          <div class="comp-row" data-idx="7" style="padding:14px 20px;cursor:pointer;transition:background 0.15s;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="https://www.google.com/s2/favicons?domain=lagrowthmachine.com&sz=32" alt="La Growth Machine" width="16" height="16" style="border-radius:3px;flex-shrink:0;" onerror="this.style.visibility='hidden'" loading="lazy">
+              <span style="font-size:13px;font-weight:700;color:var(--ink);flex:1;">La Growth Machine</span>
+              <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">14 mentions</span>
+            </div>
+            <div class="sent-bar-wrap" style="margin-top:6px;">
+              <div class="sent-bar">
+                <span class="pos" style="width:0%"></span>
+                <span class="neg" style="width:20%"></span>
+                <span class="neu" style="width:80%"></span>
+                <span class="mix" style="width:0%"></span>
+              </div>
+              <div class="sent-tooltip">positive: 0 · negative: 1 · neutral: 4 · mixed: 0</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:14px 20px 16px;border-top:1px solid var(--rule);display:flex;gap:16px;flex-wrap:wrap;">
+          <div class="sent-legend" style="margin:0;">
+            <span><span class="dot" style="background:var(--ok)"></span>positive</span>
+            <span><span class="dot" style="background:var(--red)"></span>negative</span>
+            <span><span class="dot" style="background:var(--neutral)"></span>neutral</span>
+            <span><span class="dot" style="background:var(--mixed)"></span>mixed</span>
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--ink3);padding:0 20px 18px;margin:0;">Skylead is named in <strong style="color:var(--ink)">9 of 20 posts</strong> in this audit. In most competitor comparison threads it appears without supporting detail, the goal of commenting is to add specific, helpful context that separates it from the one-line mentions Clay and Lemlist receive.</p>
+      </div>
+    </section>
+
+
+    <section class="section" id="community-section">
+      <div class="section-label">
+        <img src="https://www.google.com/s2/favicons?domain=skylead.io&sz=32" alt="Skylead">
+        What the community is saying
+      </div>
+      <h2>Sentiment of the 20 audited threads</h2>
+      <p>Every post in the audit, by sentiment. Filter the table or hover the donut for counts.</p>
+
+      <div class="card" style="margin-top:18px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="width:100%;max-width:320px;height:300px;position:relative;">
+            <canvas id="sentDonut"></canvas>
+          </div>
+          <div class="sent-legend" style="justify-content:center;margin-top:14px;">
+            <span><span class="dot" style="background:var(--ok)"></span>positive</span>
+            <span><span class="dot" style="background:var(--red)"></span>negative</span>
+            <span><span class="dot" style="background:var(--neutral)"></span>neutral</span>
+            <span><span class="dot" style="background:var(--mixed)"></span>mixed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Key Themes</div>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr>
+              <th style="text-align:left;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink4);letter-spacing:0.08em;text-transform:uppercase;padding:8px 8px;border-bottom:1px solid var(--rule);">Theme</th>
+              <th style="text-align:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink4);letter-spacing:0.08em;text-transform:uppercase;padding:8px 8px;border-bottom:1px solid var(--rule);">Posts</th>
+              <th style="font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink4);letter-spacing:0.08em;text-transform:uppercase;padding:8px 8px;border-bottom:1px solid var(--rule);">Sentiment mix</th>
+              <th style="text-align:right;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--ink4);letter-spacing:0.08em;text-transform:uppercase;padding:8px 8px;border-bottom:1px solid var(--rule);">Overall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-weight:600;">LinkedIn automation</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">5</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="24" height="8" fill="#ea0027"><title>negative: 20%</title></rect>
+                  <rect x="24" y="0" width="24" height="8" fill="#a8a8a8"><title>neutral: 20%</title></rect>
+                  <rect x="48" y="0" width="72" height="8" fill="#FF4500"><title>mixed: 60%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-weight:600;">User experience</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">4</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="30" height="8" fill="#ea0027"><title>negative: 25%</title></rect>
+                  <rect x="30" y="0" width="0" height="8" fill="#a8a8a8"/>
+                  <rect x="30" y="0" width="90" height="8" fill="#FF4500"><title>mixed: 75%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-weight:600;">Deliverability</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">4</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#ea0027"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#a8a8a8"/>
+                  <rect x="0" y="0" width="120" height="8" fill="#FF4500"><title>mixed: 100%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-weight:600;">Personalization</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">3</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#ea0027"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#a8a8a8"/>
+                  <rect x="0" y="0" width="120" height="8" fill="#FF4500"><title>mixed: 100%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-weight:600;">Tool comparison</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">3</td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#ea0027"/>
+                  <rect x="0" y="0" width="0" height="8" fill="#a8a8a8"/>
+                  <rect x="0" y="0" width="120" height="8" fill="#FF4500"><title>mixed: 100%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;border-bottom:1px solid var(--paper3);text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 8px;color:var(--ink2);font-weight:600;">Tool effectiveness</td>
+              <td style="padding:10px 8px;text-align:center;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);">3</td>
+              <td style="padding:10px 8px;">
+                <svg width="120" height="8" style="display:block;border-radius:4px;overflow:hidden;">
+                  <rect x="0" y="0" width="0" height="8" fill="#46d160"/>
+                  <rect x="0" y="0" width="39.6" height="8" fill="#ea0027"><title>negative: 33%</title></rect>
+                  <rect x="39.6" y="0" width="0" height="8" fill="#a8a8a8"/>
+                  <rect x="39.6" y="0" width="80.4" height="8" fill="#FF4500"><title>mixed: 67%</title></rect>
+                </svg>
+              </td>
+              <td style="padding:10px 8px;text-align:right;">
+                <span class="sent-badge mixed">mixed</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--ink4);margin-top:14px;margin-bottom:0;line-height:1.5;font-style:italic;">Sentiment is assessed per post based on the overall tone of the thread (title, body, top comments). Each post is classified as Positive, Negative, Neutral, or Mixed based on the dominant emotional signal across all participants.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <div class="filter-row" data-filter-target="postsTbody">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="positive">Positive</button>
+          <button class="filter-pill" data-filter="negative">Negative</button>
+          <button class="filter-pill" data-filter="mixed">Mixed</button>
+          <button class="filter-pill" data-filter="neutral">Neutral</button>
+        </div>
+        <table class="posts-table">
+          <thead>
+            <tr>
+              <th>Thread</th>
+              <th>Subreddit</th>
+              <th>Sentiment</th>
+            </tr>
+          </thead>
+          <tbody id="postsTbody">
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/automation/comments/1qt4klw/has_anyone_used_linkedin_automation_i_have_some" target="_blank" rel="noopener">Has anyone used LinkedIn automation? I have some worries, need ...</a></td>
+              <td><span class="pill">r/automation</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="negative">
+              <td><a href="https://www.reddit.com/r/Botdog/comments/1on3xgf/is_la_growth_machine_worth_165month_for_linkedin" target="_blank" rel="noopener">Is La Growth Machine worth $165/month for LinkedIn automation?</a></td>
+              <td><span class="pill">r/Botdog</span></td>
+              <td><span class="sent-badge negative">negative</span></td>
+            </tr>
+            <tr data-sentiment="neutral">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1j4ge89/does_anybody_have_experience_with_skylead" target="_blank" rel="noopener">Does anybody have experience with SkyLead? : r/coldemail - Reddit</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge neutral">neutral</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1mnczgo/recommendations_on_best_cold_email_tools_for" target="_blank" rel="noopener">recommendations on best cold email tools for marketing agency</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/Entrepreneur/comments/1qvptv1/top_linkedin_automationoutreach_tools_tested_so" target="_blank" rel="noopener">Top LinkedIn Automation/Outreach Tools - tested so you don't have to</a></td>
+              <td><span class="pill">r/Entrepreneur</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/LinkedInTips/comments/1nis5gf/best_linkedin_automation_and_prospecting_tools" target="_blank" rel="noopener">Best LinkedIn Automation and Prospecting Tools (September 2025)</a></td>
+              <td><span class="pill">r/LinkedInTips</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1mv9cgl/a_breakdown_of_email_warmup" target="_blank" rel="noopener">A Breakdown of Email Warmup : r/coldemail - Reddit</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="negative">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1ne6q3f/lemlist_alternatives" target="_blank" rel="noopener">Lemlist alternatives???? : r/coldemail - Reddit</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge negative">negative</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/CRMSoftware/comments/1me9wab/whats_the_best_crm_for_linkedin" target="_blank" rel="noopener">What's the best CRM for LinkedIn? : r/CRMSoftware</a></td>
+              <td><span class="pill">r/CRMSoftware</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1if4dmn/what_are_the_biggest_challenges_in_cold_emails" target="_blank" rel="noopener">What are the biggest challenges in cold emails? : r/coldemail - Reddit</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="negative">
+              <td><a href="https://www.reddit.com/r/recruiting/comments/ytgkn3/sourcing_tools_other_than_linkedin_recruiter" target="_blank" rel="noopener">Sourcing tools other than LinkedIn recruiter - Reddit</a></td>
+              <td><span class="pill">r/recruiting</span></td>
+              <td><span class="sent-badge negative">negative</span></td>
+            </tr>
+            <tr data-sentiment="positive">
+              <td><a href="https://www.reddit.com/r/DigitalMarketing/comments/nro5f6/running_an_agency_ive_compiled_a_few_outbound" target="_blank" rel="noopener">Running an Agency? I've compiled a few outbound sales techniques ...</a></td>
+              <td><span class="pill">r/DigitalMarketing</span></td>
+              <td><span class="sent-badge positive">positive</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/GrowthHacking/comments/1rrp8ze/what_do_people_really_think_about_lemlist_ive" target="_blank" rel="noopener">What do people really think about lemlist? I've seen mixed reviews.</a></td>
+              <td><span class="pill">r/GrowthHacking</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="negative">
+              <td><a href="https://www.reddit.com/r/sales/comments/1m2el8l/whats_a_good_sales_engagement_platform" target="_blank" rel="noopener">What's a good sales engagement platform? - Reddit</a></td>
+              <td><span class="pill">r/sales</span></td>
+              <td><span class="sent-badge negative">negative</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/linkedin/comments/14t1tp8/sos_getting_zero_engagement_on_my_linkedin_posts" target="_blank" rel="noopener">SOS: Getting ZERO engagement on my LinkedIn posts, should I ...</a></td>
+              <td><span class="pill">r/linkedin</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/linkedinautomation/comments/1sma26q/duxsoup_vs_expandi_which_linkedin_automation_tool" target="_blank" rel="noopener">Dux-Soup vs Expandi: Which LinkedIn Automation Tool Wins in 2026?</a></td>
+              <td><span class="pill">r/linkedinautomation</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/agency/comments/1dwap6w/whats_the_biggest_problem_you_face_as_an_agency" target="_blank" rel="noopener">What's the biggest problem you face as an agency? - Reddit</a></td>
+              <td><span class="pill">r/agency</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/automation/comments/1j9n8wi/what_is_an_effective_way_of_automating_b2b_leads" target="_blank" rel="noopener">What is an effective way of automating B2B leads on a budget?</a></td>
+              <td><span class="pill">r/automation</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/Waalaxy/comments/19cihfg/waalaxy_vs_sales_navigator" target="_blank" rel="noopener">Waalaxy vs sales navigator - Reddit</a></td>
+              <td><span class="pill">r/Waalaxy</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+            <tr data-sentiment="mixed">
+              <td><a href="https://www.reddit.com/r/coldemail/comments/1gdbn7i/replyio_vs_sendernet" target="_blank" rel="noopener">Reply.io vs. Sender.net : r/coldemail - Reddit</a></td>
+              <td><span class="pill">r/coldemail</span></td>
+              <td><span class="sent-badge mixed">mixed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section class="section" id="subreddit-section">
+      <div class="section-label">Posts by subreddit</div>
+      <h2>Where the conversation lives</h2>
+      <p>Distribution of all 20 audited threads across subreddits, and a timeline from oldest to newest.</p>
+
+      <div class="card">
+        <div class="chart-wrap">
+          <canvas id="subChart"></canvas>
+        </div>
+        <div class="timeline-wrap">
+          <div class="timeline">
+            <a class="timeline-card" href="https://www.reddit.com/r/DigitalMarketing/comments/nro5f6/running_an_agency_ive_compiled_a_few_outbound" target="_blank" rel="noopener">
+              <span class="pill">r/DigitalMarketing</span>
+              <div class="tl-date">Jun 2021</div>
+              <div class="tl-title">Running an Agency? I've compiled a few outbound sales t&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/recruiting/comments/ytgkn3/sourcing_tools_other_than_linkedin_recruiter" target="_blank" rel="noopener">
+              <span class="pill">r/recruiting</span>
+              <div class="tl-date">Nov 2022</div>
+              <div class="tl-title">Sourcing tools other than LinkedIn recruiter&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/linkedin/comments/14t1tp8/sos_getting_zero_engagement_on_my_linkedin_posts" target="_blank" rel="noopener">
+              <span class="pill">r/linkedin</span>
+              <div class="tl-date">Jul 2023</div>
+              <div class="tl-title">SOS: Getting ZERO engagement on my LinkedIn posts&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/Waalaxy/comments/19cihfg/waalaxy_vs_sales_navigator" target="_blank" rel="noopener">
+              <span class="pill">r/Waalaxy</span>
+              <div class="tl-date">Jan 2024</div>
+              <div class="tl-title">Waalaxy vs sales navigator&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/agency/comments/1dwap6w/whats_the_biggest_problem_you_face_as_an_agency" target="_blank" rel="noopener">
+              <span class="pill">r/agency</span>
+              <div class="tl-date">Jul 2024</div>
+              <div class="tl-title">What's the biggest problem you face as an agency?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1gdbn7i/replyio_vs_sendernet" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Oct 2024</div>
+              <div class="tl-title">Reply.io vs. Sender.net&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1if4dmn/what_are_the_biggest_challenges_in_cold_emails" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Feb 2025</div>
+              <div class="tl-title">What are the biggest challenges in cold emails?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1j4ge89/does_anybody_have_experience_with_skylead" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Mar 2025</div>
+              <div class="tl-title">Does anybody have experience with SkyLead?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/automation/comments/1j9n8wi/what_is_an_effective_way_of_automating_b2b_leads" target="_blank" rel="noopener">
+              <span class="pill">r/automation</span>
+              <div class="tl-date">Mar 2025</div>
+              <div class="tl-title">What is an effective way of automating B2B leads&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/sales/comments/1m2el8l/whats_a_good_sales_engagement_platform" target="_blank" rel="noopener">
+              <span class="pill">r/sales</span>
+              <div class="tl-date">Jul 2025</div>
+              <div class="tl-title">What's a good sales engagement platform?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/CRMSoftware/comments/1me9wab/whats_the_best_crm_for_linkedin" target="_blank" rel="noopener">
+              <span class="pill">r/CRMSoftware</span>
+              <div class="tl-date">Jul 2025</div>
+              <div class="tl-title">What's the best CRM for LinkedIn?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1mnczgo/recommendations_on_best_cold_email_tools_for" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Aug 2025</div>
+              <div class="tl-title">recommendations on best cold email tools for agency&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1mv9cgl/a_breakdown_of_email_warmup" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Aug 2025</div>
+              <div class="tl-title">A Breakdown of Email Warmup&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/coldemail/comments/1ne6q3f/lemlist_alternatives" target="_blank" rel="noopener">
+              <span class="pill">r/coldemail</span>
+              <div class="tl-date">Sep 2025</div>
+              <div class="tl-title">Lemlist alternatives????&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/LinkedInTips/comments/1nis5gf/best_linkedin_automation_and_prospecting_tools" target="_blank" rel="noopener">
+              <span class="pill">r/LinkedInTips</span>
+              <div class="tl-date">Sep 2025</div>
+              <div class="tl-title">Best LinkedIn Automation and Prospecting Tools&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/Botdog/comments/1on3xgf/is_la_growth_machine_worth_165month_for_linkedin" target="_blank" rel="noopener">
+              <span class="pill">r/Botdog</span>
+              <div class="tl-date">Nov 2025</div>
+              <div class="tl-title">Is La Growth Machine worth $165/month?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/automation/comments/1qt4klw/has_anyone_used_linkedin_automation_i_have_some" target="_blank" rel="noopener">
+              <span class="pill">r/automation</span>
+              <div class="tl-date">Feb 2026</div>
+              <div class="tl-title">Has anyone used LinkedIn automation?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/Entrepreneur/comments/1qvptv1/top_linkedin_automationoutreach_tools_tested_so" target="_blank" rel="noopener">
+              <span class="pill">r/Entrepreneur</span>
+              <div class="tl-date">Feb 2026</div>
+              <div class="tl-title">Top LinkedIn Automation/Outreach Tools&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/GrowthHacking/comments/1rrp8ze/what_do_people_really_think_about_lemlist_ive" target="_blank" rel="noopener">
+              <span class="pill">r/GrowthHacking</span>
+              <div class="tl-date">Mar 2026</div>
+              <div class="tl-title">What do people really think about lemlist?&hellip;</div>
+            </a>
+            <a class="timeline-card" href="https://www.reddit.com/r/linkedinautomation/comments/1sma26q/duxsoup_vs_expandi_which_linkedin_automation_tool" target="_blank" rel="noopener">
+              <span class="pill">r/linkedinautomation</span>
+              <div class="tl-date">Apr 2026</div>
+              <div class="tl-title">Dux-Soup vs Expandi: Which LinkedIn Automation Tool Wins&hellip;</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="threads-section">
+      <div class="section-label">Selected threads</div>
+      <h2>The threads we recommend commenting on</h2>
+      <p>Each thread is open and accepting comments today. Filter by priority below.</p>
+
+      <div class="filter-row" data-filter-target="threadsList">
+        <button class="filter-pill active" data-priority-filter="all">All (20)</button>
+        <button class="filter-pill" data-priority-filter="high">High (3)</button>
+        <button class="filter-pill" data-priority-filter="medium">Medium (17)</button>
+      </div>
+
+      <div class="threads" id="threadsList">
+
+        <div class="thread" data-priority="high">
+          <div class="thread-top">
+            <span class="badge high">High priority</span>
+            <span class="pill">r/automation</span>
+            <span class="thread-date">Feb 2026</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/automation/comments/1qt4klw/has_anyone_used_linkedin_automation_i_have_some" target="_blank" rel="noopener">Has anyone used LinkedIn automation? I have some worries, need ...</a></h3>
+          <div class="thread-stats">277 upvotes <span class="dot">·</span> 93 comments <span class="dot">·</span> 210,880 subscribers</div>
+          <p class="thread-why">The post is by someone actively looking to scale LinkedIn outreach, which aligns well with Skylead's target audience of B2B sales and marketing teams. The concerns about automation leading to spam and account bans directly relate to the features Skylead offers to mitigate these risks.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight how its features, like smart sequences and AI data enrichment, help users automate outreach while minimizing risks of spam and bans.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="high">
+          <div class="thread-top">
+            <span class="badge high">High priority</span>
+            <span class="pill">r/Botdog</span>
+            <span class="thread-date">Nov 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/Botdog/comments/1on3xgf/is_la_growth_machine_worth_165month_for_linkedin" target="_blank" rel="noopener">Is La Growth Machine worth $165/month for LinkedIn automation?</a></h3>
+          <div class="thread-stats">30 upvotes <span class="dot">·</span> 0 comments <span class="dot">·</span> 590 subscribers</div>
+          <p class="thread-why">The post discusses LinkedIn automation tools, which directly relates to Skylead's offerings, and the author is critiquing the value of a competitor, indicating an interest in better solutions.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its comprehensive features for both LinkedIn and email outreach, positioning itself as a more cost-effective and feature-rich alternative.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="high">
+          <div class="thread-top">
+            <span class="badge high">High priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Mar 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1j4ge89/does_anybody_have_experience_with_skylead" target="_blank" rel="noopener">Does anybody have experience with SkyLead? : r/coldemail - Reddit</a></h3>
+          <div class="thread-stats">1 upvote <span class="dot">·</span> 0 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The user is actively seeking feedback on SkyLead, indicating they are part of the target audience looking for solutions that combine cold email and LinkedIn automation.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead should provide a detailed overview of its unique features and benefits, addressing the user's inquiry directly.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Aug 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1mnczgo/recommendations_on_best_cold_email_tools_for" target="_blank" rel="noopener">recommendations on best cold email tools for marketing agency</a></h3>
+          <div class="thread-stats">15 upvotes <span class="dot">·</span> 94 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The post discusses cold email tools and their effectiveness, which aligns with Skylead's focus on sales engagement through email outreach. The audience is actively seeking solutions for deliverability and efficiency, areas where Skylead excels.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its advanced features like AI data enrichment and unlimited email accounts, which address the concerns raised about deliverability and efficiency.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/Entrepreneur</span>
+            <span class="thread-date">Feb 2026</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/Entrepreneur/comments/1qvptv1/top_linkedin_automationoutreach_tools_tested_so" target="_blank" rel="noopener">Top LinkedIn Automation/Outreach Tools - tested so you don't have to</a></h3>
+          <div class="thread-stats">12 upvotes <span class="dot">·</span> 47 comments <span class="dot">·</span> 5,181,303 subscribers</div>
+          <p class="thread-why">The post discusses LinkedIn automation tools and outreach strategies, which aligns with Skylead's target audience of B2B sales and marketing teams looking for effective automation solutions.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its unique features, such as AI data enrichment and smart sequencing, to address the concerns raised about generic messaging and account safety.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/LinkedInTips</span>
+            <span class="thread-date">Sep 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/LinkedInTips/comments/1nis5gf/best_linkedin_automation_and_prospecting_tools" target="_blank" rel="noopener">Best LinkedIn Automation and Prospecting Tools (September 2025)</a></h3>
+          <div class="thread-stats">11 upvotes <span class="dot">·</span> 68 comments <span class="dot">·</span> 32,603 subscribers</div>
+          <p class="thread-why">The post discusses various LinkedIn automation tools and their effectiveness, which aligns with Skylead's offerings. The audience includes B2B sales teams and agencies, making it relevant for Skylead's target market.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could contribute by addressing the concerns about account safety while highlighting its unique features like AI data enrichment and email warm-up.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Aug 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1mv9cgl/a_breakdown_of_email_warmup" target="_blank" rel="noopener">A Breakdown of Email Warmup : r/coldemail - Reddit</a></h3>
+          <div class="thread-stats">11 upvotes <span class="dot">·</span> 31 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The post discusses email warmup, a relevant aspect of email outreach that Skylead addresses with its features. The audience includes B2B sales and marketing teams who could benefit from Skylead's multichannel approach.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could join the conversation by highlighting how its email warm-up feature integrates seamlessly with its other functionalities to enhance deliverability and engagement.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Sep 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1ne6q3f/lemlist_alternatives" target="_blank" rel="noopener">Lemlist alternatives???? : r/coldemail - Reddit</a></h3>
+          <div class="thread-stats">10 upvotes <span class="dot">·</span> 28 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The post discusses frustrations with email bounce rates and the quality of leads, which aligns with Skylead's focus on improving email outreach effectiveness through data enrichment and verification.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead can join the conversation by emphasizing its AI data enrichment and email verification features that help maintain low bounce rates and improve outreach success.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/CRMSoftware</span>
+            <span class="thread-date">Jul 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/CRMSoftware/comments/1me9wab/whats_the_best_crm_for_linkedin" target="_blank" rel="noopener">What's the best CRM for LinkedIn? : r/CRMSoftware</a></h3>
+          <div class="thread-stats">6 upvotes <span class="dot">·</span> 19 comments <span class="dot">·</span> 9,491 subscribers</div>
+          <p class="thread-why">The post discusses the challenges of managing LinkedIn prospecting, which aligns with Skylead's focus on LinkedIn automation and sales engagement. While the user does not need heavy automation, they express a need for better organization, which Skylead can address.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight how its features simplify LinkedIn outreach and lead management, addressing the user's pain points directly.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Feb 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1if4dmn/what_are_the_biggest_challenges_in_cold_emails" target="_blank" rel="noopener">What are the biggest challenges in cold emails? : r/coldemail - Reddit</a></h3>
+          <div class="thread-stats">3 upvotes <span class="dot">·</span> 43 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The discussion revolves around challenges in cold emailing, which aligns with Skylead's focus on improving email outreach and deliverability. Many users are actively seeking solutions to these challenges, indicating a potential interest in Skylead's offerings.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could contribute by sharing insights on how its features, like AI data enrichment and email warm-up, can enhance deliverability and outreach effectiveness.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/recruiting</span>
+            <span class="thread-date">Nov 2022</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/recruiting/comments/ytgkn3/sourcing_tools_other_than_linkedin_recruiter" target="_blank" rel="noopener">Sourcing tools other than LinkedIn recruiter - Reddit</a></h3>
+          <div class="thread-stats">61 upvotes <span class="dot">·</span> 100 comments <span class="dot">·</span> 192,775 subscribers</div>
+          <p class="thread-why">The post discusses challenges in sourcing talent and the limitations of LinkedIn, which aligns with Skylead's focus on multichannel outreach solutions. While the primary audience is recruiters, they express a need for better tools, which Skylead can address.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could enter the conversation by highlighting how its multichannel approach can enhance sourcing efforts beyond LinkedIn.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/DigitalMarketing</span>
+            <span class="thread-date">Jun 2021</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/DigitalMarketing/comments/nro5f6/running_an_agency_ive_compiled_a_few_outbound" target="_blank" rel="noopener">Running an Agency? I've compiled a few outbound sales techniques ...</a></h3>
+          <div class="thread-stats">40 upvotes <span class="dot">·</span> 10 comments <span class="dot">·</span> 409,761 subscribers</div>
+          <p class="thread-why">The post discusses outbound sales techniques relevant to marketing agencies, which aligns with Skylead's target audience. However, it does not directly address the automation aspect that Skylead offers.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could share insights on how automation can enhance these outbound strategies, particularly in targeting and engaging potential clients efficiently.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/GrowthHacking</span>
+            <span class="thread-date">Mar 2026</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/GrowthHacking/comments/1rrp8ze/what_do_people_really_think_about_lemlist_ive" target="_blank" rel="noopener">What do people really think about lemlist? I've seen mixed reviews.</a></h3>
+          <div class="thread-stats">8 upvotes <span class="dot">·</span> 20 comments <span class="dot">·</span> 141,533 subscribers</div>
+          <p class="thread-why">The post discusses cold email and outreach tools, which aligns with Skylead's offerings, but the focus is primarily on lemlist and its competitors rather than a direct need for Skylead.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its competitive pricing and robust features that address the deliverability and scaling concerns raised by users.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/sales</span>
+            <span class="thread-date">Jul 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/sales/comments/1m2el8l/whats_a_good_sales_engagement_platform" target="_blank" rel="noopener">What's a good sales engagement platform? - Reddit</a></h3>
+          <div class="thread-stats">6 upvotes <span class="dot">·</span> 32 comments <span class="dot">·</span> 575,133 subscribers</div>
+          <p class="thread-why">The post discusses frustrations with existing sales engagement platforms, indicating a need for better solutions, which aligns with Skylead's offerings.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight how its platform addresses common pain points mentioned, such as integration issues and user experience.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/linkedin</span>
+            <span class="thread-date">Jul 2023</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/linkedin/comments/14t1tp8/sos_getting_zero_engagement_on_my_linkedin_posts" target="_blank" rel="noopener">SOS: Getting ZERO engagement on my LinkedIn posts, should I ...</a></h3>
+          <div class="thread-stats">6 upvotes <span class="dot">·</span> 34 comments <span class="dot">·</span> 152,242 subscribers</div>
+          <p class="thread-why">The post discusses engagement strategies on LinkedIn, which aligns with Skylead's focus on automating LinkedIn outreach. While the user is not directly seeking sales engagement tools, their challenges with engagement reflect a broader concern that Skylead could address.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could suggest that automating outreach and engagement strategies might help the user connect more effectively with their target audience.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/linkedinautomation</span>
+            <span class="thread-date">Apr 2026</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/linkedinautomation/comments/1sma26q/duxsoup_vs_expandi_which_linkedin_automation_tool" target="_blank" rel="noopener">Dux-Soup vs Expandi: Which LinkedIn Automation Tool Wins in 2026?</a></h3>
+          <div class="thread-stats">5 upvotes <span class="dot">·</span> 15 comments <span class="dot">·</span> 1,599 subscribers</div>
+          <p class="thread-why">The post discusses LinkedIn automation tools, which is relevant to Skylead's offerings, but it primarily focuses on specific competitors rather than the broader sales engagement challenges Skylead addresses.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its unique multichannel approach and safety features in response to the concerns about account bans.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/agency</span>
+            <span class="thread-date">Jul 2024</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/agency/comments/1dwap6w/whats_the_biggest_problem_you_face_as_an_agency" target="_blank" rel="noopener">What's the biggest problem you face as an agency? - Reddit</a></h3>
+          <div class="thread-stats">5 upvotes <span class="dot">·</span> 22 comments <span class="dot">·</span> 90,241 subscribers</div>
+          <p class="thread-why">While the post is not directly about Skylead's specific offerings, the challenges discussed, such as finding clients and managing expectations, are relevant to the target audience that Skylead serves.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could contribute by discussing how its automation features can help agencies streamline their outreach and client management processes.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/automation</span>
+            <span class="thread-date">Mar 2025</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/automation/comments/1j9n8wi/what_is_an_effective_way_of_automating_b2b_leads" target="_blank" rel="noopener">What is an effective way of automating B2B leads on a budget?</a></h3>
+          <div class="thread-stats">4 upvotes <span class="dot">·</span> 6 comments <span class="dot">·</span> 210,880 subscribers</div>
+          <p class="thread-why">The post discusses lead generation and outreach automation, which aligns with Skylead's target audience of B2B sales and marketing teams. However, the focus is more on budget solutions rather than advanced automation features.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its advanced automation features and AI capabilities as a more efficient solution for lead generation and outreach.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/Waalaxy</span>
+            <span class="thread-date">Jan 2024</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/Waalaxy/comments/19cihfg/waalaxy_vs_sales_navigator" target="_blank" rel="noopener">Waalaxy vs sales navigator - Reddit</a></h3>
+          <div class="thread-stats">1 upvote <span class="dot">·</span> 2 comments <span class="dot">·</span> 14 subscribers</div>
+          <p class="thread-why">The post discusses tools for digital marketing and sales outreach, which aligns with Skylead's offerings, though it primarily focuses on Waalaxy and Sales Navigator.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its unique features that combine LinkedIn automation and cold email outreach to enhance the discussion.</p>
+          </div>
+        </div>
+
+        <div class="thread" data-priority="medium">
+          <div class="thread-top">
+            <span class="badge medium">Medium priority</span>
+            <span class="pill">r/coldemail</span>
+            <span class="thread-date">Oct 2024</span>
+          </div>
+          <h3><a href="https://www.reddit.com/r/coldemail/comments/1gdbn7i/replyio_vs_sendernet" target="_blank" rel="noopener">Reply.io vs. Sender.net : r/coldemail - Reddit</a></h3>
+          <div class="thread-stats">1 upvote <span class="dot">·</span> 5 comments <span class="dot">·</span> 79,606 subscribers</div>
+          <p class="thread-why">The post discusses tools for email outreach, which is relevant to Skylead's offerings, but the primary focus is on Reply.io and Sender.net, indicating a more general interest in alternatives rather than a direct need for Skylead.</p>
+          <div class="angle">
+            <span class="angle-label">Comment angle</span>
+            <p>Skylead could highlight its unique features, such as LinkedIn automation and AI data enrichment, to attract users looking for comprehensive outreach solutions.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="section-label">What happens next</div>
+      <h2>From audit to live comments in one week</h2>
+      <p>The threads above are not theoretical. Each one is open and accepting comments today. Here is how we move from list to result.</p>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <h3>We draft the comments</h3>
+            <p>Our Reddit team writes each comment to match the exact angle above, runs it past you for sign-off, and posts from established accounts. No copy-paste, no template language. Every comment is written for its specific thread.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <h3>We track engagement</h3>
+            <p>Each comment is monitored for upvotes, replies, and downstream subreddit visibility. We capture screenshots, response patterns, and any direct messages received as a result.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <h3>We report back monthly</h3>
+            <p>You get a clear monthly report showing every comment posted, its engagement, and the impact on AI visibility through AI Peekaboo. Threads that perform get a second comment, threads that need a different angle get rewritten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cta-block">
+        <h2>Want us to start this week?</h2>
+        <p>Pick a time below or reply directly. We can be live in the first three threads within five working days.</p>
+        <div class="cta-buttons">
+          <a class="cta-calendar" href="https://calendly.com/filipe-aipeekaboo/30min" target="_blank" rel="noopener">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="14" height="13" rx="2"/><line x1="3" y1="8" x2="17" y2="8"/><line x1="8" y1="2" x2="8" y2="5"/><line x1="12" y1="2" x2="12" y2="5"/></svg>
+            Book a call
+          </a>
+          <a class="cta-email" href="mailto:filipe@aipeekaboo.com?subject=Reddit%20audit%20for%20Skylead">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Filipe
+          </a>
+        </div>
+        <p class="cta-note">filipe@aipeekaboo.com</p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="footer-left">
+        <img class="brand-fav" src="https://www.google.com/s2/favicons?domain=skylead.io&sz=32" alt="Skylead">
+        <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener">
+          <img class="peekaboo" src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" alt="AI Peekaboo">
+        </a>
+      </div>
+      <span class="footer-right">May 2026 · Skylead Reddit Audit</span>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // ----- Competitor ranked rows click highlight -----
+  try {
+    document.querySelectorAll('.comp-row').forEach(function (row) {
+      row.addEventListener('click', function () {
+        var isActive = this.classList.contains('highlight');
+        document.querySelectorAll('.comp-row').forEach(function (r) {
+          r.classList.remove('highlight');
+          r.style.background = '';
+        });
+        if (!isActive) {
+          this.classList.add('highlight');
+          this.style.background = 'var(--accent-bg)';
+        }
+      });
+    });
+  } catch (e) { console.error("compRow error", e); }
+
+  // ----- Sentiment donut -----
+  try {
+    var donutCanvas = document.getElementById("sentDonut");
+    if (donutCanvas && typeof Chart !== "undefined") {
+      var donutData = {"positive": 1, "negative": 4, "neutral": 1, "mixed": 14};
+      var labels = ["Positive", "Negative", "Neutral", "Mixed"];
+      var values = [donutData.positive, donutData.negative, donutData.neutral, donutData.mixed];
+      var colors = ["#46d160", "#ea0027", "#a8a8a8", "#FF4500"];
+      new Chart(donutCanvas.getContext("2d"), {
+        type: "doughnut",
+        data: {
+          labels: labels,
+          datasets: [{
+            data: values,
+            backgroundColor: colors,
+            borderColor: "#ffffff",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: "62%",
+          animation: { duration: 900, easing: "easeInOutQuart" },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#1c1c1c",
+              titleFont: { family: "Lato", weight: "700" },
+              bodyFont: { family: "DM Mono" },
+              padding: 10,
+              callbacks: {
+                label: function (ctx) { return ctx.label + ": " + ctx.parsed; }
+              }
+            }
+          }
+        }
+      });
+    }
+  } catch (e) { console.error("donut error", e); }
+
+  // ----- Subreddit bar chart -----
+  try {
+    var subCanvas = document.getElementById("subChart");
+    if (subCanvas && typeof Chart !== "undefined") {
+      var subData = {"labels": ["r/coldemail", "r/automation", "r/sales", "r/linkedinautomation", "r/GrowthHacking", "r/Waalaxy", "r/Botdog", "r/LinkedInTips", "r/Entrepreneur", "r/recruiting", "r/DigitalMarketing", "r/linkedin", "r/agency", "r/CRMSoftware"], "data": [6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]};
+      // labels: 14, data sums to 20 (6+2+12*1)
+      new Chart(subCanvas.getContext("2d"), {
+        type: "bar",
+        data: {
+          labels: subData.labels,
+          datasets: [{
+            label: "Threads",
+            data: subData.data,
+            backgroundColor: "#FF4500",
+            borderRadius: 4,
+            barThickness: 22
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 700, easing: "easeInOutQuart" },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#1c1c1c",
+              titleFont: { family: "Lato", weight: "700" },
+              bodyFont: { family: "DM Mono" },
+              padding: 10,
+              displayColors: false
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: "#313131",
+                font: { family: "DM Mono", size: 11 },
+                maxRotation: 45,
+                minRotation: 0
+              }
+            },
+            y: {
+              beginAtZero: true,
+              grid: { color: "#edeff1" },
+              ticks: {
+                color: "#a8a8a8",
+                font: { family: "DM Mono", size: 11 },
+                stepSize: 1,
+                precision: 0
+              }
+            }
+          }
+        }
+      });
+    }
+  } catch (e) { console.error("subChart error", e); }
+
+  // ----- Sentiment filter pills (posts table) -----
+  try {
+    var sentPills = document.querySelectorAll('[data-filter-target="postsTbody"] .filter-pill');
+    sentPills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        sentPills.forEach(function (p) { p.classList.remove("active"); });
+        pill.classList.add("active");
+        var f = pill.getAttribute("data-filter");
+        var rows = document.querySelectorAll("#postsTbody tr");
+        rows.forEach(function (r) {
+          if (f === "all" || r.getAttribute("data-sentiment") === f) {
+            r.style.display = "";
+          } else {
+            r.style.display = "none";
+          }
+        });
+      });
+    });
+  } catch (e) { console.error("postsFilter error", e); }
+
+  // ----- Priority filter pills (thread cards) -----
+  try {
+    var priPills = document.querySelectorAll('[data-filter-target="threadsList"] .filter-pill');
+    priPills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        priPills.forEach(function (p) { p.classList.remove("active"); });
+        pill.classList.add("active");
+        var f = pill.getAttribute("data-priority-filter");
+        var cards = document.querySelectorAll("#threadsList .thread");
+        cards.forEach(function (c) {
+          if (f === "all" || c.getAttribute("data-priority") === f) {
+            c.style.display = "";
+          } else {
+            c.style.display = "none";
+          }
+        });
+      });
+    });
+  } catch (e) { console.error("priorityFilter error", e); }
+});
+</script>
+
+
+</body>
+</html>
