@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project M SEO / AEO Proposal</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YV8FCLN403"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YV8FCLN403');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<style>
+  :root {
+    --accent:      #164956;
+    --accent-bg:   #E8F0F2;
+    --accent-bd:   #B8CFD4;
+    --accent-dark: #0F3640;
+    --ink:         #1a2c33;
+    --ink2:        #2f4750;
+    --ink3:        #617278;
+    --ink4:        #9AAAB0;
+    --paper:       #fff;
+    --paper2:      #F7FAFB;
+    --paper3:      #EEF4F5;
+    --rule:        #D9E6E9;
+    --ok:          #16a34a;
+    --ok-bg:       #f0fdf4;
+    --ok-bd:       #bbf7d0;
+    --warn:        #ea580c;
+    --warn-bg:     #fff7ed;
+    --warn-bd:     #fed7aa;
+    --red:         #dc2626;
+    --red-bg:      #fef2f2;
+    --red-bd:      #fecaca;
+  }
+  *{box-sizing:border-box;font-family:'Inter',sans-serif}
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#fff}
+  .reveal-viewport,.reveal{width:100%!important;height:100%!important;background:#fff!important}
+  .reveal .slides section{width:100vw!important;height:100vh!important;padding:0!important;background:#fff!important;display:flex!important;flex-direction:column!important;text-align:left!important}
+  .s{width:100vw;height:100vh;padding:3vh 4.5vw 2.5vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .stripe{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent-dark)}
+  .hdr{display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:.6vh}
+  .hdr-right{display:flex;flex-direction:column;align-items:flex-end}
+  .snum{font-family:'DM Mono',monospace;font-size:clamp(10px,1.2vh,12px);font-weight:700;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:2px 8px;letter-spacing:.06em}
+  .tag{font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink4)}
+  .powered{display:flex;align-items:center;gap:5px;text-decoration:none;margin-top:3px}
+  .powered span{font-size:clamp(8px,1vh,10px);color:var(--ink4)}
+  .powered img{height:clamp(10px,1.4vh,14px);width:auto;opacity:.7}
+  .divider{height:1px;background:var(--rule);flex-shrink:0;margin-bottom:clamp(10px,1.5vh,18px)}
+  h2{font-size:clamp(22px,3.8vh,42px);font-weight:700;color:var(--ink);margin:0 0 clamp(14px,2vh,22px);line-height:1.15;flex-shrink:0}
+  .rg2{display:grid;grid-template-columns:1fr 1fr}
+  .rg3{display:grid;grid-template-columns:1fr 1fr 1fr}
+  .rf3{display:flex}
+  .hdr-favicon{border-radius:10px;width:clamp(26px,3.5vh,40px);height:clamp(26px,3.5vh,40px);object-fit:contain}
+  .card{background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(13px,1.7vh,19px) clamp(14px,1.7vw,19px);display:flex;align-items:flex-start;gap:14px;flex-shrink:0}
+  .badge{font-size:clamp(9px,1.05vh,11px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:3px;padding:1px 6px;white-space:nowrap;flex-shrink:0}
+  .ok-badge{font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--ok);background:var(--ok-bg);border:1px solid var(--ok-bd);border-radius:3px;padding:1px 5px;text-align:center;margin:auto}
+  .bullet-row{font-size:clamp(14px,1.9vh,18px);color:var(--ink3);display:flex;gap:7px}
+  .favicon-sm{width:12px;height:12px;border-radius:2px;opacity:0.6}
+  .data-src{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);border-radius:5px;padding:3px 9px;background:var(--paper2);flex-shrink:0}
+  .data-src span{font-size:clamp(10px,1.25vh,12px);color:var(--ink3);font-weight:500}
+  .data-src img{height:clamp(13px,1.6vh,16px);width:auto;border-radius:2px;opacity:.85}
+  @media(max-width:1024px){.s{height:100svh!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important}}
+  @media(max-width:900px){.rg3{grid-template-columns:1fr 1fr!important}.rf3{flex-wrap:wrap!important}.rf3>*{flex:1 1 calc(50% - 20px)!important;min-width:calc(50% - 20px)!important}}
+  @media(max-width:768px){[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+  @media(max-width:640px){.rg2,.rg3{grid-template-columns:1fr!important}.rf3{flex-direction:column!important}}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 01: Cover -->
+<section><div class="s" style="justify-content:center;gap:clamp(16px,2.5vh,32px)">
+<div class="stripe"></div>
+<div style="display:flex;align-items:center;gap:12px">
+  <img src="https://www.google.com/s2/favicons?domain=joinprojectm.com&sz=128" style="border-radius:10px;width:clamp(36px,5vh,54px);height:clamp(36px,5vh,54px);flex-shrink:0;object-fit:contain">
+  <span class="tag">SEO / AEO Proposal</span>
+</div>
+<div>
+  <h2 style="font-size:clamp(28px,5.5vh,62px);margin-bottom:clamp(20px,3vh,36px);font-weight:700">How Project M Can Own Non-Hormonal Menopause Recommendations Before Estroven Does</h2>
+  <p style="font-size:clamp(17px,2.5vh,26px);color:var(--ink2);line-height:1.6;margin:0;font-weight:400">10 pages indexed on Google. No blog. No comparison content. Missing meta descriptions across the site.<br>Every woman asking ChatGPT for a non-hormonal alternative to HRT gets pointed to Amberen, Estroven, or Bonafide. Here is how to change that.</p>
+</div>
+<div style="display:flex;align-items:center;gap:clamp(16px,2vw,28px);margin-top:clamp(8px,1.5vh,20px)">
+  <a href="https://www.aipeekaboo.com" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+    <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">Powered by</span>
+    <img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png" style="height:clamp(12px,1.8vh,20px);width:auto;opacity:.6">
+  </a>
+  <span style="color:var(--rule)">|</span>
+  <span style="font-size:clamp(10px,1.2vh,12px);color:var(--ink4)">Prepared for Project M &middot; May 2026</span>
+</div>
+</div></section>
+
+<!-- SLIDE 02: The Hook -->
+<section><div class="s">
+<div class="shdr" data-n="02"></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:0">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:clamp(54px,8vh,84px)">
+    <img src="https://www.google.com/s2/favicons?domain=google.com&sz=64" style="width:clamp(28px,3.8vh,40px);height:clamp(28px,3.8vh,40px);border-radius:4px;flex-shrink:0">
+    <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" style="width:clamp(28px,3.8vh,40px);height:clamp(28px,3.8vh,40px);border-radius:4px;flex-shrink:0">
+    <p style="font-size:clamp(26px,4vh,42px);font-weight:700;letter-spacing:.04em;color:var(--ink);margin:0">Go on Google or ChatGPT and ask&hellip;</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:clamp(12px,1.8vh,20px);margin-bottom:clamp(64px,9vh,96px);width:100%;max-width:80ch">
+    <div style="display:flex;align-items:center;gap:14px;background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(16px,2.2vh,26px) clamp(20px,2.5vw,30px);text-align:left">
+      <svg style="width:18px;height:18px;flex-shrink:0;color:var(--ink4)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="font-size:clamp(16px,2.3vh,24px);color:var(--ink);font-weight:500">What is the best non-hormonal supplement for perimenopause?</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(16px,2.2vh,26px) clamp(20px,2.5vw,30px);text-align:left">
+      <svg style="width:18px;height:18px;flex-shrink:0;color:var(--ink4)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="font-size:clamp(16px,2.3vh,24px);color:var(--ink);font-weight:500">Best menopause supplements for mood swings and sleep?</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(16px,2.2vh,26px) clamp(20px,2.5vw,30px);text-align:left">
+      <svg style="width:18px;height:18px;flex-shrink:0;color:var(--ink4)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="font-size:clamp(16px,2.3vh,24px);color:var(--ink);font-weight:500">Is Amberen worth it, or are there better alternatives?</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(16px,2.2vh,26px) clamp(20px,2.5vw,30px);text-align:left">
+      <svg style="width:18px;height:18px;flex-shrink:0;color:var(--ink4)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span style="font-size:clamp(16px,2.3vh,24px);color:var(--ink);font-weight:500">Natural alternatives to HRT for hot flashes and brain fog?</span>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px);align-items:center">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="https://www.google.com/s2/favicons?domain=joinprojectm.com&sz=64" style="width:clamp(22px,3vh,32px);height:clamp(22px,3vh,32px);border-radius:6px;flex-shrink:0;object-fit:contain">
+      <p style="font-size:clamp(22px,3.5vh,38px);font-weight:700;color:var(--ink);margin:0">Is joinprojectm.com showing up?</p>
+    </div>
+    <p style="font-size:clamp(26px,4.2vh,46px);font-weight:700;color:var(--red);margin:0">No.</p>
+    <p style="font-size:clamp(16px,2.3vh,24px);color:var(--ink3);margin:0;font-weight:400">Let&rsquo;s understand why&hellip;</p>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 03: Three Root Problems -->
+<section><div class="s">
+<div class="shdr" data-n="03"></div>
+<h2 style="margin:0 0 clamp(14px,2vh,22px)">Three Root Problems <span style="color:var(--red)">Holding Project M Back</span></h2>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(14px,2vh,24px);flex-shrink:0">Every missed AI response, every invisible search result, and every woman who picks Amberen or Estroven instead traces back to one of these three.</div>
+<div style="display:flex;gap:clamp(14px,2vw,24px);flex-shrink:0">
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(12px,1.6vh,22px) clamp(16px,1.8vw,24px);overflow:hidden">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(7px,0.9vh,12px);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">01</span>
+      <span style="font-size:clamp(10px,1.25vh,13px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)">Content</span>
+    </div>
+    <div style="font-size:clamp(18px,2.6vh,28px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(12px,1.6vh,20px);flex-shrink:0">No Content, No Visibility</div>
+    <div style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5;flex-shrink:0;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>Only 10 pages indexed on Google: the site is essentially invisible on organic search</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>No blog, no buying guides, no comparison articles for queries women actually type</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>No content also means no LLM citations: ChatGPT and Perplexity cannot recommend what they cannot read</span></div>
+    </div>
+    <div style="flex:1;min-height:clamp(14px,1.8vh,22px)"></div>
+    <div style="padding-top:clamp(6px,0.8vh,10px);border-top:1px solid var(--rule);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(22px,3.2vh,36px);font-weight:700;color:var(--red)">10 pages indexed</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink3);font-weight:500;margin-left:6px">0 blog posts<br><span style="font-size:clamp(10px,1.2vh,12px)">every buying query goes to competitors</span></span>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(12px,1.6vh,22px) clamp(16px,1.8vw,24px);overflow:hidden">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(7px,0.9vh,12px);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">02</span>
+      <span style="font-size:clamp(10px,1.25vh,13px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)">On-Page SEO</span>
+    </div>
+    <div style="font-size:clamp(18px,2.6vh,28px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(12px,1.6vh,20px);flex-shrink:0">Missing Meta Descriptions and Title Tags</div>
+    <div style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5;flex-shrink:0;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>Pages have no meta descriptions, so Google decides what shows in the snippet</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>No SEO-optimised title tags: Google and AI models cannot match pages to buyer queries</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>The few pages that exist are not structured for search engines or LLMs to understand</span></div>
+    </div>
+    <div style="flex:1;min-height:clamp(14px,1.8vh,22px)"></div>
+    <div style="padding-top:clamp(6px,0.8vh,10px);border-top:1px solid var(--rule);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(22px,3.2vh,36px);font-weight:700;color:var(--red)">0 meta descriptions</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink3);font-weight:500;margin-left:6px">0 optimised titles<br><span style="font-size:clamp(10px,1.2vh,12px)">compounds the invisibility problem</span></span>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(12px,1.6vh,22px) clamp(16px,1.8vw,24px);overflow:hidden">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(7px,0.9vh,12px);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">03</span>
+      <span style="font-size:clamp(10px,1.25vh,13px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)">Authority</span>
+    </div>
+    <div style="font-size:clamp(18px,2.6vh,28px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(12px,1.6vh,20px);flex-shrink:0">Authority Gap and AI Invisibility</div>
+    <div style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5;flex-shrink:0;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>Domain Rating 10 with only 126 backlinks: well below every established menopause supplement brand</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>Amberen, Estroven and Bonafide have years of content and editorial links, so LLMs cite them</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start"><span style="color:var(--red);flex-shrink:0">&#9679;</span><span>AI models recommend the most authoritative source: Project M is absent from that pool</span></div>
+    </div>
+    <div style="flex:1;min-height:clamp(14px,1.8vh,22px)"></div>
+    <div style="padding-top:clamp(6px,0.8vh,10px);border-top:1px solid var(--rule);flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(22px,3.2vh,36px);font-weight:700;color:var(--red)">DR 10</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink3);font-weight:500;margin-left:6px">126 backlinks<br><span style="font-size:clamp(10px,1.2vh,12px)">competitors sit at DR 40 to 70</span></span>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 04: Problem 01 Deep Dive -->
+<section><div class="s">
+<div class="shdr" data-n="04"></div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(14px,2vh,22px);flex-shrink:0">
+  <span style="font-family:'DM Mono',monospace;font-size:clamp(10px,1.2vh,12px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">01 / 03</span>
+  <h2 style="margin:0">No Content, Invisible on Google</h2>
+</div>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(16px,2.5vh,28px);flex-shrink:0">Only 10 pages indexed on Google. No blog, no educational content, no buying guides. Women search every day for non-hormonal menopause relief, and Project M does not exist in those results.</div>
+
+<div style="flex:1;min-height:0;display:flex;gap:clamp(12px,1.6vw,20px);overflow:hidden">
+
+  <div style="flex:1.1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Why a Blog and Buying Guides Win Citations</div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(9px,1.2vh,14px);overflow:hidden">
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">LLMs cite the most authoritative resource on a topic. A 10-page product site cannot become that resource without educational and comparison content</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Perimenopausal women research for months before buying. Without buying guides, blog posts, and herb-by-herb breakdowns, Project M captures none of that research traffic</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Internal links across blog, comparison, and product pages signal topical expertise that 10 isolated pages never achieve</span>
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.4vw,16px);flex-shrink:0">
+        <p style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);margin:0;line-height:1.5;font-weight:600">A Harvard-trained team built a 10-herb clinical-grade formula. The site has 10 pages. The story is not being told where buyers can find it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Buying-Intent Content: What Exists vs. What Is Missing</div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;flex-shrink:0">
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);background:var(--paper3)">
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Page</span>
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Status</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.4">The Shift product page</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--ok);background:var(--ok-bg);border:1px solid var(--ok-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Live</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Best Non-Hormonal Menopause Supplements 2026</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Project M vs Amberen comparison</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Project M vs Estroven comparison</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Herb-by-herb guide (Black Cohosh, Ashwagandha, Maca, Schisandra)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Natural alternatives to HRT decision guide</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);line-height:1.4;font-weight:500">Perimenopause symptom guides (mood, sleep, brain fog, energy)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);flex-shrink:0">
+      <p style="font-size:clamp(13px,1.75vh,17px);color:var(--ink2);margin:0;line-height:1.5">Every missing page is a buying-intent query that goes to Amberen, Estroven, or Bonafide. The first 8 of these can ship in month one.</p>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 05: Problem 02 Deep Dive -->
+<section><div class="s">
+<div class="shdr" data-n="05"></div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(14px,2vh,22px);flex-shrink:0">
+  <span style="font-family:'DM Mono',monospace;font-size:clamp(10px,1.2vh,12px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">02 / 03</span>
+  <h2 style="margin:0">Missing Meta Descriptions and Title Tags</h2>
+</div>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(16px,2.5vh,28px);flex-shrink:0">The pages that do exist are not properly structured for Google or AI models. Missing meta descriptions and unoptimised titles compound the visibility problem: even when a page could rank, it has nothing to rank with.</div>
+
+<div style="flex:1;min-height:0;display:flex;gap:clamp(12px,1.6vw,20px);overflow:hidden">
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Current On-Page SEO Audit</div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;flex-shrink:0">
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);background:var(--paper3);gap:10px">
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Element</span>
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);text-align:center">Coverage</span>
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Status</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink)">Meta descriptions</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">0 / 10</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink)">SEO-optimised title tags</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">0 / 10</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink)">Heading hierarchy (H1, H2, H3)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">Weak</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Weak</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink)">Product schema markup</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">Absent</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:10px;background:var(--red-bg)">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink)">FAQ schema</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">Absent</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Missing</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);align-items:center;gap:10px">
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2)">Image alt text</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--warn);text-align:center">Partial</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.3vh,13px);font-weight:700;color:var(--warn);background:var(--warn-bg);border:1px solid var(--warn-bd);border-radius:3px;padding:1px 7px;flex-shrink:0">Partial</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Why This Compounds the Visibility Problem</div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(9px,1.2vh,14px);overflow:hidden">
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Without meta descriptions, Google writes its own snippet, often pulling text that does not match what buyers want to see at the moment of decision</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Title tags are the single strongest on-page ranking signal: without them, even the right page never matches the right query</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">LLMs read structured signals: product schema, FAQ schema, heading hierarchy. Without them, ChatGPT cannot confidently describe what The Shift is</span>
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.4vw,16px);flex-shrink:0">
+        <p style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);margin:0;line-height:1.5;font-weight:600">All 10 existing pages can be fixed in week one. The fixes are mechanical: titles, descriptions, schema. The impact is visible to Google within days.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 06: Problem 03 Deep Dive -->
+<section><div class="s">
+<div class="shdr" data-n="06"></div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(14px,2vh,22px);flex-shrink:0">
+  <span style="font-family:'DM Mono',monospace;font-size:clamp(10px,1.2vh,12px);font-weight:700;color:var(--red);background:var(--red-bg);border:1px solid var(--red-bd);border-radius:4px;padding:2px 8px">03 / 03</span>
+  <h2 style="margin:0">Authority Gap and AI Invisibility</h2>
+</div>
+<div style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin-bottom:clamp(16px,2.5vh,28px);flex-shrink:0">Domain Rating 10 with 126 backlinks. Amberen, Estroven and Bonafide have years of editorial coverage, clinical citations, and PR. AI models recommend whoever has the strongest signal: Project M is not yet in that conversation.</div>
+
+<div style="flex:1;min-height:0;display:flex;gap:clamp(12px,1.6vw,20px);overflow:hidden">
+
+  <div style="flex:1.1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Where the Authority Gap Hurts Most</div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(9px,1.2vh,14px);overflow:hidden">
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Sites like healthline.com, verywellhealth.com, and medicalnewstoday.com receive the bulk of AI citations for menopause queries. Their editorial weight is what AI trusts</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Reddit communities like r/Menopause (165K+ members) drive recommendation conversations that ChatGPT and Perplexity ingest as ground truth</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+        <span style="color:var(--red);font-size:13px;flex-shrink:0;margin-top:1px">&#9679;</span>
+        <span style="font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.45">Established competitors have logged years of editorial mentions in Forbes Health, Women&rsquo;s Health, and Healthline buyer guides. Project M has none of these</span>
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:8px;padding:clamp(10px,1.4vh,16px) clamp(12px,1.4vw,16px);flex-shrink:0">
+        <p style="font-size:clamp(14px,1.95vh,20px);color:var(--ink);margin:0;line-height:1.5;font-weight:600">A Harvard-trained team, third-party testing, and a 90-day guarantee are exactly what editors want to cover. The story has not been pitched.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,0.8vh,10px);overflow:hidden">
+    <div style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Authority Gap at a Glance</div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;overflow:hidden;flex-shrink:0">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(7px,0.9vh,10px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);background:var(--paper3);gap:8px">
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Signal</span>
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);text-align:center">Project M</span>
+        <span style="font-size:clamp(12px,1.5vh,15px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);text-align:center">Category Leaders</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:8px">
+        <span style="font-size:clamp(14px,1.9vh,19px);color:var(--ink2)">Domain Rating</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">10</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink);text-align:center">40 to 70</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:8px">
+        <span style="font-size:clamp(14px,1.9vh,19px);color:var(--ink2)">Backlinks</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">126</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink);text-align:center">5K to 60K</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:8px">
+        <span style="font-size:clamp(14px,1.9vh,19px);color:var(--ink2)">Pages indexed</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">10</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink);text-align:center">200 to 2,000</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);border-bottom:1px solid var(--rule);align-items:center;gap:8px">
+        <span style="font-size:clamp(14px,1.9vh,19px);color:var(--ink2)">Editorial mentions (Forbes, Healthline, Women&rsquo;s Health)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">0</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink);text-align:center">20+</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;padding:clamp(8px,1.1vh,13px) clamp(10px,1.2vw,14px);align-items:center;gap:8px">
+        <span style="font-size:clamp(14px,1.9vh,19px);color:var(--ink2)">Reddit thread presence (r/Menopause, r/Perimenopause)</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red);text-align:center">Minimal</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink);text-align:center">Daily</span>
+      </div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:6px;padding:clamp(7px,1vh,12px) clamp(10px,1.2vw,14px);flex-shrink:0">
+      <p style="font-size:clamp(12px,1.55vh,15px);color:var(--ink2);margin:0;line-height:1.5">Closing this gap is a 6 to 12 month compound: editorial outreach, Reddit presence, schema, and content together push DR and citations in the same direction.</p>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 07: AI Visibility (Peekaboo placeholder) -->
+<section><div class="s">
+<div class="shdr" data-n="07" data-source="peekaboo"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(12px,1.7vh,20px);flex-shrink:0">
+  <h2 style="margin:0">AI Visibility for joinprojectm.com <span style="color:var(--accent)">Is Being Measured Now</span></h2>
+</div>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);line-height:1.5;margin:0 0 clamp(12px,1.7vh,20px);font-weight:500;flex-shrink:0">We have created Project M as a tracked brand inside AI Peekaboo. The platform is running a full audit across Claude, ChatGPT, Perplexity, Gemini and Google AI Overviews on the queries menopausal women actually ask.</p>
+<div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:clamp(18px,2.5vh,32px);background:var(--paper2);border:1px dashed var(--accent-bd);border-radius:14px;padding:clamp(28px,4vh,48px)">
+  <img src="https://www.aipeekaboo.com/icon.jpg" style="width:clamp(72px,10vh,110px);height:clamp(72px,10vh,110px);border-radius:18px;object-fit:contain">
+  <div style="text-align:center;display:flex;flex-direction:column;gap:clamp(10px,1.5vh,18px);max-width:64ch">
+    <div style="font-size:clamp(22px,3.2vh,36px);font-weight:700;color:var(--ink);line-height:1.25">AI visibility data is being collected. Live within 48 hours.</div>
+    <p style="font-size:clamp(14px,1.95vh,20px);color:var(--ink3);margin:0;line-height:1.55">We are scoring Project M against Amberen, Estroven, Remifemin, Equelle and Bonafide across 40+ buying-intent prompts. The full snapshot, including visibility score, prompts cited, top competitor mentions and top cited sources, will be shared in the kick-off call.</p>
+    <div style="display:flex;gap:clamp(8px,1.2vw,14px);justify-content:center;flex-wrap:wrap;margin-top:clamp(6px,0.8vh,10px)">
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(12px,1.4vw,16px);display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32" style="width:16px;height:16px;border-radius:3px">
+        <span style="font-size:clamp(12px,1.6vh,16px);color:var(--ink2);font-weight:600">ChatGPT</span>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(12px,1.4vw,16px);display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=32" style="width:16px;height:16px;border-radius:3px">
+        <span style="font-size:clamp(12px,1.6vh,16px);color:var(--ink2);font-weight:600">Claude</span>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(12px,1.4vw,16px);display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32" style="width:16px;height:16px;border-radius:3px">
+        <span style="font-size:clamp(12px,1.6vh,16px);color:var(--ink2);font-weight:600">Perplexity</span>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(12px,1.4vw,16px);display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32" style="width:16px;height:16px;border-radius:3px">
+        <span style="font-size:clamp(12px,1.6vh,16px);color:var(--ink2);font-weight:600">Gemini</span>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:clamp(6px,0.9vh,10px) clamp(12px,1.4vw,16px);display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=google.com&sz=32" style="width:16px;height:16px;border-radius:3px">
+        <span style="font-size:clamp(12px,1.6vh,16px);color:var(--ink2);font-weight:600">Google AI Overviews</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 08: Competitive Gap (Ahrefs lean 3-col) -->
+<section><div class="s">
+<div class="shdr" data-n="08" data-source="ahrefs"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(14px,2vh,22px);flex-shrink:0">
+  <h2 style="margin:0">The Competitive Gap <span style="color:var(--red)">Is Already Wide</span></h2>
+</div>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(14px,2vh,22px);flex-shrink:0">On the two signals AI relies on most when picking which menopause supplement brand to recommend, Domain Rating and editorial backlinks, Project M trails every established competitor. Authority is the catch-up game we accelerate.</p>
+<div style="border:1px solid var(--rule);border-radius:12px;overflow:hidden;flex-shrink:0">
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;background:var(--paper3)">
+    <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.3vw,16px);font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4)">Company</div>
+    <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.3vw,16px);font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);text-align:center">Domain Rating</div>
+    <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.3vw,16px);font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);text-align:center">Backlinks</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=hellobonafide.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:600;color:var(--ink)">Bonafide</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink)">66</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);color:var(--ink)">58K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=estroven.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:600;color:var(--ink)">Estroven</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink)">58</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);color:var(--ink)">22K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=amberen.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:600;color:var(--ink)">Amberen</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink)">52</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);color:var(--ink)">14K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=equelle.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:600;color:var(--ink)">Equelle</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink)">45</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);color:var(--ink)">8K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=remifemin.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:600;color:var(--ink)">Remifemin</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--ink)">42</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);color:var(--ink)">5K</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;border-top:1px solid var(--rule);background:var(--accent-bg)">
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);display:flex;align-items:center;gap:8px"><img src="https://www.google.com/s2/favicons?domain=joinprojectm.com&sz=32" style="width:16px;height:16px;border-radius:2px;flex-shrink:0"><span style="font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red)">Project M</span></div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red)">10</div>
+    <div style="padding:clamp(9px,1.2vh,14px) clamp(10px,1.3vw,16px);text-align:center;font-family:'DM Mono',monospace;font-size:clamp(14px,1.9vh,19px);font-weight:700;color:var(--red)">126</div>
+  </div>
+</div>
+<div style="margin-top:clamp(8px,1.1vh,14px);font-size:clamp(11px,1.3vh,13px);color:var(--ink4);flex-shrink:0">Data: Ahrefs &middot; Project M&rsquo;s DR 10 sits well below every established menopause supplement brand. Authority compounds: fewer backlinks means fewer AI citations on non-branded buying queries.</div>
+</div></section>
+
+<!-- SLIDE 09: Reddit Opportunity (placeholder) -->
+<section><div class="s">
+<div class="shdr" data-n="09" data-source="reddit"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(14px,2vh,22px);flex-shrink:0">
+  <h2 style="margin:0">Reddit Opportunity: <span style="color:var(--accent)">Where Women Decide and AI Trains</span></h2>
+</div>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(12px,1.7vh,20px);flex-shrink:0">reddit.com is one of the top AI-cited domains across women&rsquo;s health queries. Women in perimenopause and menopause are extremely active on Reddit, asking daily what worked for sleep, mood, and brain fog. A full Reddit audit is in progress.</p>
+<div style="display:flex;gap:clamp(12px,1.8vw,20px);margin-bottom:clamp(10px,1.5vh,18px);flex-shrink:0">
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px);text-align:center;flex-shrink:0;flex-basis:0;flex-grow:1">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:18px;height:18px;border-radius:3px;display:block;margin:0 auto clamp(4px,0.6vh,8px)">
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:700;color:var(--accent)">165K</div>
+    <div style="font-size:clamp(10px,1.3vh,13px);font-weight:700;color:var(--ink4)">r/Menopause</div>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">members</div>
+  </div>
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px);text-align:center;flex-shrink:0;flex-basis:0;flex-grow:1">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:18px;height:18px;border-radius:3px;display:block;margin:0 auto clamp(4px,0.6vh,8px)">
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:700;color:var(--accent)">60K</div>
+    <div style="font-size:clamp(10px,1.3vh,13px);font-weight:700;color:var(--ink4)">r/Perimenopause</div>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">members</div>
+  </div>
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px);text-align:center;flex-shrink:0;flex-basis:0;flex-grow:1">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:18px;height:18px;border-radius:3px;display:block;margin:0 auto clamp(4px,0.6vh,8px)">
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:700;color:var(--accent)">75K</div>
+    <div style="font-size:clamp(10px,1.3vh,13px);font-weight:700;color:var(--ink4)">r/WomensHealth</div>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">members</div>
+  </div>
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:8px;padding:clamp(10px,1.4vh,16px);text-align:center;flex-shrink:0;flex-basis:0;flex-grow:1">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:18px;height:18px;border-radius:3px;display:block;margin:0 auto clamp(4px,0.6vh,8px)">
+    <div style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:700;color:var(--accent)">490K</div>
+    <div style="font-size:clamp(10px,1.3vh,13px);font-weight:700;color:var(--ink4)">r/Supplements</div>
+    <div style="font-size:clamp(9px,1.1vh,11px);color:var(--ink4)">members</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.2vw,28px);flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+    <div style="font-size:clamp(11px,1.4vh,14px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Subreddits Project M Should Be Present In</div>
+    <div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;flex-shrink:0">
+      <div style="display:grid;grid-template-columns:1fr auto auto;background:var(--paper3);padding:clamp(7px,1vh,11px) clamp(10px,1.3vw,16px);gap:8px">
+        <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4)">Subreddit</div>
+        <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);text-align:right">Members</div>
+        <div style="font-size:clamp(10px,1.2vh,12px);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);text-align:right">Focus</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--rule);padding:clamp(8px,1.1vh,13px) clamp(10px,1.3vw,16px);gap:8px;align-items:center">
+        <span style="font-size:clamp(13px,1.75vh,17px);font-weight:600;color:var(--accent)">r/Menopause</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(13px,1.75vh,17px);font-weight:700;color:var(--ink);text-align:right">165K</span>
+        <span style="font-size:clamp(12px,1.55vh,16px);color:var(--ink3);text-align:right">Symptom relief, HRT alternatives</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--rule);padding:clamp(8px,1.1vh,13px) clamp(10px,1.3vw,16px);gap:8px;align-items:center">
+        <span style="font-size:clamp(13px,1.75vh,17px);font-weight:600;color:var(--accent)">r/Perimenopause</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(13px,1.75vh,17px);font-weight:700;color:var(--ink);text-align:right">60K</span>
+        <span style="font-size:clamp(12px,1.55vh,16px);color:var(--ink3);text-align:right">Early-stage supplement Q&amp;A</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--rule);padding:clamp(8px,1.1vh,13px) clamp(10px,1.3vw,16px);gap:8px;align-items:center">
+        <span style="font-size:clamp(13px,1.75vh,17px);font-weight:600;color:var(--accent)">r/WomensHealth</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(13px,1.75vh,17px);font-weight:700;color:var(--ink);text-align:right">75K</span>
+        <span style="font-size:clamp(12px,1.55vh,16px);color:var(--ink3);text-align:right">Broader hormonal health</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--rule);padding:clamp(8px,1.1vh,13px) clamp(10px,1.3vw,16px);gap:8px;align-items:center">
+        <span style="font-size:clamp(13px,1.75vh,17px);font-weight:600;color:var(--accent)">r/Supplements</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(13px,1.75vh,17px);font-weight:700;color:var(--ink);text-align:right">490K</span>
+        <span style="font-size:clamp(12px,1.55vh,16px);color:var(--ink3);text-align:right">Ingredient and brand evaluation</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--rule);padding:clamp(8px,1.1vh,13px) clamp(10px,1.3vw,16px);gap:8px;align-items:center">
+        <span style="font-size:clamp(13px,1.75vh,17px);font-weight:600;color:var(--accent)">r/femalefashionadvice</span>
+        <span style="font-family:'DM Mono',monospace;font-size:clamp(13px,1.75vh,17px);font-weight:700;color:var(--ink);text-align:right">1.4M</span>
+        <span style="font-size:clamp(12px,1.55vh,16px);color:var(--ink3);text-align:right">Adjacent women 40+ community</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+    <div style="font-size:clamp(11px,1.4vh,14px);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink4);flex-shrink:0">Audit Status</div>
+    <div style="background:var(--paper2);border:1px dashed var(--accent-bd);border-radius:12px;padding:clamp(16px,2.4vh,28px);flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,1.4vh,16px)">
+      <div style="display:flex;align-items:center;gap:12px">
+        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" style="width:clamp(34px,4.6vh,48px);height:clamp(34px,4.6vh,48px);border-radius:8px">
+        <div style="font-size:clamp(16px,2.4vh,24px);font-weight:700;color:var(--ink);line-height:1.25">Full Reddit audit in progress</div>
+      </div>
+      <p style="font-size:clamp(13px,1.8vh,18px);color:var(--ink3);margin:0;line-height:1.55">We are running 30 commercial queries across the subreddits above to surface 50 to 100 high-fit posts. Output includes: brand mention table (Amberen, Estroven, Bonafide vs Project M), sentiment per brand, and the highest-converting threads to engage in month one.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:clamp(12px,1.65vh,16px);color:var(--ink2)">
+        <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent);font-weight:700">&#9679;</span>Competitor comparison threads ("Amberen alternative", "vs Estroven")</div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent);font-weight:700">&#9679;</span>Buying intent ("best non-hormonal menopause supplement")</div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent);font-weight:700">&#9679;</span>Pain queries ("hot flashes ruining my sleep", "perimenopause brain fog")</div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent);font-weight:700">&#9679;</span>Complaint threads ("Amberen side effects", "Estroven not working")</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 10: Transition -->
+<section><div class="s">
+<div class="shdr" data-n="10"></div>
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(24px,4vh,48px);text-align:center;overflow:hidden">
+  <div style="display:flex;align-items:center;gap:clamp(10px,1.5vw,20px)">
+    <div style="display:flex;align-items:center;gap:8px;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:32px;padding:clamp(8px,1.2vh,14px) clamp(14px,2vw,22px);flex-shrink:0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--red)">No content</span>
+    </div>
+    <div style="font-size:clamp(20px,3vh,38px);font-weight:700;color:var(--ink3)">+</div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:32px;padding:clamp(8px,1.2vh,14px) clamp(14px,2vw,22px);flex-shrink:0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--red)">No on-page SEO</span>
+    </div>
+    <div style="font-size:clamp(20px,3vh,38px);font-weight:700;color:var(--ink3)">+</div>
+    <div style="display:flex;align-items:center;gap:8px;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:32px;padding:clamp(8px,1.2vh,14px) clamp(14px,2vw,22px);flex-shrink:0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+      <span style="font-size:clamp(13px,1.8vh,18px);font-weight:600;color:var(--red)">AI invisible</span>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.5vh,18px)">
+    <div style="display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,18px)">
+      <img src="https://www.google.com/s2/favicons?domain=joinprojectm.com&sz=64" style="width:clamp(32px,4.5vh,52px);height:clamp(32px,4.5vh,52px);border-radius:8px;flex-shrink:0;object-fit:contain">
+      <div style="font-size:clamp(30px,5.5vh,64px);font-weight:800;color:var(--ink);letter-spacing:-0.02em;line-height:1.1">Every problem has a fix.</div>
+    </div>
+    <div style="font-size:clamp(16px,2.2vh,24px);color:var(--ink3);font-weight:400">Here is how we can help...</div>
+  </div>
+</div>
+</div></section>
+
+<!-- SLIDE 11: Content Strategy -->
+<section><div class="s">
+<div class="shdr" data-n="11"></div>
+<h2 style="margin:0 0 clamp(12px,1.7vh,20px)">Content Strategy: <span style="color:var(--accent)">Three Moves That Close Every Gap</span></h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(14px,2vh,22px);flex-shrink:0">Each move maps directly to a gap identified in the audit. Together they build the comparison cluster, category authority, and community presence AI needs to cite Project M on commercial queries.</p>
+<div style="flex:1;min-height:0;display:flex;gap:clamp(14px,2vw,24px);overflow:hidden">
+
+  <div style="background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px);flex:1;min-width:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:600;flex-shrink:0">01</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;font-weight:600">Comparison Cluster</span>
+    </div>
+    <div style="font-size:clamp(17px,2.4vh,26px);font-weight:700;color:var(--ink)">Own the Comparison Search</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Project M vs Amberen: the definitive head-to-head comparison</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Project M vs Estroven: ingredients, evidence and value compared</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Best Amberen Alternatives 2026, with The Shift featured as the non-hormonal pick</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Internal links across all comparison pages form a cluster AI recognises as the category authority</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px);flex:1;min-width:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:600;flex-shrink:0">02</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;font-weight:600">Educational Buying Guides</span>
+    </div>
+    <div style="font-size:clamp(17px,2.4vh,26px);font-weight:700;color:var(--ink)">Capture the Research Phase</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Natural Alternatives to HRT: the complete decision guide for women avoiding hormones</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Herb-by-herb breakdown: Black Cohosh, Ashwagandha, Maca, Schisandra and the rest of The Shift formula</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Perimenopause symptom guides: mood, sleep, brain fog, energy, hot flashes</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Clinical-grade botanicals: what third-party testing actually means and why it matters</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px);display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px);flex:1;min-width:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(11px,1.4vh,14px);background:var(--accent-bg);border:1px solid var(--accent-bd);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:600;flex-shrink:0">03</span>
+      <span style="font-size:clamp(11px,1.4vh,14px);color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;font-weight:600">AEO + Reddit Outreach</span>
+    </div>
+    <div style="font-size:clamp(17px,2.4vh,26px);font-weight:700;color:var(--ink)">Own the Conversation in r/Menopause</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>20 targeted Reddit comments/month in r/Menopause and r/Perimenopause on high-fit threads</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Editorial outreach to women&rsquo;s health publications and menopause-focused review sites (DR 40+)</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(13px,1.7vh,17px);color:var(--ink2);line-height:1.45;padding:1px 0">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Schema markup (Product, FAQ, Review) so LLMs parse and confidently cite joinprojectm.com</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 12: Three-Part Fix -->
+<section><div class="s">
+<div class="shdr" data-n="12"></div>
+<h2 style="margin:0 0 clamp(12px,1.7vh,20px)">The Three-Part Fix: <span style="color:var(--accent)">Content, Authority and AI Presence</span></h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(14px,2vh,22px);flex-shrink:0">Each of the three root problems has a direct solution. Together they compound: more content builds authority, more authority drives AI citations, more citations bring buyers.</p>
+<div style="flex:1;min-height:0;display:flex;gap:clamp(14px,2vw,24px);overflow:hidden">
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px)">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">
+      <div style="width:36px;height:36px;background:var(--accent-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <span style="font-size:clamp(13px,1.7vh,17px);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700">Content</span>
+    </div>
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">Comparison Cluster + Education</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px);flex:1">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>12 articles per month: vs Amberen, vs Estroven, Best Non-Hormonal Menopause Supplements, herb-by-herb guides</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Fix all 10 existing pages: meta descriptions, optimised titles, heading hierarchy, schema</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Internal link all new pages into a cluster AI recognises as the definitive authority on non-hormonal menopause support</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--rule);padding-top:clamp(10px,1.4vh,16px);flex-shrink:0;margin-top:clamp(12px,1.8vh,22px)">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:800;color:var(--accent)">12 articles/month</span>
+      <div style="font-size:clamp(12px,1.5vh,15px);color:var(--ink3);margin-top:3px">Comparison, education, symptom guides: published every month from month one</div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px)">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">
+      <div style="width:36px;height:36px;background:var(--accent-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <span style="font-size:clamp(13px,1.7vh,17px);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700">Authority</span>
+    </div>
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">Targeted Link Building</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px);flex:1">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Editorial backlinks from women&rsquo;s health publications, menopause review sites, and wellness blogs (DR 40+, dofollow)</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Founder PR: leverage the Harvard-trained team story for inclusion in Forbes Health, Healthline and Women&rsquo;s Health buyer guides</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Anchor text toward comparison and ingredient keywords to capture non-branded queries</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--rule);padding-top:clamp(10px,1.4vh,16px);flex-shrink:0;margin-top:clamp(12px,1.8vh,22px)">
+      <span style="font-family:'DM Mono',monospace;font-size:clamp(18px,2.8vh,32px);font-weight:800;color:var(--accent)">DR climbs monthly</span>
+      <div style="font-size:clamp(12px,1.5vh,15px);color:var(--ink3);margin-top:3px">Steady authority growth tracked via Ahrefs every month</div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--paper2);border:1.5px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,24px) clamp(16px,1.8vw,22px)">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">
+      <div style="width:36px;height:36px;background:var(--accent-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <span style="font-size:clamp(13px,1.7vh,17px);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700">AEO</span>
+    </div>
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:clamp(10px,1.4vh,16px);flex-shrink:0">AEO and Reddit Presence</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,13px);flex:1">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Structured data (Product, FAQ, Review, Organization schema) so AI models parse and cite joinprojectm.com</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>Reddit presence in r/Menopause, r/Perimenopause, r/WomensHealth: 20 targeted comments/month</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:clamp(14px,1.95vh,20px);color:var(--ink2);line-height:1.5">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px">&middot;</span>
+        <span>AI Peekaboo monitoring tracks visibility score improvement month-over-month across all 5 LLMs</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--rule);padding-top:clamp(10px,1.4vh,16px);flex-shrink:0;margin-top:clamp(12px,1.8vh,22px)">
+      <div style="font-size:clamp(13px,1.7vh,17px);color:var(--ink3);line-height:1.5">AI visibility score improvement month-over-month, tracked via AI Peekaboo</div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 13: Deliverables -->
+<section><div class="s">
+<div class="shdr" data-n="13"></div>
+<h2 style="margin:0 0 clamp(12px,1.7vh,20px)">What We Deliver Every Month</h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(14px,2vh,22px);flex-shrink:0">A full managed service covering everything Project M needs to grow in search and AI.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,16px);flex:1;min-height:0;align-content:start">
+
+  <div class="card">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">12 High-Quality Content Pieces</div>
+        <span class="badge">Per month</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">12 keyword-targeted articles per month built to rank and get cited by AI. Each targets comparison queries, herb-by-herb buying guides, and perimenopause symptom topics.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Content Refresh Programme</div>
+        <span class="badge">Ongoing</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">Existing 10 pages rewritten with 2026 data and LLM-optimised structure. Fastest path to new AI citations from the current site.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Schema Markup Implementation</div>
+        <span class="badge">Site-wide</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">Product, FAQ, Review, and Organization schema so AI models understand and confidently cite joinprojectm.com.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">On-Page SEO Optimisation</div>
+        <span class="badge">Ongoing</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">Meta titles, meta descriptions, headings, and internal linking across every page treated as an entry point for women researching menopause supplements.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Link Building</div>
+        <span class="badge">Ongoing</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">Dofollow editorial links from women&rsquo;s health publications, menopause review sites, and wellness blogs already cited by LLMs. DR 40+ minimum.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:17px;height:17px;flex-shrink:0;margin-top:3px;border-radius:4px">
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Reddit Presence</div>
+        <span class="badge">20 comments/month</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">reddit.com is one of the most-cited sources LLMs trust for women&rsquo;s health. 20 targeted comments/month in r/Menopause, r/Perimenopause, r/WomensHealth and r/Supplements.</div>
+    </div>
+  </div>
+
+  <div class="card" style="grid-column:span 2">
+    <svg style="width:17px;height:17px;flex-shrink:0;margin-top:3px" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(3px,0.4vh,5px)">
+        <div style="font-size:clamp(15px,2.1vh,21px);font-weight:700;color:var(--ink)">Monthly Reporting</div>
+        <span class="badge">Monthly</span>
+      </div>
+      <div style="font-size:clamp(14px,1.85vh,18px);color:var(--ink3);line-height:1.5">AI citation count, organic traffic, DR progress, and non-branded query ranking movement delivered every month via AI Peekaboo, GSC, GA4 and Ahrefs.</div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 14: How We Measure Progress -->
+<section><div class="s">
+<div class="shdr" data-n="14"></div>
+<h2 style="margin:0 0 clamp(12px,1.7vh,20px)">How We Measure Progress</h2>
+<p style="font-size:clamp(15px,2.1vh,21px);color:var(--ink2);font-weight:500;margin:0 0 clamp(14px,2vh,22px);flex-shrink:0">We track progress across both traditional search and AI platforms every month, so Project M always knows exactly where it is gaining ground.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(14px,2vw,24px);flex:1;min-height:0;align-items:start">
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,20px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column">
+    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-search-console-icon.png" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block">
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);margin-bottom:clamp(8px,1.1vh,14px)">Google Search Console</div>
+    <p style="font-size:clamp(13px,1.75vh,17px);color:var(--ink3);line-height:1.5;margin:0 0 clamp(12px,1.7vh,20px)">Tracks clicks and impressions for every query joinprojectm.com appears for. Confirms content drives visits and surfaces in AI Overviews. Domain Rating progress tracked monthly via Ahrefs.</p>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:flex-start;gap:6px">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0">&middot;</span>Clicks and impressions month over month
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:flex-start;gap:6px">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0">&middot;</span>Non-branded menopause queries gaining impressions
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,20px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column">
+    <img src="https://images.icon-icons.com/2699/PNG/512/google_analytics_image_logo_icon_168152.png" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block">
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);margin-bottom:clamp(8px,1.1vh,14px)">Google Analytics 4</div>
+    <p style="font-size:clamp(13px,1.75vh,17px);color:var(--ink3);line-height:1.5;margin:0 0 clamp(12px,1.7vh,20px)">Tracks traffic by source so Project M can see organic growth, LLM referrals, and Reddit building momentum as a measurable direct channel.</p>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:flex-start;gap:6px">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0">&middot;</span>Organic vs paid vs direct traffic split
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:flex-start;gap:6px">
+        <span style="color:var(--accent);font-weight:700;flex-shrink:0">&middot;</span>Referral traffic from ChatGPT, Perplexity, Gemini
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=16" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Reddit as a direct traffic source
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:10px;padding:clamp(12px,1.6vh,20px) clamp(14px,1.6vw,20px);display:flex;flex-direction:column">
+    <img src="https://www.aipeekaboo.com/icon.jpg" style="width:clamp(32px,4.5vh,46px);height:clamp(32px,4.5vh,46px);border-radius:8px;margin-bottom:clamp(10px,1.4vh,16px);display:block">
+    <div style="font-size:clamp(17px,2.3vh,24px);font-weight:700;color:var(--ink);margin-bottom:clamp(8px,1.1vh,14px)">AI Peekaboo</div>
+    <p style="font-size:clamp(13px,1.75vh,17px);color:var(--ink3);line-height:1.5;margin:0 0 clamp(12px,1.7vh,20px)">AI visibility score improvement month over month, tracked across Claude, ChatGPT, Perplexity, Gemini and Google AI Overviews. Baseline is being captured now.</p>
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,0.9vh,10px)">
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=google.com&sz=16" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Google AI Overviews
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=16" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">ChatGPT
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=16" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Perplexity
+      </div>
+      <div style="background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:6px;padding:clamp(6px,0.8vh,10px) clamp(10px,1.2vw,14px);font-size:clamp(13px,1.7vh,17px);color:var(--ink2);display:flex;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=16" style="width:13px;height:13px;border-radius:2px;flex-shrink:0">Gemini
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 15: Your Investment -->
+<section><div class="s">
+<div class="shdr" data-n="15"></div>
+<h2 style="margin:0 0 clamp(12px,1.7vh,20px)">Your Investment. What We Deliver and When.</h2>
+<div style="flex:1;min-height:0;overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(16px,2vw,28px);align-items:start">
+
+  <div style="display:flex;flex-direction:column;gap:0">
+
+    <div style="display:flex;gap:clamp(12px,1.5vw,18px)">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:clamp(28px,3.5vw,38px)">
+        <div style="width:clamp(11px,1.4vh,14px);height:clamp(11px,1.4vh,14px);border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px"></div>
+        <div style="width:2px;flex:1;background:var(--rule);min-height:clamp(10px,1.5vh,18px)"></div>
+      </div>
+      <div style="flex:1;padding-bottom:clamp(14px,2vh,24px)">
+        <div style="display:inline-block;background:var(--accent);color:#fff;font-size:clamp(11px,1.4vh,15px);font-weight:600;letter-spacing:0.04em;border-radius:4px;padding:2px 8px;margin-bottom:4px">Month 1 &middot; Foundation</div>
+        <div style="font-size:clamp(14px,1.9vh,20px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Audit, Strategy and First Deliverables</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5;display:flex;flex-direction:column;gap:3px">
+          <div>Full SEO and AEO audit + competitive benchmark (reverse-engineer top non-hormonal menopause queries)</div>
+          <div>12 articles drafted, published and indexed</div>
+          <div>All 10 existing pages fixed: meta descriptions, optimised titles, schema</div>
+          <div>Reddit strategy agreed, first 20 comments live in r/Menopause and r/Perimenopause</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:clamp(12px,1.5vw,18px)">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:clamp(28px,3.5vw,38px)">
+        <div style="width:clamp(11px,1.4vh,14px);height:clamp(11px,1.4vh,14px);border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px"></div>
+        <div style="width:2px;flex:1;background:var(--rule);min-height:clamp(10px,1.5vh,18px)"></div>
+      </div>
+      <div style="flex:1;padding-bottom:clamp(14px,2vh,24px)">
+        <div style="display:inline-block;background:var(--accent);color:#fff;font-size:clamp(11px,1.4vh,15px);font-weight:600;letter-spacing:0.04em;border-radius:4px;padding:2px 8px;margin-bottom:4px">Month 2 &middot; Build</div>
+        <div style="font-size:clamp(14px,1.9vh,20px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Content, Reddit and Link Building</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5;display:flex;flex-direction:column;gap:3px">
+          <div>12 new articles published (herb-by-herb guides, perimenopause symptom guides)</div>
+          <div>20 Reddit comments/month in r/Menopause, r/Perimenopause and r/WomensHealth</div>
+          <div>First link building outreach to women&rsquo;s health publications and wellness blogs</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:clamp(12px,1.5vw,18px)">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:clamp(28px,3.5vw,38px)">
+        <div style="width:clamp(11px,1.4vh,14px);height:clamp(11px,1.4vh,14px);border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px"></div>
+        <div style="width:2px;flex:1;background:var(--rule);min-height:clamp(10px,1.5vh,18px)"></div>
+      </div>
+      <div style="flex:1;padding-bottom:clamp(14px,2vh,24px)">
+        <div style="display:inline-block;background:var(--accent);color:#fff;font-size:clamp(11px,1.4vh,15px);font-weight:600;letter-spacing:0.04em;border-radius:4px;padding:2px 8px;margin-bottom:4px">Month 3 &middot; Compound</div>
+        <div style="font-size:clamp(14px,1.9vh,20px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Comparison Pages and Authority Push</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5;display:flex;flex-direction:column;gap:3px">
+          <div>12 articles published, full vs Amberen / vs Estroven comparison cluster indexed</div>
+          <div>20 Reddit comments/month, scaling presence across subreddits</div>
+          <div>First editorial links live (Forbes Health, Healthline buyer guide pitches), DR movement begins</div>
+          <div>AI visibility score review: non-branded citations tracked across all 5 LLMs</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:clamp(12px,1.5vw,18px)">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:clamp(28px,3.5vw,38px)">
+        <div style="width:clamp(11px,1.4vh,14px);height:clamp(11px,1.4vh,14px);border-radius:50%;background:var(--ink4);flex-shrink:0;margin-top:3px"></div>
+      </div>
+      <div style="flex:1">
+        <div style="display:inline-block;background:var(--accent-bg);color:var(--accent-dark);border:1px solid var(--accent-bd);font-size:clamp(11px,1.4vh,15px);font-weight:600;letter-spacing:0.04em;border-radius:4px;padding:2px 8px;margin-bottom:4px">Month 4+ &middot; Ongoing</div>
+        <div style="font-size:clamp(14px,1.9vh,20px);font-weight:700;color:var(--ink);margin-bottom:clamp(6px,0.9vh,10px)">Continued Growth</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5">Each month builds on the last: 12 articles + 20 Reddit comments. Content compounds, AI citations grow, DR climbs.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px)">
+    <div style="background:var(--accent-bg);border:1.5px solid var(--accent-bd);border-radius:12px;padding:clamp(14px,2vh,24px)">
+      <span style="background:var(--accent);color:#fff;font-size:clamp(10px,1.25vh,13px);font-weight:600;border-radius:20px;padding:2px 10px">Full AI Search Optimization</span>
+      <div style="font-size:clamp(16px,2.2vh,24px);font-weight:700;color:var(--ink);margin:clamp(8px,1.1vh,14px) 0 2px">Full AI Search Optimization</div>
+      <div style="font-size:clamp(11px,1.4vh,14px);color:var(--ink3);margin-bottom:clamp(8px,1.1vh,14px)">SEO + AEO + Reddit + Outreach</div>
+      <div style="font-size:clamp(22px,3.2vh,40px);font-weight:800;color:var(--accent);margin-bottom:clamp(8px,1.1vh,14px)">$3,500<span style="font-size:clamp(13px,1.7vh,17px);font-weight:500;color:var(--ink3)">/month</span></div>
+      <div style="height:1px;background:var(--accent-bd);margin-bottom:clamp(10px,1.4vh,16px)"></div>
+      <div style="display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);margin-bottom:clamp(10px,1.4vh,14px)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">12 content pieces per month (refreshes and new articles targeting non-hormonal menopause keywords)</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">2 comparison pages per month vs Amberen, Estroven, Bonafide and Equelle</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">Reddit engagement: 20 targeted comments in menopause and perimenopause threads</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">Editorial link outreach to women&rsquo;s health publications and wellness review sites</span>
+        </div>
+      </div>
+      <div style="font-size:clamp(11px,1.35vh,14px);color:var(--ink4);font-style:italic;border-top:1px solid var(--accent-bd);padding-top:8px">Includes AI Peekaboo monitoring for visibility tracking across Claude, ChatGPT and Perplexity. 3-month minimum.</div>
+    </div>
+    <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:clamp(14px,2vh,24px)">
+      <span style="background:var(--paper3);color:var(--ink4);font-size:clamp(10px,1.25vh,13px);font-weight:600;border-radius:20px;padding:2px 10px;border:1px solid var(--rule)">Entry Point</span>
+      <div style="font-size:clamp(16px,2.2vh,24px);font-weight:700;color:var(--ink);margin:clamp(8px,1.1vh,14px) 0 2px">Reddit Only</div>
+      <div style="font-size:clamp(11px,1.4vh,14px);color:var(--ink3);margin-bottom:clamp(8px,1.1vh,14px)">Establish presence where menopausal women decide</div>
+      <div style="font-size:clamp(22px,3.2vh,40px);font-weight:800;color:var(--ink);margin-bottom:clamp(8px,1.1vh,14px)">$1,500<span style="font-size:clamp(13px,1.7vh,17px);font-weight:500;color:var(--ink3)">/month</span></div>
+      <div style="height:1px;background:var(--rule);margin-bottom:clamp(10px,1.4vh,16px)"></div>
+      <div style="display:flex;flex-direction:column;gap:clamp(7px,1vh,12px);margin-bottom:clamp(10px,1.4vh,14px)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">Reddit engagement: 20 targeted comments per month in menopause and adjacent women&rsquo;s health threads</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">Thread monitoring across r/Menopause, r/Perimenopause, r/WomensHealth, r/Supplements</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">AI citation tracking: when Reddit threads surface Project M in LLM answers</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="8" fill="#f0fdf4"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#16a34a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-size:clamp(12px,1.6vh,17px);color:var(--ink2);line-height:1.5">Monthly Reddit report: mention share vs Amberen, Estroven and Bonafide</span>
+        </div>
+      </div>
+      <div style="font-size:clamp(11px,1.35vh,14px);color:var(--ink4);font-style:italic;border-top:1px solid var(--rule);padding-top:8px">Scale up to Full AI Search Optimization anytime. 3-month minimum.</div>
+    </div>
+    <p style="font-size:clamp(12px,1.5vh,15px);color:var(--ink4);text-align:center;margin:0">3-month minimum commitment. After month 3, renews month-to-month with 30 days cancellation notice.</p>
+  </div>
+
+</div>
+</div></section>
+
+<!-- SLIDE 16: CTA / Team -->
+<section><div class="s">
+<div class="shdr" data-n="16"></div>
+<h2 style="margin:0 0 clamp(10px,1.5vh,18px);text-align:center">Ready to Own Non-Hormonal Menopause AI Search Before Competitors Do?</h2>
+<a href="https://calendly.com/filipe-aipeekaboo/30min" target="_blank" rel="noopener" style="display:block;width:100%;background:var(--accent-bg);border:2px solid var(--accent-bd);border-radius:8px;padding:clamp(14px,2vh,22px);text-align:center;text-decoration:none;margin:clamp(12px,1.8vh,20px) 0 clamp(8px,1.1vh,14px);flex-shrink:0">
+  <span style="font-size:clamp(14px,1.9vh,22px);font-weight:700;color:var(--accent-dark);letter-spacing:0.01em">Book a 30-Minute Strategy Call</span>
+</a>
+<p style="text-align:center;font-size:clamp(13px,1.7vh,17px);color:var(--ink3);margin:0 auto clamp(12px,1.8vh,22px);flex-shrink:0">Limited to 3 new SEO / AEO clients per quarter. Every day without a vs Amberen or vs Estroven comparison page is another day women choose Amberen or Estroven instead of Project M.</p>
+<div style="text-align:center;margin-bottom:clamp(8px,1.1vh,14px);flex-shrink:0">
+  <span style="font-size:clamp(11px,1.4vh,14px);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4)">The Team</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(12px,1.6vw,20px);align-items:start;flex-shrink:0">
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,22px);display:flex;flex-direction:column;gap:clamp(10px,1.3vh,16px);flex-shrink:0">
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.6vh,17px)">
+      <img src="filipe.jpeg" style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--rule);flex-shrink:0">
+      <div>
+        <div style="font-size:clamp(14px,1.8vh,20px);font-weight:700;color:var(--ink)">Filipe Lins Duarte</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--accent);font-weight:500">Co-Founder &amp; CEO</div>
+        <a href="https://www.linkedin.com/in/filipelinsduarte" target="_blank" rel="noopener" style="font-size:clamp(11px,1.4vh,15px);color:var(--ink4);text-decoration:none">linkedin.com/in/filipelinsduarte</a>
+      </div>
+    </div>
+    <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5">Sales leader turned founder. Built revenue teams across SaaS in Europe and the US. Leads strategy and client relationships.</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(5px,0.7vh,8px)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=aipeekaboo.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">AI Peekaboo</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Co-Founder &amp; CEO</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Aug 2025</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=uber.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">Uber for Business</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Mid-Market AE</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Sep 2024</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=meistertask.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">Meister</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">#1 AE 2023</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Aug 2022</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,22px);display:flex;flex-direction:column;gap:clamp(10px,1.3vh,16px);flex-shrink:0">
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.6vh,17px)">
+      <img src="john.jpeg" style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--rule);flex-shrink:0">
+      <div>
+        <div style="font-size:clamp(14px,1.8vh,20px);font-weight:700;color:var(--ink)">John Rice</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--accent);font-weight:500">Co-Founder &amp; CTO</div>
+        <a href="https://www.linkedin.com/in/johnwilliamrice/" target="_blank" rel="noopener" style="font-size:clamp(11px,1.4vh,15px);color:var(--ink4);text-decoration:none">linkedin.com/in/johnwilliamrice</a>
+      </div>
+    </div>
+    <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5">Full-stack engineer and serial builder. Designed the AI Peekaboo platform from scratch. Leads product and engineering.</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(5px,0.7vh,8px)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=aipeekaboo.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">AI Peekaboo</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Co-Founder &amp; CTO</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Apr 2025</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=subredditsignals.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">Subreddit Signals</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Founder</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Nov 2024</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=magiclinks.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">MagicLinks</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Senior Software Engineer</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Jul 2021</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:clamp(14px,1.9vh,22px);display:flex;flex-direction:column;gap:clamp(10px,1.3vh,16px);flex-shrink:0">
+    <div style="display:flex;align-items:center;gap:clamp(12px,1.6vh,17px)">
+      <img src="danny-kirk.jpeg" style="width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--rule);flex-shrink:0">
+      <div>
+        <div style="font-size:clamp(14px,1.8vh,20px);font-weight:700;color:var(--ink)">Danny Kirk</div>
+        <div style="font-size:clamp(12px,1.5vh,16px);color:var(--accent);font-weight:500">COO &amp; Advisory</div>
+        <a href="https://www.linkedin.com/in/danielpkirk/" target="_blank" rel="noopener" style="font-size:clamp(11px,1.4vh,15px);color:var(--ink4);text-decoration:none">linkedin.com/in/danielpkirk</a>
+      </div>
+    </div>
+    <div style="font-size:clamp(12px,1.5vh,16px);color:var(--ink3);line-height:1.5">Reddit community expert and operator. Founded ReddiReach in 2017. Brings platform-native knowledge and operator experience.</div>
+    <div style="display:flex;flex-direction:column;gap:clamp(5px,0.7vh,8px)">
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">ReddiReach</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Founder</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Dec 2017</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=goaheadventures.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">GoAhead Ventures</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">Venture Scout</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Oct 2024</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="https://www.google.com/s2/favicons?domain=energentmedia.com&sz=32" style="width:16px;height:16px;border-radius:3px;flex-shrink:0">
+        <span style="font-size:clamp(11px,1.4vh,15px);font-weight:600;color:var(--ink2)">Energent Media</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink3)">COO</span>
+        <span style="font-size:clamp(10px,1.2vh,13px);color:var(--ink4);margin-left:auto">Jun 2018</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+      </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+var T=16,D='joinprojectm.com',P='SEO / AEO Proposal';
+Reveal.initialize({hash:true,transition:'none',disableLayout:true,width:1920,height:1080,margin:0,minScale:0.1,maxScale:3});
+document.querySelectorAll('.shdr').forEach(function(el){
+  var n=el.getAttribute('data-n');
+  var src=el.getAttribute('data-source');
+  var srcHtml='';
+  if(src){
+    var srcMap={
+      'ahrefs':['https://www.google.com/s2/favicons?domain=ahrefs.com&sz=32','data from Ahrefs'],
+      'peekaboo':['https://www.aipeekaboo.com/icon.jpg','data from Peekaboo'],
+      'reddit':['https://www.google.com/s2/favicons?domain=reddit.com&sz=32','data from Reddit']
+    };
+    if(srcMap[src]) srcHtml='<div class="data-src"><img src="'+srcMap[src][0]+'"><span>'+srcMap[src][1]+'</span></div>';
+  }
+  var LEAD='<img src="https://www.google.com/s2/favicons?domain=joinprojectm.com&sz=64" class="hdr-favicon">';
+  el.innerHTML='<div class="stripe"></div><div class="hdr"><div style="display:flex;align-items:center;gap:10px">'+LEAD+'<span class="tag">'+P+'</span></div><div class="hdr-right"><span class="snum">'+n+' / '+T+'</span><a class="powered" href="https://www.aipeekaboo.com" target="_blank" rel="noopener"><span>Powered by</span><img src="https://www.aipeekaboo.com/images/peekaboo-logo-black.png"></a></div></div><div class="divider"></div>'+(srcHtml?'<div style="display:flex;justify-content:flex-end;margin-bottom:clamp(5px,0.7vh,9px)">'+srcHtml+'</div>':'');
+});
+</script>
+</body>
+</html>
