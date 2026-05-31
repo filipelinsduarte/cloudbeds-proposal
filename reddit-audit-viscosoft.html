@@ -601,23 +601,29 @@
     .filter-select {
       appearance: none;
       -webkit-appearance: none;
-      padding: 6px 30px 6px 10px;
+      padding: 7px 30px 7px 12px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       font-family: var(--font);
       font-size: 12.5px;
+      font-weight: 500;
       color: var(--text);
-      background-color: var(--bg);
+      background-color: var(--page-bg);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239c9895' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 10px center;
       outline: none;
       cursor: pointer;
-      min-width: 140px;
-      transition: border-color 0.15s;
+      min-width: 150px;
+      transition: border-color .15s, background-color .15s, color .15s, box-shadow .15s;
     }
-    .filter-select:focus, .filter-select:hover {
+    .filter-select:hover { border-color: var(--text-3); background-color: var(--bg); }
+    .filter-select:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(194,98,42,.12); background-color: var(--bg); }
+    .filter-select.is-active {
       border-color: var(--orange);
+      background-color: var(--orange-light);
+      color: var(--orange);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c2622a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     }
     .filter-select option {
       font-family: var(--font);
@@ -1288,10 +1294,30 @@ function buildCompetitors() {
   S._compFilteredTools = toolList;
   S._compFitTier = 'all';
 
-  // Build subreddit options
-  const subSet = new Set();
-  threads.forEach(t => { if (t.subreddit) subSet.add(t.subreddit); });
-  const subOptions = [...subSet].sort().map(s => `<option value="${esc(s)}">r/${esc(s)}</option>`).join('');
+  // Build subreddit options + sentiment options with TOOL-level counts
+  // (a tool appears in subreddit X if any of its posts is in r/X; dominant sentiment is the most-common sentiment across its posts)
+  const _compToolDomSent = tool => {
+    const c = {positive:0,negative:0,neutral:0,mixed:0};
+    (tool.posts || []).forEach(p => { const s = _sentClass(p.sentiment||''); c[s] = (c[s]||0)+1; });
+    let best = '', n = 0;
+    Object.keys(c).forEach(k => { if (c[k] > n) { n = c[k]; best = k; } });
+    return best;
+  };
+  const _compToolSubs = tool => Array.from(new Set((tool.posts || []).map(p => p.subreddit).filter(Boolean)));
+  // Sentiment counts (tools per dominant sentiment)
+  const _compSentCounts = {positive:0,negative:0,neutral:0,mixed:0};
+  toolList.forEach(t => { const d = _compToolDomSent(t); if (d) _compSentCounts[d] = (_compSentCounts[d]||0)+1; });
+  const _compSentTotal = toolList.length;
+  let compSentOptions = '';
+  [['positive','Positive'],['negative','Negative'],['neutral','Neutral'],['mixed','Mixed']].forEach(([v,l]) => {
+    if (_compSentCounts[v] > 0) compSentOptions += '<option value="'+v+'">'+l+' ('+_compSentCounts[v]+')</option>';
+  });
+  // Subreddit counts (tools per subreddit)
+  const _compSubCounts = {};
+  toolList.forEach(t => _compToolSubs(t).forEach(s => { _compSubCounts[s] = (_compSubCounts[s]||0)+1; }));
+  const subOptions = Object.keys(_compSubCounts)
+    .sort((a,b) => _compSubCounts[b] - _compSubCounts[a])
+    .map(s => '<option value="'+esc(s)+'">r/'+esc(s)+' ('+_compSubCounts[s]+')</option>').join('');
 
   // KPI tiles
   const uniqueCount = toolList.length;
@@ -1343,14 +1369,11 @@ function buildCompetitors() {
     <div class="filter-bar">
       <input class="filter-input" id="compSearch" placeholder="Search tools..." oninput="filterCompetitors()" style="min-width:180px">
       <select class="filter-select" id="compSentFilter" onchange="filterCompetitors()">
-        <option value="">All sentiments</option>
-        <option value="positive">Positive</option>
-        <option value="negative">Negative</option>
-        <option value="neutral">Neutral</option>
-        <option value="mixed">Mixed</option>
+        <option value="">All sentiments (${_compSentTotal})</option>
+        ${compSentOptions}
       </select>
       <select class="filter-select" id="compSubFilter" onchange="filterCompetitors()">
-        <option value="">All subreddits</option>
+        <option value="">All subreddits (${_compSentTotal})</option>
         ${subOptions}
       </select>
       <div class="filter-pill-group">
@@ -1389,11 +1412,8 @@ function buildCompetitors() {
             <input id="compSentSearch" type="text" placeholder="Filter tools..." style="padding:5px 10px 5px 28px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:var(--page-bg);color:var(--text);font-family:var(--font);outline:none;width:160px" oninput="filterCompSentTable()">
           </div>
           <select id="compSentSentFilter" class="filter-select" onchange="filterCompSentTable()">
-            <option value="">All sentiments</option>
-            <option value="positive">Positive</option>
-            <option value="negative">Negative</option>
-            <option value="neutral">Neutral</option>
-            <option value="mixed">Mixed</option>
+            <option value="">All sentiments (${_compSentTotal})</option>
+            ${compSentOptions}
           </select>
           <button onclick="resetCompSentFilters()" style="padding:5px 11px;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--font);font-size:12px;color:var(--text-3);background:none;cursor:pointer;white-space:nowrap;transition:all 0.15s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-3)'">Reset</button>
         </div>
@@ -1748,8 +1768,11 @@ function _initCompCards() {
 function buildPosts() {
   const threads=S.data.threads||[];
   if(!threads.length) return`<div class="empty-main"><div class="empty-title">No posts collected yet</div></div>`;
-  const uniqueSubs=[...new Set(threads.map(t=>t.subreddit).filter(Boolean))].sort();
-  const subOptions=uniqueSubs.map(s=>`<option value="${esc(s)}">r/${esc(s)}</option>`).join('');
+  const subOptions=_optsWithCounts(threads, t=>t.subreddit, s=>'r/'+s, 'All subreddits', {sortByCount:true}).replace(/^<option value="">[^<]+<\/option>/,'');
+  const sentOptions=_optsWithCounts(threads, t=>_sentClass(t.sentiment||''), null, 'All sentiments', {predefined:[{value:"positive",label:"Positive"},{value:"negative",label:"Negative"},{value:"neutral",label:"Neutral"},{value:"mixed",label:"Mixed"}]}).replace(/^<option value="">[^<]+<\/option>/,'');
+  const typeOptions=_optsWithCounts(threads, t=>t.post_type, null, 'All types', {predefined:[{value:"Recommend",label:"Recommend"},{value:"Comparison",label:"Comparison"},{value:"Pain",label:"Pain"},{value:"Skepticism",label:"Skepticism"},{value:"Budget",label:"Budget"},{value:"Switching",label:"Switching"},{value:"Validation",label:"Validation"},{value:"Advisor",label:"Advisor"},{value:"Opinion",label:"Opinion"},{value:"Tutorial",label:"Tutorial"},{value:"Tip",label:"Tip"},{value:"Workaround",label:"Workaround"},{value:"Resource",label:"Resource"},{value:"Rant",label:"Rant"},{value:"Review",label:"Review"},{value:"Milestone",label:"Milestone"},{value:"Revenge",label:"Revenge"},{value:"Announcement",label:"Announcement"},{value:"Meta",label:"Meta"},{value:"Noise",label:"Noise"}]}).replace(/^<option value="">[^<]+<\/option>/,'');
+  const moodOptions=_optsWithCounts(threads, t=>(t.community_mood||'').toLowerCase(), null, 'All moods', {predefined:[{value:"supportive",label:"Supportive"},{value:"helpful",label:"Helpful"},{value:"informational",label:"Informational"},{value:"curious",label:"Curious"},{value:"analytical",label:"Analytical"},{value:"frustrated",label:"Frustrated"}]}).replace(/^<option value="">[^<]+<\/option>/,'');
+  const totalCount=threads.length;
   return`<div class="section">
     <div class="data-table-wrap">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:14px 14px;border-bottom:1px solid var(--border-light);flex-wrap:wrap;">
@@ -1759,47 +1782,20 @@ function buildPosts() {
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           <select id="postsSubFilter" class="filter-select" onchange="filterPostsTable()">
-            <option value="">All subreddits</option>
+            <option value="">All subreddits (${totalCount})</option>
             ${subOptions}
           </select>
           <select id="postsSentFilter" class="filter-select" onchange="filterPostsTable()">
-            <option value="">All sentiments</option>
-            <option value="positive">Positive</option>
-            <option value="negative">Negative</option>
-            <option value="neutral">Neutral</option>
-            <option value="mixed">Mixed</option>
+            <option value="">All sentiments (${totalCount})</option>
+            ${sentOptions}
           </select>
           <select id="postsTypeFilter" class="filter-select" onchange="filterPostsTable()">
-            <option value="">All types</option>
-            <option value="Recommend">Recommend</option>
-            <option value="Comparison">Comparison</option>
-            <option value="Pain">Pain</option>
-            <option value="Skepticism">Skepticism</option>
-            <option value="Budget">Budget</option>
-            <option value="Switching">Switching</option>
-            <option value="Validation">Validation</option>
-            <option value="Advisor">Advisor</option>
-            <option value="Opinion">Opinion</option>
-            <option value="Tutorial">Tutorial</option>
-            <option value="Tip">Tip</option>
-            <option value="Workaround">Workaround</option>
-            <option value="Resource">Resource</option>
-            <option value="Rant">Rant</option>
-            <option value="Review">Review</option>
-            <option value="Milestone">Milestone</option>
-            <option value="Revenge">Revenge</option>
-            <option value="Announcement">Announcement</option>
-            <option value="Meta">Meta</option>
-            <option value="Noise">Noise</option>
+            <option value="">All types (${totalCount})</option>
+            ${typeOptions}
           </select>
           <select id="postsMoodFilter" class="filter-select" onchange="filterPostsTable()">
-            <option value="">All moods</option>
-            <option value="supportive">Supportive</option>
-            <option value="helpful">Helpful</option>
-            <option value="informational">Informational</option>
-            <option value="curious">Curious</option>
-            <option value="analytical">Analytical</option>
-            <option value="frustrated">Frustrated</option>
+            <option value="">All moods (${totalCount})</option>
+            ${moodOptions}
           </select>
           <button onclick="resetPostsFilters()" style="padding:5px 11px;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--font);font-size:12px;color:var(--text-3);background:none;cursor:pointer;white-space:nowrap;transition:all 0.15s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-3)'">Reset</button>
         </div>
@@ -2272,8 +2268,11 @@ function buildSentiment() {
   /* Section 2: Filter bar */
   const uniqueSubs = [...new Set(threads.map(t => t.subreddit).filter(Boolean))].sort();
   const MOODS_LIST = ['supportive','helpful','informational','curious','analytical','frustrated'];
-  let subOptsHtml = uniqueSubs.map(s => '<option value="' + esc(s) + '">r/' + esc(s) + '</option>').join('');
-  let moodOptsHtml = MOODS_LIST.map(m => '<option value="' + m + '">' + m.charAt(0).toUpperCase() + m.slice(1) + '</option>').join('');
+  const _sentTotal = threads.length;
+  const _moodPredef = MOODS_LIST.map(m => ({value:m, label:m.charAt(0).toUpperCase()+m.slice(1)}));
+  let subOptsHtml = _optsWithCounts(threads, t=>t.subreddit, s=>'r/'+s, 'All subreddits', {sortByCount:true}).replace(/^<option value="">[^<]+<\/option>/,'');
+  let moodOptsHtml = _optsWithCounts(threads, t=>(t.community_mood||'').toLowerCase(), null, 'All moods', {predefined:_moodPredef}).replace(/^<option value="">[^<]+<\/option>/,'');
+  const sentOptsHtml = _optsWithCounts(threads, t=>_sentClass(t.sentiment||''), null, 'All sentiments', {predefined:[{value:'positive',label:'Positive'},{value:'negative',label:'Negative'},{value:'neutral',label:'Neutral'},{value:'mixed',label:'Mixed'}]}).replace(/^<option value="">[^<]+<\/option>/,'');
 
   /* Section 3: breakdown table */
   const sentBreakdownHtml = '<div class="data-table-wrap" style="margin-bottom:28px">'
@@ -2286,9 +2285,9 @@ function buildSentiment() {
     +     '</div>'
     +   '</div>'
     +   '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">'
-    +     '<select class="filter-select" id="sentSentFilter" onchange="filterSentimentCards()"><option value="">All sentiments</option><option value="positive">Positive</option><option value="negative">Negative</option><option value="neutral">Neutral</option><option value="mixed">Mixed</option></select>'
-    +     '<select class="filter-select" id="sentMoodFilter" onchange="filterSentimentCards()"><option value="">All moods</option>' + moodOptsHtml + '</select>'
-    +     '<select class="filter-select" id="sentSubFilter" onchange="filterSentimentCards()"><option value="">All subreddits</option>' + subOptsHtml + '</select>'
+    +     '<select class="filter-select" id="sentSentFilter" onchange="filterSentimentCards()"><option value="">All sentiments (' + _sentTotal + ')</option>' + sentOptsHtml + '</select>'
+    +     '<select class="filter-select" id="sentMoodFilter" onchange="filterSentimentCards()"><option value="">All moods (' + _sentTotal + ')</option>' + moodOptsHtml + '</select>'
+    +     '<select class="filter-select" id="sentSubFilter" onchange="filterSentimentCards()"><option value="">All subreddits (' + _sentTotal + ')</option>' + subOptsHtml + '</select>'
     +     '<button style="padding:5px 11px;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--font);font-size:12px;color:var(--text-3);background:none;cursor:pointer;white-space:nowrap;transition:all 0.15s" onclick="document.getElementById(\'sentMoodFilter\').value=\'\';document.getElementById(\'sentSentFilter\').value=\'\';document.getElementById(\'sentSubFilter\').value=\'\';filterSentimentCards();" onmouseover="this.style.borderColor=\'var(--orange)\';this.style.color=\'var(--orange)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.color=\'var(--text-3)\'">Reset</button>'
     +     '<span id="sentFilterCount" class="filter-results"></span>'
     +   '</div>'
@@ -2698,7 +2697,13 @@ function buildTopics() {
   S._topicsSubs = allSubs;
 
   // Subreddit select options
-  const subOptions = allSubs.map(s => `<option value="${esc(s)}">r/${esc(s)}</option>`).join('');
+  const _topicsTotal = (typeof threads !== 'undefined' && threads) ? threads.length : 0;
+  const _subCounts = {};
+  (typeof threads !== 'undefined' && threads ? threads : []).forEach(t => { if (t.subreddit) _subCounts[t.subreddit] = (_subCounts[t.subreddit]||0)+1; });
+  const subOptions = allSubs
+    .slice()
+    .sort((a,b) => (_subCounts[b]||0) - (_subCounts[a]||0))
+    .map(s => `<option value="${esc(s)}">r/${esc(s)} (${_subCounts[s]||0})</option>`).join('');
 
   // Schedule charts + cards render after HTML is injected
   setTimeout(() => { renderTopicsCharts(); renderTopicsCards(); }, 0);
@@ -2730,7 +2735,7 @@ function buildTopics() {
 
     <div class="filter-bar">
       <select class="filter-select" id="topicsSubFilter" onchange="filterTopics()">
-        <option value="">All subreddits</option>
+        <option value="">All subreddits (${_topicsTotal})</option>
         ${subOptions}
       </select>
       <div class="filter-pill-group">
@@ -2929,6 +2934,48 @@ function updateSortHeaders(tableId, col, dir) {
     th.classList.remove('sort-asc','sort-desc');
     if (th.dataset.sortkey === col)
       th.classList.add(dir > 0 ? 'sort-asc' : 'sort-desc');
+  });
+}
+
+function _optsWithCounts(items, valueFn, labelFn, allLabel, opts) {
+  opts = opts || {};
+  const counts = {};
+  items.forEach(it => {
+    const v = valueFn(it);
+    if (v == null) return;
+    const k = String(v);
+    if (!k) return;
+    counts[k] = (counts[k] || 0) + 1;
+  });
+  const total = items.length;
+  let html = '<option value="">' + allLabel + ' (' + total + ')</option>';
+  let entries;
+  if (opts.predefined) {
+    entries = opts.predefined
+      .filter(d => counts[d.value] > 0 || opts.alwaysShow)
+      .map(d => ({ value: d.value, label: d.label, count: counts[d.value] || 0 }));
+  } else {
+    entries = Object.keys(counts).map(v => ({
+      value: v, label: labelFn ? labelFn(v) : v, count: counts[v]
+    }));
+  }
+  if (opts.sortByCount) {
+    entries.sort((a, b) => b.count - a.count);
+  } else if (!opts.predefined) {
+    entries.sort((a, b) => String(a.label).localeCompare(String(b.label)));
+  }
+  entries.forEach(e => {
+    html += '<option value="' + esc(e.value) + '">' + esc(e.label) + ' (' + e.count + ')</option>';
+  });
+  return html;
+}
+
+/* Attach is-active class on selects when a non-empty value is chosen */
+function _wireFilterActiveStyling() {
+  document.querySelectorAll('select.filter-select').forEach(sel => {
+    const sync = () => sel.classList.toggle('is-active', !!sel.value);
+    sync();
+    sel.addEventListener('change', sync);
   });
 }
 
@@ -3333,7 +3380,7 @@ function renderSection(name) {
   initCharts(name);
   if (name === 'posts') initPostsSort();
   if (name === 'subreddits') initSubredditSort();
-  setTimeout(() => initSentSelects(), 60);
+  setTimeout(() => { initSentSelects(); _wireFilterActiveStyling(); }, 60);
 }
 
 /* ── Boot ── */
