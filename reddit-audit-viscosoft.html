@@ -686,6 +686,10 @@
     .mood-pragmatic { background:rgba(212,130,74,0.12);color:#8a5a28; }
     .mood-confused { background:rgba(156,152,149,0.15);color:#6b6866; }
     .mood-satisfied { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-supportive { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-helpful { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-informational { background:rgba(156,152,149,0.15);color:#6b6866; }
+    .mood-analytical { background:rgba(194,98,42,0.12);color:#c2622a; }
     .sent-mini-bar { height:4px;border-radius:2px;overflow:hidden;display:flex;margin:6px 0 4px; }
 
     /* ── Topics v2 ── */
@@ -717,6 +721,10 @@
     .mood-pill.pragmatic { background:#fdf3ec; color:#d4824a; }
     .mood-pill.confused  { background:var(--page-bg); color:var(--text-3); border:1px solid var(--border); }
     .mood-pill.satisfied { background:#edf7f2; color:#287a4a; }
+    .mood-pill.supportive { background:#edf7f2; color:#287a4a; }
+    .mood-pill.helpful    { background:#edf7f2; color:#287a4a; }
+    .mood-pill.informational { background:var(--page-bg); color:var(--text-3); border:1px solid var(--border); }
+    .mood-pill.analytical { background:var(--orange-light); color:var(--orange-text); }
 
     .sent-breakdown-list { margin-bottom:28px; }
     .sent-breakdown-row { display:flex; align-items:center; gap:18px; padding:7px 0; border-bottom:1px solid var(--border-light); }
@@ -748,6 +756,10 @@
     .mood-pragmatic { background:rgba(212,130,74,0.12);color:#8a5a28; }
     .mood-confused { background:rgba(156,152,149,0.15);color:#6b6866; }
     .mood-satisfied { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-supportive { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-helpful { background:rgba(40,122,74,0.12);color:#287a4a; }
+    .mood-informational { background:rgba(156,152,149,0.15);color:#6b6866; }
+    .mood-analytical { background:rgba(194,98,42,0.12);color:#c2622a; }
     .sent-mini-bar { height:6px;border-radius:3px;overflow:hidden;display:flex;min-width:40px; }
   </style>
 </head>
@@ -793,6 +805,19 @@ function normalizeData(d) {
     sentiment: t.sentiment || 'NEUTRAL',
     brand_mentioned: t.brand_mentioned === true || t.brand_mentioned === 'True' || t.brand_mentioned === 'true',
   }));
+
+  // sentiment_breakdown: derive synthetic per-thread breakdown from the `sentiment` label
+  // when the source data lacks a real breakdown, so existing renderers can light up.
+  d.threads.forEach(t => {
+    const sb = t.sentiment_breakdown;
+    if (sb && typeof sb === 'object' && Object.keys(sb).length > 0) return;
+    const s = (t.sentiment || '').toUpperCase();
+    if (s === 'POSITIVE')      t.sentiment_breakdown = { positive_pct: 80, neutral_pct: 20, negative_pct: 0,  mixed_pct: 0  };
+    else if (s === 'NEGATIVE') t.sentiment_breakdown = { positive_pct: 0,  neutral_pct: 20, negative_pct: 80, mixed_pct: 0  };
+    else if (s === 'NEUTRAL')  t.sentiment_breakdown = { positive_pct: 10, neutral_pct: 80, negative_pct: 10, mixed_pct: 0  };
+    else if (s === 'MIXED')    t.sentiment_breakdown = { positive_pct: 35, neutral_pct: 20, negative_pct: 35, mixed_pct: 10 };
+    else                       t.sentiment_breakdown = { positive_pct: 0,  neutral_pct: 100, negative_pct: 0, mixed_pct: 0  };
+  });
 
   // wins / angles: may be a string (old schema) or array of strings/objects
   const toStringArray = (v, fallbackKeys) => {
@@ -1416,7 +1441,7 @@ function _renderCompSentTable(tools) {
     + '<th style="padding:6px 12px;font-size:11px;font-weight:600;color:var(--text-3);text-align:left;width:180px">Known for ' + _ii('What Reddit users praise about this tool based on how it\'s discussed across threads') + '</th>'
     + '<th style="padding:6px 12px 6px 8px;font-size:11px;font-weight:600;color:var(--text-3);text-align:left;width:180px">Watch out for ' + _ii('What Reddit users criticize about this tool based on how it\'s discussed across threads') + '</th>'
     + '</tr></thead>'
-    + '<tbody>' + _buildYouRow(S.data) + rows + '</tbody>'
+    + '<tbody>' + '' + rows + '</tbody>'
     + '</table>';
 }
 
@@ -2958,12 +2983,12 @@ function buildKeywords() {
         '<div style="font-size:28px;font-weight:700;color:var(--text)">' + (summary.total_keywords ?? '-') + '</div>' +
       '</div>' +
       '<div class="stat-card" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px">' +
-        '<div style="font-size:11px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Pulling Reddit</div>' +
+        '<div style="font-size:11px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:12px;height:12px;vertical-align:-2px;margin-right:5px;flex-shrink:0">Pulling Reddit</div>' +
         '<div style="font-size:28px;font-weight:700;color:var(--text)">' + (summary.keywords_pulling_reddit ?? '-') + '</div>' +
         '<div style="font-size:11.5px;color:var(--text-3);margin-top:4px">across ≥ 1 US SERP run</div>' +
       '</div>' +
       '<div class="stat-card" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px">' +
-        '<div style="font-size:11px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">Stable (3/3 runs)</div>' +
+        '<div style="font-size:11px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:12px;height:12px;vertical-align:-2px;margin-right:5px;flex-shrink:0">Stable (3/3 runs)</div>' +
         '<div style="font-size:28px;font-weight:700;color:var(--green)">' + (summary.tier1_always_hit ?? '-') + '</div>' +
         '<div style="font-size:11.5px;color:var(--text-3);margin-top:4px">most reliable Reddit signal</div>' +
       '</div>' +
@@ -3029,10 +3054,10 @@ function buildKeywords() {
       ? '<thead><tr>' +
           '<th style="width:160px">Keyword</th>' +
           '<th>Why this query</th>' +
-          '<th style="text-align:center;width:40px" title="Reddit URLs in run 1">R1</th>' +
-          '<th style="text-align:center;width:40px" title="Reddit URLs in run 2">R2</th>' +
-          '<th style="text-align:center;width:40px" title="Reddit URLs in run 3">R3</th>' +
-          '<th style="text-align:center;width:60px">Total</th>' +
+          '<th style="text-align:center;width:40px" title="Reddit URLs in run 1"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px">R1</th>' +
+          '<th style="text-align:center;width:40px" title="Reddit URLs in run 2"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px">R2</th>' +
+          '<th style="text-align:center;width:40px" title="Reddit URLs in run 3"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px">R3</th>' +
+          '<th style="text-align:center;width:60px"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=14" alt="" style="width:11px;height:11px;vertical-align:-1px;margin-right:3px">Total</th>' +
           '<th style="text-align:center;width:70px">3 runs</th>' +
           '<th style="width:90px">Tier</th>' +
           '<th style="width:240px">Sample Reddit URLs</th>' +
