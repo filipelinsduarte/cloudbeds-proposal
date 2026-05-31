@@ -1931,22 +1931,25 @@ function filterPostsTable() {
   const subF=(document.getElementById('postsSubFilter')?.value||'').toLowerCase();
   const sentF=(document.getElementById('postsSentFilter')?.value||'').toLowerCase();
   const moodF=(document.getElementById('postsMoodFilter')?.value||'').toLowerCase();
+  const typeF=(document.getElementById('postsTypeFilter')?.value||'').toLowerCase();
   const rows=document.querySelectorAll('#threadsBody tr');
   rows.forEach(row=>{
     const title=row.dataset.title||'';
     const sub=row.dataset.sub||'';
     const sent=row.dataset.sent||'';
     const mood=row.dataset.mood||'';
+    const type=row.dataset.type||'';
     const textOk=!q||title.includes(q)||sub.includes(q);
     const subOk=!subF||sub===subF;
     const sentOk=!sentF||sent===sentF;
     const moodOk=!moodF||mood===moodF;
-    row.style.display=(textOk&&subOk&&sentOk&&moodOk)?'':'none';
+    const typeOk=!typeF||type===typeF;
+    row.style.display=(textOk&&subOk&&sentOk&&moodOk&&typeOk)?'':'none';
   });
 }
 
 function resetPostsFilters() {
-  ['postsSubFilter','postsSentFilter','postsMoodFilter'].forEach(id=>{
+  ['postsSubFilter','postsSentFilter','postsMoodFilter','postsTypeFilter'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.value='';
   });
   const s=document.getElementById('postsSearch');if(s)s.value='';
